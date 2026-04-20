@@ -1,23 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     const burgerOpen = document.getElementById('burgerOpen');
-    const menuClose = document.getElementById('menuClose');
     const megaMenu = document.getElementById('megaMenu');
     const mainPanel = document.getElementById('main-panel');
     const subLinks = document.querySelectorAll('.has-submenu');
     const backBtns = document.querySelectorAll('.back-btn');
     const body = document.body;
 
+    // --- FERMETURE DU MENU (Fonction réutilisable) ---
+    const closeAllMenu = () => {
+        megaMenu.classList.remove('is-open');
+        body.classList.remove('no-scroll');
+        // On attend la fin de l'animation pour reset les panneaux
+        setTimeout(resetPanels, 400); 
+    };
+
     // Ouverture Menu
     burgerOpen.addEventListener('click', () => {
         megaMenu.classList.add('is-open');
-        body.classList.add('no-scroll'); // Bloque le scroll du navigateur
+        body.classList.add('no-scroll');
     });
 
-    // Fermeture Menu
-    menuClose.addEventListener('click', () => {
-        megaMenu.classList.remove('is-open');
-        body.classList.remove('no-scroll'); // Libère le scroll du navigateur
-        setTimeout(resetPanels, 400); 
+    // --- LA CORRECTION : Cibler TOUTES les croix ---
+    document.querySelectorAll('.close-btn').forEach(btn => {
+        btn.addEventListener('click', closeAllMenu);
     });
 
     // Aller au sous-menu
@@ -42,13 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Fermeture auto lors du clic sur un lien projet (important pour le flow)
+    // Fermeture auto lors du clic sur un lien projet
     document.querySelectorAll('.mega-menu a:not(.has-submenu)').forEach(link => {
-        link.addEventListener('click', () => {
-            megaMenu.classList.remove('is-open');
-            body.classList.remove('no-scroll');
-            setTimeout(resetPanels, 400);
-        });
+        link.addEventListener('click', closeAllMenu);
     });
 
     function resetPanels() {

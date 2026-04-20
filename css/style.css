@@ -105,10 +105,12 @@ body.no-scroll {
 
 .menu-header {
     display: flex;
+    justify-content: space-between; /* Espace les éléments aux extrémités */
     align-items: center;
-    padding: 20px;
+    padding: 0 20px;
     border-bottom: 1px solid #eee;
     min-height: 70px;
+    width: 100%; /* Force le header à prendre toute la largeur */
 }
 
 .search-bar {

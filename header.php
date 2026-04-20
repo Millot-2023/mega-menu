@@ -39,6 +39,7 @@
             <div class="menu-panel" id="submenu-projets">
                 <div class="menu-header">
                     <button class="back-btn">‹ Retour au menu</button>
+                    <button class="close-btn">✕</button>
                 </div>
                 <div class="panel-content">
                     <div class="mega-grid">
@@ -101,6 +102,7 @@
             <div class="menu-panel" id="submenu-expertises">
                 <div class="menu-header">
                     <button class="back-btn">‹ Retour au menu</button>
+                    <button class="close-btn">✕</button>
                 </div>
                 <div class="panel-content">
                     <div class="mega-grid">
