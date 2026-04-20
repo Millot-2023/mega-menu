@@ -5,15 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainPanel = document.getElementById('main-panel');
     const subLinks = document.querySelectorAll('.has-submenu');
     const backBtns = document.querySelectorAll('.back-btn');
+    const body = document.body;
 
     // Ouverture Menu
     burgerOpen.addEventListener('click', () => {
         megaMenu.classList.add('is-open');
+        body.classList.add('no-scroll'); // Bloque le scroll du navigateur
     });
 
     // Fermeture Menu
     menuClose.addEventListener('click', () => {
         megaMenu.classList.remove('is-open');
+        body.classList.remove('no-scroll'); // Libère le scroll du navigateur
         setTimeout(resetPanels, 400); 
     });
 
@@ -36,6 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
             currentPanel.classList.remove('active');
             mainPanel.classList.remove('is-out');
             mainPanel.classList.add('active');
+        });
+    });
+
+    // Fermeture auto lors du clic sur un lien projet (important pour le flow)
+    document.querySelectorAll('.mega-menu a:not(.has-submenu)').forEach(link => {
+        link.addEventListener('click', () => {
+            megaMenu.classList.remove('is-open');
+            body.classList.remove('no-scroll');
+            setTimeout(resetPanels, 400);
         });
     });
 

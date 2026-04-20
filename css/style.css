@@ -11,6 +11,7 @@ html {
     scroll-behavior: smooth;
 }
 
+/* --- RESET & BASE --- */
 * {
     margin: 0;
     padding: 0;
@@ -21,6 +22,12 @@ body {
     font-family: 'Segoe UI', sans-serif;
     overflow-x: hidden;
     width: 100%;
+}
+
+/* Bloque le scroll du site en arrière-plan quand le menu est ouvert */
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
 }
 
 /* --- HEADER --- */
@@ -147,7 +154,8 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    overflow-y: auto; /* Seul endroit où le scroll est autorisé dans le menu */
+    -webkit-overflow-scrolling: touch;
 }
 
 .mega-grid {
@@ -155,6 +163,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
+    overflow: visible; /* On laisse le parent .panel-content gérer le scroll */
 }
 
 .mega-col h3 {
@@ -185,9 +194,10 @@ body {
 /* --- PROJET DU MOIS (FULL WIDTH) --- */
 .featured-full {
     width: 100%;
-    margin-top: auto; /* Pousse le bloc vers le bas */
+    margin-top: auto;
     background: #1a1a1a;
     color: #fff;
+    flex-shrink: 0; /* Empêche le bloc de s'écraser */
 }
 
 .featured-image-bg {
