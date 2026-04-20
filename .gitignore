@@ -1,0 +1,10 @@
+# Dossiers système
+.DS_Store
+Thumbs.db
+
+# XAMPP / IDE
+.vscode/
+.idea/
+
+# Images (Optionnel : si tu as des images très lourdes de test)
+# images/*
