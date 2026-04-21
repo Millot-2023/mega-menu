@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include 'includes/header.php'; ?>
 
 <main class="content-area" style="margin-top:100px;">
     <section class="section-titles">
@@ -14,7 +14,7 @@
     </div>
 </main>
 
-<?php include 'footer.html'; ?>
+<?php include 'includes/footer.html'; ?>
 <script src="js/main.js"></script>
 </body>
 </html>

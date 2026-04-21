@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include 'includes/header.php'; ?>
 
 <section class="hero">
     <div class="hero-inner">
@@ -10,7 +10,7 @@
 
 <main class="content-area" id="content">
     <section class="section-titles">
-        <h2>Bienvenue chez Perles & Pixels</h2>
+        <h2>Bienvenue chez Christophe MILLOT</h2>
     </section>
 
     <div class="row-2">
@@ -26,7 +26,7 @@
     </div>
 </main>
 
-<?php include 'footer.html'; ?>
+<?php include 'includes/footer.html'; ?>
 <script src="js/main.js"></script>
 </body>
 </html>

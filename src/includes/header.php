@@ -3,48 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perles et Pixels</title>
+    
+    <title>Christophe MILLOT | Photographie et Création Digitale</title>
+    <meta name="description" content="Découvrez l'univers visuel de Christophe Millot (Christophe MILLOT) : photographie professionnelle, art digital, vidéo et développement web sur mesure.">
+    <meta name="author" content="Christophe Millot">
+    <meta name="robots" content="index, follow">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="page-home">
 
     <header class="main-header">
         <div class="logo">Christophe MILLOT</div>
-        <button class="burger-btn" id="burgerOpen" aria-label="Menu">☰</button>
+        <button class="burger-btn" id="burgerOpen" aria-label="Ouvrir le menu principal">☰</button>
     </header>
 
-    <nav class="mega-menu" id="megaMenu">
+    <nav class="mega-menu" id="megaMenu" aria-label="Navigation principale">
         <div class="menu-wrapper">
             
             <div class="menu-panel active" id="main-panel">
                 <div class="menu-header">
-                    <div class="search-bar"><input type="text" placeholder="Rechercher un projet..."></div>
-                    <button class="close-btn" id="menuClose">✕</button>
+                    <div class="search-bar">
+                        <input type="text" id="site-search" placeholder="Rechercher un projet..." aria-label="Champ de recherche de projets">
+                    </div>
+                    <button class="close-btn" id="menuClose" aria-label="Fermer le menu de navigation">✕</button>
                 </div>
                 <ul class="nav-list">
-                    <li><a href="index.php" class="direct-link"><!--🏠--> Accueil</a></li>
-                    <li class="has-submenu" data-target="submenu-projets">
-                        <span><!--📂--> Nos Projets (Détaillés)</span>
-                        <span class="chevron-right">›</span>
+                    <li><a href="index.php" class="direct-link">🏠 Accueil</a></li>
+                    
+                    <li class="has-submenu-container">
+                        <button class="submenu-trigger" data-target="submenu-projets" aria-haspopup="true" aria-expanded="false" aria-label="Ouvrir le sous-menu de nos projets détaillés">
+                            <span>📂 Nos Projets (Détaillés)</span>
+                            <span class="chevron-right" aria-hidden="true">›</span>
+                        </button>
                     </li>
-                    <li class="has-submenu" data-target="submenu-expertises">
-                        <span><!--🛠️--> Nos Expertises</span>
-                        <span class="chevron-right">›</span>
+                    
+                    <li class="has-submenu-container">
+                        <button class="submenu-trigger" data-target="submenu-expertises" aria-haspopup="true" aria-expanded="false" aria-label="Ouvrir le sous-menu de nos expertises">
+                            <span>🛠️ Nos Expertises</span>
+                            <span class="chevron-right" aria-hidden="true">›</span>
+                        </button>
                     </li>
-                    <li><a href="photographie.php" class="direct-link"><!--📸--> Galerie Complète</a></li>
-                    <li><a href="contact.php" class="direct-link"><!--✉️--> Contact direct</a></li>
+                    
+                    <li><a href="photographie.php" class="direct-link">📸 Galerie Complète</a></li>
+                    <li><a href="contact.php" class="direct-link">✉️ Contact direct</a></li>
                 </ul>
             </div>
 
             <div class="menu-panel" id="submenu-projets">
                 <div class="menu-header">
-                    <button class="back-btn">‹ Retour au menu</button>
-                    <button class="close-btn">✕</button>
+                    <button class="back-btn" aria-label="Retour au menu principal">‹ Retour au menu</button>
+                    <button class="close-btn" aria-label="Fermer le menu de navigation">✕</button>
                 </div>
                 <div class="panel-content">
                     <div class="mega-grid">
                         <div class="mega-col">
-                            <h3>📸 Photographie</h3>
+                            <h3>Photographie</h3>
                             <ul>
                                 <li><a href="projet-type.php">Portraits Studio</a></li>
                                 <li><a href="projet-type.php">Architecture Urbaine</a></li>
@@ -55,7 +69,7 @@
                             </ul>
                         </div>
                         <div class="mega-col">
-                            <h3>🎨 Digital Art</h3>
+                            <h3>Digital Art</h3>
                             <ul>
                                 <li><a href="projet-type.php">Pixel Art 8-bit</a></li>
                                 <li><a href="projet-type.php">Illustrations 2D</a></li>
@@ -65,7 +79,7 @@
                             </ul>
                         </div>
                         <div class="mega-col">
-                            <h3>🎬 Vidéo & Motion</h3>
+                            <h3>Vidéo & Motion</h3>
                             <ul>
                                 <li><a href="projet-type.php">Clips Musicaux</a></li>
                                 <li><a href="projet-type.php">Publicités TV</a></li>
@@ -75,7 +89,7 @@
                             </ul>
                         </div>
                         <div class="mega-col">
-                            <h3>💻 Web & Code</h3>
+                            <h3>Web & Code</h3>
                             <ul>
                                 <li><a href="projet-type.php">Sites Vitrines</a></li>
                                 <li><a href="projet-type.php">E-commerce Complexes</a></li>
@@ -101,13 +115,13 @@
 
             <div class="menu-panel" id="submenu-expertises">
                 <div class="menu-header">
-                    <button class="back-btn">‹ Retour au menu</button>
-                    <button class="close-btn">✕</button>
+                    <button class="back-btn" aria-label="Retour au menu principal">‹ Retour au menu</button>
+                    <button class="close-btn" aria-label="Fermer le menu de navigation">✕</button>
                 </div>
                 <div class="panel-content">
                     <div class="mega-grid">
                         <div class="mega-col">
-                            <h3>💡 Conseil Stratégique</h3>
+                            <h3>Conseil Stratégique</h3>
                             <ul>
                                 <li><a href="projet-type.php">Identité de Marque</a></li>
                                 <li><a href="projet-type.php">Direction Artistique</a></li>
@@ -115,7 +129,7 @@
                             </ul>
                         </div>
                         <div class="mega-col">
-                            <h3>🚀 Performance</h3>
+                            <h3>Performance</h3>
                             <ul>
                                 <li><a href="projet-type.php">Hébergement Haute Dispo</a></li>
                                 <li><a href="projet-type.php">Maintenance Critique</a></li>
@@ -124,6 +138,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </nav>
+</body>
+</html>

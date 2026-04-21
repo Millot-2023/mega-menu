@@ -5,9 +5,11 @@
     left: 100%;
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: #ffffff;
     z-index: 9999;
     transition: var(--transition);
+    /* Optimisation performance : dit au navigateur que le menu ne change pas l'extérieur */
+    contain: paint; 
 }
 
 .mega-menu.is-open {
@@ -27,11 +29,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: #ffffff;
     transition: var(--transition);
     transform: translateX(100%);
     display: flex;
     flex-direction: column;
+    /* Améliore la fluidité des glissements */
+    will-change: transform;
 }
 
 .menu-panel.active {
@@ -49,18 +53,41 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eeeeee;
+    /* Utilisation de px fixes pour éviter le Layout Shift */
+    height: 80px; 
     min-height: 80px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .search-bar { flex: 1; margin-right: 15px; }
 .search-bar input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 2px solid #1a1a1a;
     border-radius: 8px;
-    background: var(--bg-light);
+    background: #ffffff;
+    font-size: 1rem;
+    color: #000000;
+    /* Évite que l'input change de taille au focus */
+    box-sizing: border-box;
+}
+
+.search-bar input::placeholder {
+    color: #555555;
+    opacity: 1;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 .back-btn, .close-btn {
@@ -71,66 +98,69 @@
     color: var(--primary-color);
     font-weight: 700;
     padding: 10px;
+    /* Zone de clic minimale 48x48 pour accessibilité/perf */
+    min-width: 48px;
+    min-height: 48px;
 }
 
-/* --- NAVIGATION NIVEAU 1 (INTERACTIONS MUSCLÉES) --- */
+/* --- NAVIGATION NIVEAU 1 --- */
 .nav-list {
     list-style: none;
     flex: 1;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-list li {
     flex: 1;
     display: flex;
-    align-items: stretch; 
+    align-items: stretch;
     border-bottom: 1px solid #f0f0f0;
-    background: #fff;
-    transition: all 0.15s ease; /* Transition rapide pour la réactivité */
-    cursor: pointer;
+    /* Réserve l'espace vertical pour éviter les sauts */
+    min-height: 60px; 
 }
 
-/* Hover : Gris béton bien visible */
-.nav-list li:hover {
-    background: #e8e8e8; 
-}
-
-/* État au clic : Couleur plus sombre + effet de pression */
-.nav-list li:active {
-    background: #dadada;
-    transform: scale(0.985); /* Enfoncement léger */
-}
-
-.direct-link, 
-.has-submenu {
+.submenu-trigger, .direct-link {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 8%;
+    background: #ffffff;
+    border: none;
+    cursor: pointer;
     width: 100%;
     height: 100%;
-    text-decoration: none;
     color: var(--primary-color);
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 600;
-    line-height: 1;
+    text-decoration: none;
+    font-family: inherit;
+    transition: background 0.15s ease;
+    text-align: left;
 }
 
-.has-submenu span:first-child {
+.submenu-trigger:hover, .direct-link:hover {
+    background: #f5f5f5;
+}
+
+.submenu-trigger:active, .direct-link:active {
+    background: #ebebeb;
+    transform: scale(0.995);
+}
+
+.submenu-trigger span:first-child {
     display: flex;
     align-items: center;
-    height: 100%;
+    gap: 15px;
 }
 
-/* --- CHEVRONS --- */
 .chevron-right {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--accent-color);
     font-weight: 800;
-    display: flex;
-    align-items: center;
-    height: 100%;
 }
 
 /* --- CONTENU DU PANNEAU & GRILLE --- */
@@ -139,6 +169,7 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    /* Améliore le défilement sur mobile */
     -webkit-overflow-scrolling: touch;
 }
 
@@ -158,11 +189,18 @@
     color: var(--primary-color);
 }
 
-.mega-col ul { list-style: none; }
-.mega-col li { padding: 8px 0; border: none; }
+.mega-col ul { list-style: none; padding: 0; }
+.mega-col li { 
+    padding: 4px 0; 
+    border: none; 
+    background: transparent; 
+    display: block;
+    font-size: 1rem;
+}
+
 .mega-col a {
     text-decoration: none;
-    color: #555;
+    color: #1a1a1a;
     font-weight: 500;
     transition: all 0.3s;
 }
@@ -176,20 +214,23 @@
 .featured-full {
     width: 100%;
     margin-top: auto;
-    background: #000;
-    color: #fff;
+    background: #000000;
+    color: #ffffff;
     flex-shrink: 0;
+    /* Réserve de l'espace pour éviter le saut au chargement de l'image */
+    min-height: 200px;
 }
 
 .featured-image-bg {
-    padding: 80px 8%;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('../images/featured-bg.jpg') center/cover;
+    padding: 60px 8%;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('../images/featured-bg.jpg') center/cover;
     display: flex;
     align-items: flex-end;
 }
 
 .featured-content .badge {
     background: var(--accent-color);
+    color: #000000;
     padding: 5px 12px;
     font-size: 0.75rem;
     font-weight: 800;
@@ -206,14 +247,14 @@
 }
 
 .featured-content p { 
-    color: #bbb; 
+    color: #ffffff;
     margin-bottom: 20px; 
     max-width: 500px;
     line-height: 1.5;
 }
 
 .btn-link {
-    color: #fff;
+    color: #ffffff;
     font-weight: 700;
     text-decoration: none;
     border-bottom: 2px solid var(--accent-color);

@@ -1,5 +1,6 @@
 @import "base.css";
 @import "header.css";
-@import "menu.css";    /* Le menu doit arriver après le header */
+@import "menu.css";/* Le menu doit arriver après le header */
+@import "fonts.css";
 @import "layout.css";
 @import "footer.css";

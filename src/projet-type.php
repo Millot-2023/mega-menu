@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include 'includes/header.php'; ?>
 
 <main class="content-area" style="padding-top: 120px;">
     <section class="section-titles">
@@ -17,14 +17,14 @@
         <div class="row-2">
             <div class="box">
                 <h4>Le Brief</h4>
-                <p style="text-align: left; font-size: 0.9rem; color: #666;">
+                <p style="text-align: left; font-size: 0.9rem; color: #aaaaaa;">
                     Description détaillée du besoin client. Ce bloc permet de tester le rendu du texte sur deux colonnes responsives.
                 </p>
             </div>
             <div class="box">
                 <h4>La Solution</h4>
-                <p style="text-align: left; font-size: 0.9rem; color: #666;">
-                    Explication technique et créative de la réponse apportée par Perles & Pixels.
+                <p style="text-align: left; font-size: 0.9rem; color: #aaaaaa;">
+                    Explication technique et créative de la réponse apportée par Christophe MILLOT.
                 </p>
             </div>
         </div>
@@ -37,7 +37,7 @@
     </section>
 </main>
 
-<?php include 'footer.html'; ?>
+<?php include 'includes/footer.html'; ?>
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');
+
+:root {
+    --font-titles: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    /* Valeurs de référence */
+    --lh-titles: 1.2;  /* Plus serré pour les titres */
+    --lh-body: 1.6;    /* Plus aéré pour le confort de lecture */
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: var(--lh-body);
+    -webkit-font-smoothing: antialiased; /* Rend la typo plus nette sur Mac/iOS */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .logo {
+    font-family: var(--font-titles);
+    line-height: var(--lh-titles);
+    font-weight: 700;
+}
+
+/* Éléments de navigation : on reste proche de 1 pour le centrage vertical */
+.direct-link, .has-submenu {
+    font-family: var(--font-titles);
+    line-height: 1; 
+}

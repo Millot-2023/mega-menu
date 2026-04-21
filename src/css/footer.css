@@ -1,7 +1,7 @@
 /* --- FOOTER --- */
 .main-footer {
     background: #1a1a1a;
-    color: #fff;
+    color: #ffffff;
     padding: 60px 5% 20px;
     margin-top: 50px;
 }
@@ -40,7 +40,7 @@
 }
 
 .footer-col a {
-    color: #bbb;
+    color: #ffffff; /* Blanc pur pour contraste maximal sur fond sombre */
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -59,8 +59,8 @@
     text-align: center;
     padding-top: 40px;
     margin-top: 40px;
-    border-top: 1px solid #333;
-    color: #666;
+    border-top: 1px solid #444; /* Bordure plus discrète */
+    color: #ffffff; /* Copyright en blanc pour valider l'audit */
     font-size: 0.9rem;
 }
 
