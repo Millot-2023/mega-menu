@@ -22,17 +22,17 @@
                     <button class="close-btn" id="menuClose">✕</button>
                 </div>
                 <ul class="nav-list">
-                    <li><a href="index.php" class="direct-link">🏠 Accueil</a></li>
+                    <li><a href="index.php" class="direct-link"><!--🏠--> Accueil</a></li>
                     <li class="has-submenu" data-target="submenu-projets">
-                        <span>📂 Nos Projets (Détaillés)</span>
+                        <span><!--📂--> Nos Projets (Détaillés)</span>
                         <span class="chevron-right">›</span>
                     </li>
                     <li class="has-submenu" data-target="submenu-expertises">
-                        <span>🛠️ Nos Expertises</span>
+                        <span><!--🛠️--> Nos Expertises</span>
                         <span class="chevron-right">›</span>
                     </li>
-                    <li><a href="photographie.php" class="direct-link">📸 Galerie Complète</a></li>
-                    <li><a href="contact.php" class="direct-link">✉️ Contact direct</a></li>
+                    <li><a href="photographie.php" class="direct-link"><!--📸--> Galerie Complète</a></li>
+                    <li><a href="contact.php" class="direct-link"><!--✉️--> Contact direct</a></li>
                 </ul>
             </div>
 

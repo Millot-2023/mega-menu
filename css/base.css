@@ -1,0 +1,28 @@
+:root {
+    --primary-color: #222;
+    --accent-color: #007bff;
+    --bg-light: #f8f9fa;
+    --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Bloque le scroll du site en arrière-plan quand le menu est ouvert */
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
