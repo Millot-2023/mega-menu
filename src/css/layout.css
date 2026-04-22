@@ -1,8 +1,8 @@
 /* --- HERO SECTION --- */
 .hero {
     height: 100vh;
-    background: var(--primary-color);
-    color: #fff;
+    background: var(--menu-text); 
+    color: var(--menu-bg);       
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,7 +15,7 @@
     position: absolute;
     bottom: 30px;
     font-size: 2.5rem;
-    color: #fff;
+    color: var(--menu-bg);
     text-decoration: none;
     animation: bounce 2s infinite;
 }
@@ -25,12 +25,30 @@
     50% { transform: translateY(-10px); }
 }
 
-/* --- GRILLES DE CONTENU --- */
-.content-area {
-    padding: 100px 5% 50px;
+/* --- TITRES DE SECTION --- */
+.section-titles {
+    margin-bottom: 50px; 
+    width: 100%;
+    display: block;
 }
 
-.row-1, .row-2, .row-3 {
+.section-titles h1, 
+.section-titles h2 {
+    margin-bottom: 15px; 
+}
+
+.section-titles.align-left {
+    text-align: left;
+}
+
+/* --- GRILLES DE CONTENU --- */
+.content-area {
+    padding: 120px 5% 50px; 
+    max-width: var(--mega-menu-width); 
+    margin: 0 auto;
+}
+
+.row-1, .row-2, .row-3, .row-4 {
     display: grid;
     gap: 20px;
     margin-bottom: 20px;
@@ -38,11 +56,54 @@
 
 .row-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .row-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.row-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 
 .box {
-    background: var(--bg-light);
-    border: 1px solid #ddd;
+    background: var(--menu-bg);
+    border: 1px solid var(--menu-border);
     padding: 40px 20px;
     text-align: center;
     border-radius: 8px;
+    transition: border-color var(--transition-speed);
+}
+
+.box:hover {
+    border-color: var(--menu-accent);
+}
+
+/* --- ÉLÉMENTS SPÉCIFIQUES --- */
+.separator {
+    margin: 60px 0;
+    border: 0;
+    border-top: 2px solid var(--menu-border);
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .content-area {
+        padding: 40px 5% 30px; 
+    }
+
+    .section-titles {
+        margin-bottom: 30px; 
+    }
+
+    /* Correction ancrage mobile : on cible l'ID Portraits directement */
+    #portraits {
+        scroll-margin-top: 120px !important;
+    }
+
+    .row-2, .row-3, .row-4 {
+        grid-template-columns: 1fr !important; 
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .box {
+        padding: 30px 15px;
+        border-radius: 6px;
+    }
 }

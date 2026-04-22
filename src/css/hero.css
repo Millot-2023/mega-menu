@@ -1,0 +1,55 @@
+/* ==========================================================================
+   HERO.CSS - Gestion centralisée du Hero et de l'Ancrage
+   ========================================================================== */
+
+/* --- CONFIGURATION DU HERO --- */
+.hero {
+    height: 100vh;
+    background: var(--menu-text); 
+    color: var(--menu-bg);       
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+.hero-inner {
+    padding: 0 20px;
+}
+
+.hero-chevron {
+    position: absolute;
+    bottom: 30px;
+    font-size: 2.5rem;
+    color: var(--menu-bg);
+    text-decoration: none;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* --- RÉGLAGE UNIVERSEL DE L'ANCRAGE (La butée du titre) --- */
+/* C'est CETTE VALEUR unique qui contrôle l'arrêt du scroll pour tous les formats.
+   Si tu vois encore la bordure noire du hero, augmente cette valeur (ex: 80px, 90px).
+*/
+#content {
+    scroll-margin-top: 70px !important;
+}
+
+/* --- AJUSTEMENTS RESPONSIVE DU HERO --- */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 1.8rem;
+        padding: 0 10px;
+    }
+    
+    /* On ne redéfinit pas scroll-margin-top ici pour garder une cohérence parfaite.
+       La valeur de 70px définie plus haut s'appliquera aussi sur mobile.
+    */
+}

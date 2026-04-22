@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Christophe MILLOT | Photographie et Création Digitale</title>
+    <title>Christophe MILLOT</title>
     <meta name="description" content="Découvrez l'univers visuel de Christophe Millot (Christophe MILLOT) : photographie professionnelle, art digital, vidéo et développement web sur mesure.">
     <meta name="author" content="Christophe Millot">
     <meta name="robots" content="index, follow">
 
+    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="page-home">
@@ -32,21 +33,21 @@
                     <li><a href="index.php" class="direct-link">🏠 Accueil</a></li>
                     
                     <li class="has-submenu-container">
-                        <button class="submenu-trigger" data-target="submenu-projets" aria-haspopup="true" aria-expanded="false" aria-label="Ouvrir le sous-menu de nos projets détaillés">
-                            <span>📂 Nos Projets (Détaillés)</span>
+                        <button class="submenu-trigger" data-target="submenu-projets" aria-haspopup="true" aria-expanded="false">
+                            <span>Nos Projets (Détaillés)</span>
                             <span class="chevron-right" aria-hidden="true">›</span>
                         </button>
                     </li>
                     
                     <li class="has-submenu-container">
-                        <button class="submenu-trigger" data-target="submenu-expertises" aria-haspopup="true" aria-expanded="false" aria-label="Ouvrir le sous-menu de nos expertises">
-                            <span>🛠️ Nos Expertises</span>
+                        <button class="submenu-trigger" data-target="submenu-expertises" aria-haspopup="true" aria-expanded="false">
+                            <span>Nos Expertises</span>
                             <span class="chevron-right" aria-hidden="true">›</span>
                         </button>
                     </li>
                     
                     <li><a href="photographie.php" class="direct-link">📸 Galerie Complète</a></li>
-                    <li><a href="contact.php" class="direct-link">✉️ Contact direct</a></li>
+                    <li><a href="contact.php" class="direct-link">Contact direct</a></li>
                 </ul>
             </div>
 
@@ -56,6 +57,7 @@
                     <button class="close-btn" aria-label="Fermer le menu de navigation">✕</button>
                 </div>
                 <div class="panel-content">
+                    <h2 class="panel-title">Détail des Projets</h2>
                     <div class="mega-grid">
                         <div class="mega-col">
                             <h3>Photographie</h3>
@@ -119,6 +121,7 @@
                     <button class="close-btn" aria-label="Fermer le menu de navigation">✕</button>
                 </div>
                 <div class="panel-content">
+                    <h2 class="panel-title">Nos Expertises</h2>
                     <div class="mega-grid">
                         <div class="mega-col">
                             <h3>Conseil Stratégique</h3>
@@ -140,5 +143,3 @@
             </div>
         </div>
     </nav>
-</body>
-</html>

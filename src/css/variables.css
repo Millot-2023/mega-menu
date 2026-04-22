@@ -1,0 +1,24 @@
+:root {
+    /* --- COULEURS --- */
+    --menu-bg: #ffffff;           /* Fond du Mega-Menu */
+    --menu-text: #1a1a1a;         /* Texte principal */
+    --menu-accent: #0066cc;       /* Couleur d'accentuation (liens, hover) */
+    --menu-border: #e0e0e0;       /* Lignes de séparation */
+    --overlay-bg: rgba(0,0,0,0.5); /* Le voile derrière le menu */
+    
+    /* --- SCROLLBAR --- */
+    --scrollbar-color: #888888;   /* Gris moyen (modifiable facilement) */
+
+    /* --- TYPOGRAPHIE --- */
+    --font-titles: 'Montserrat', sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    
+    /* --- RÉFÉRENCES TYPO --- */
+    --lh-titles: 1.2;             /* Plus serré pour les titres */
+    --lh-body: 1.6;               /* Plus aéré pour la lecture */
+
+    /* --- TAILLES & ESPACEMENT --- */
+    --nav-height: 70px;
+    --mega-menu-width: 1200px;
+    --transition-speed: 0.3s;
+}

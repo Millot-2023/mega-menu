@@ -1,6 +1,18 @@
-@import "base.css";
+/* 1. Configuration et Bases (Doivent être chargés en premier) */
+@import "variables.css"; /* Tes variables : couleurs, fontes, tailles */
+@import "fonts.css";     /* Déclaration des polices @font-face */
+@import "base.css";      /* Reset CSS et styles globaux (body, a, etc.) */
+
+/* 2. Composants Structurels */
 @import "header.css";
-@import "menu.css";/* Le menu doit arriver après le header */
-@import "fonts.css";
-@import "layout.css";
+@import "hero.css";
+@import "layout.css";    /* La structure générale des blocs */
+
+/* 3. Navigation et Menu (Le coeur du projet) */
+@import "menu.css";      /* Le menu vient surcharger ou compléter le header */
+
+/* 4. Finition et Bas de page */
 @import "footer.css";
+
+/* 5. Correctifs finaux (Doit toujours être en dernier) */
+@import "responsive.css"; /* Écrase les règles précédentes pour le mobile */
