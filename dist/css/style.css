@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');
-/* Fichier fusionné - Build: 2026-04-25 21:41:39 */
+/* Fichier fusionné - Build: 2026-04-25 21:53:39 */
 
 /* --- Source: variables.css --- */
 :root {
@@ -309,6 +309,25 @@ body.no-scroll {
     margin-top: auto; 
 }
 
+/* FORCE STYLE BOUTONS (Intégré pour Firebase) */
+.btn-main {
+    display: inline-block !important;
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+    padding: 12px 28px !important;
+    text-decoration: none !important;
+    border: 1px solid #1a1a1a !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-main:hover {
+    background-color: transparent !important;
+    color: #1a1a1a !important;
+}
+
 /* Responsive Grille */
 @media (max-width: 1024px) {
     .row-4 { grid-template-columns: repeat(2, 1fr); }
@@ -321,8 +340,6 @@ body.no-scroll {
 
     .row-2, .row-3, .row-4 {
         grid-template-columns: 1fr !important;
-        /* Utilisation d'une réduction proportionnelle si nécessaire, 
-           ou maintien de la variable pour la cohérence */
         gap: var(--grid-gap); 
     }
 }
@@ -705,5 +722,15 @@ body.no-scroll {
 }
 
 /* --- Source: style.css --- */
-
+@import "variables.css";
+@import "fonts.css";
+@import "base.css";
+@import "header.css";
+@import "hero.css";
+@import "layout.css";
+@import "grid.css";
+@import "buttons.css";
+@import "menu.css";
+@import "footer.css";
+@import "responsive.css";
 

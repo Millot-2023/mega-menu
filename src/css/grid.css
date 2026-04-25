@@ -84,6 +84,25 @@
     margin-top: auto; 
 }
 
+/* FORCE STYLE BOUTONS (Intégré pour Firebase) */
+.btn-main {
+    display: inline-block !important;
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+    padding: 12px 28px !important;
+    text-decoration: none !important;
+    border: 1px solid #1a1a1a !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-main:hover {
+    background-color: transparent !important;
+    color: #1a1a1a !important;
+}
+
 /* Responsive Grille */
 @media (max-width: 1024px) {
     .row-4 { grid-template-columns: repeat(2, 1fr); }
@@ -96,8 +115,6 @@
 
     .row-2, .row-3, .row-4 {
         grid-template-columns: 1fr !important;
-        /* Utilisation d'une réduction proportionnelle si nécessaire, 
-           ou maintien de la variable pour la cohérence */
         gap: var(--grid-gap); 
     }
 }
