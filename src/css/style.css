@@ -1,20 +1,11 @@
-/* 1. Configuration et Bases */
 @import "variables.css";
 @import "fonts.css";
 @import "base.css";
-
-/* 2. Composants Structurels */
 @import "header.css";
 @import "hero.css";
 @import "layout.css";
-@import "grid.css";   /* La grille prépare le terrain... */
-@import "buttons.css"; /* ...et le bouton impose son style par-dessus ! */
-
-/* 3. Navigation et Menu */
+@import "grid.css";
+@import "buttons.css";
 @import "menu.css";
-
-/* 4. Finition et Bas de page */
 @import "footer.css";
-
-/* 5. Correctifs finaux */
 @import "responsive.css";

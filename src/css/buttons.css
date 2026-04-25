@@ -1,16 +1,4 @@
-/* ==========================================================================
-   BUTTONS.CSS - Composants d'action (Version Dynamique)
-   ========================================================================== */
-
-.btn-container {
-    display: flex;
-    justify-content: center; /* Centre le bouton horizontalement */
-    width: 100%;
-    margin-top: auto;        /* Aligne le bouton en bas de card si texte inégal */
-    padding: 20px 0;         /* Espace interne constant */
-}
-
-.btn-main {
+.grid-system .btn-container .btn-main {
     display: inline-block;
     padding: 12px 28px;
     background-color: var(--btn-bg);
@@ -18,14 +6,12 @@
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
-    border-radius: 0;        /* Carré pour respecter le style strict bord à bord */
-    transition: all var(--transition-speed) ease;
     border: 1px solid var(--btn-border);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    transition: all var(--transition-speed) ease;
 }
 
-.btn-main:hover {
+.grid-system .btn-container .btn-main:hover {
     background-color: var(--btn-hover-bg);
     color: var(--btn-hover-color);
 }
