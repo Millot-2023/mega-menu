@@ -16,7 +16,9 @@
                 </div>
                 <h3>Création Digitale Vedette</h3>
                 <p>Art et Pixels.</p>
-                <a href="motion-design.php">Voir la galerie</a>
+                <div class="btn-container">
+                    <a href="motion-design.php" class="btn-main">Voir la galerie</a>
+                </div>
             </div>
         </div>
 
@@ -31,7 +33,9 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="motion-design.php">Voir la galerie</a>
+                <div class="btn-container">
+                    <a href="motion-design.php" class="btn-main">Voir la galerie</a>
+                </div>
             </div>
             <div class="box">
                 <div class="grid-vignette">
@@ -43,7 +47,9 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="motion-design.php">Voir la galerie</a>
+                <div class="btn-container">
+                    <a href="motion-design.php" class="btn-main">Voir la galerie</a>
+                </div>
             </div>
         </div>
 
@@ -58,7 +64,9 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="motion-design.php">Voir la galerie</a>
+                <div class="btn-container">
+                    <a href="motion-design.php" class="btn-main">Voir la galerie</a>
+                </div>
             </div>
             <div class="box">
                 <div class="grid-vignette">
@@ -70,7 +78,9 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="motion-design.php">Voir la galerie</a>
+                <div class="btn-container">
+                    <a href="motion-design.php" class="btn-main">Voir la galerie</a>
+                </div>
             </div>
             <div class="box">
                 <div class="grid-vignette">
@@ -82,7 +92,9 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="motion-design.php">Voir la galerie</a>
+                <div class="btn-container">
+                    <a href="motion-design.php" class="btn-main">Voir la galerie</a>
+                </div>
             </div>
             <div class="box">
                 <div class="grid-vignette">
@@ -94,7 +106,9 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="motion-design.php">Voir la galerie</a>
+                <div class="btn-container">
+                    <a href="motion-design.php" class="btn-main">Voir la galerie</a>
+                </div>
             </div>
         </div>
     </section>

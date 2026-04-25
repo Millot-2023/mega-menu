@@ -4,7 +4,7 @@
 /* --- APPLICATION GLOBALE --- */
 body {
     font-family: var(--font-body);
-    line-height: var(--lh-body);
+    line-height: var(--lh-body); /* Normalisation du texte courant */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -12,22 +12,31 @@ body {
 /* --- TITRES & LOGO --- */
 h1, h2, h3, h4, .logo {
     font-family: var(--font-titles);
-    line-height: var(--lh-titles);
+    line-height: var(--lh-titles); /* Normalisation des titres (plus serrés) */
     font-weight: 700;
 }
-/*h2{margin-bottom:50px;}*/
+
 /* --- NAVIGATION --- */
 .direct-link, 
 .submenu-trigger {
     font-family: var(--font-titles);
-    line-height: 1; 
+    /* On utilise la même variable pour la cohérence visuelle du menu */
+    line-height: var(--lh-titles); 
 }
 
 /* --- PETITS ÉLÉMENTS --- */
-.badge {
+.badge, .category-badge {
     font-family: var(--font-titles);
     font-weight: 600;
     text-transform: uppercase;
+    line-height: 1; /* Le badge est souvent sur une seule ligne */
 }
 
-.paragraphe{margin-bottom: 20px;}
+/* --- CLASSES UTILITAIRES --- */
+.paragraphe {
+    margin-bottom: 20px;
+}
+
+.i {
+    font-style: italic;
+}

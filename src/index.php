@@ -30,7 +30,9 @@
                 </div>
                 <h3>Shooting Photo</h3>
                 <p>Portraits et reportages de haute précision.</p>
-                <a href="index.php">Voir la galerie</a>
+                <div class="btn-container">
+                    <a href="index.php" class="btn-main">Voir la galerie</a>
+                </div>
             </div>
             <div class="box">
                 <div class="grid-vignette">
@@ -42,7 +44,9 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Du Pixel Art aux illustrations vectorielles.</p>
-                <a href="index.php">Voir la galerie</a>
+                <div class="btn-container">
+                    <a href="index.php" class="btn-main">Voir la galerie</a>
+                </div>
             </div>
         </div>
 
@@ -57,7 +61,9 @@
                 </div>
                 <h3>Shooting Photo</h3>
                 <p>Portraits et reportages.</p>
-                <a href="index.php">Voir plus</a>
+                <div class="btn-container">
+                    <a href="index.php" class="btn-main">Voir plus</a>
+                </div>
             </div>
 
             <div class="box">
@@ -70,7 +76,9 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="index.php">Voir la galerie</a>
+                <div class="btn-container">
+                    <a href="index.php" class="btn-main">Voir la galerie</a>
+                </div>
             </div>
 
             <div class="box">
@@ -83,7 +91,9 @@
                 </div>
                 <h3>Shooting Photo</h3>
                 <p>Reportages.</p>
-                <a href="index.php">Voir la galerie</a>
+                <div class="btn-container">
+                    <a href="index.php" class="btn-main">Voir la galerie</a>
+                </div>
             </div>
 
             <div class="box">
@@ -96,7 +106,9 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Vecteurs.</p>
-                <a href="index.php">Voir la galerie</a>
+                <div class="btn-container">
+                    <a href="index.php" class="btn-main">Voir la galerie</a>
+                </div>
             </div>
         </div>
 

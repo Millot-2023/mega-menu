@@ -3,7 +3,7 @@
 <main class="content-area" id="content">
     <section class="section-titles">
         <span class="category-badge">Catégorie Projet</span>
-        <h1>Publicite-tv</h1>
+        <h1>Application Métiers</h1>
         <p class="desc-text">Structure de contenu en grille responsive 4-2-1.</p>
     </section>
 
@@ -17,7 +17,7 @@
                 <h3>Création Digitale Vedette</h3>
                 <p>Art et Pixels.</p>
                 <div class="btn-container">
-                    <a href="publicite-tv.php" class="btn-main">Voir la galerie</a>
+                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
                 <div class="btn-container">
-                    <a href="publicite-tv.php" class="btn-main">Voir la galerie</a>
+                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
                 </div>
             </div>
             <div class="box">
@@ -48,7 +48,7 @@
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
                 <div class="btn-container">
-                    <a href="publicite-tv.php" class="btn-main">Voir la galerie</a>
+                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
                 <div class="btn-container">
-                    <a href="publicite-tv.php" class="btn-main">Voir la galerie</a>
+                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
                 </div>
             </div>
             <div class="box">
@@ -79,7 +79,7 @@
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
                 <div class="btn-container">
-                    <a href="publicite-tv.php" class="btn-main">Voir la galerie</a>
+                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
                 </div>
             </div>
             <div class="box">
@@ -93,7 +93,7 @@
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
                 <div class="btn-container">
-                    <a href="publicite-tv.php" class="btn-main">Voir la galerie</a>
+                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
                 </div>
             </div>
             <div class="box">
@@ -107,7 +107,7 @@
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
                 <div class="btn-container">
-                    <a href="publicite-tv.php" class="btn-main">Voir la galerie</a>
+                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
                 </div>
             </div>
         </div>

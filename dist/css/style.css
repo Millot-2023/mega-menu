@@ -1,41 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');
-/* Fichier fusionné - Build: 2026-04-25 15:13:54 */
+/* Fichier fusionné - Build: 2026-04-25 20:56:34 */
 
 /* --- Source: variables.css --- */
 :root {
     /* --- COULEURS --- */
-    --menu-bg: #ffffff;           /* Fond du Mega-Menu */
-    --menu-text: #1a1a1a;         /* Texte principal */
-    --menu-accent: #0066cc;       /* Couleur d'accentuation (liens, hover) */
-    --menu-border: #e0e0e0;       /* Lignes de séparation */
-    --overlay-bg: rgba(0,0,0,0.5); /* Le voile derrière le menu */
-    
-    /* --- SCROLLBAR --- */
-    --scrollbar-color: #888888;   /* Gris moyen */
+    --menu-bg: #ffffff;
+    --menu-text: #1a1a1a;
+    --menu-accent: #0066cc;
+    --menu-border: #e0e0e0;
+    --overlay-bg: rgba(0, 0, 0, 0.5);
+
+    /* --- BOUTONS --- */
+    --btn-bg: var(--menu-text);
+    --btn-color: var(--menu-bg);
+    --btn-border: var(--menu-text);
+    --btn-hover-bg: transparent;
+    --btn-hover-color: var(--menu-text);
+
+    /* --- ESPACEMENTS --- */
+    --grid-gap: 20px;
+    --card-padding-inner: 20px;
+    --section-margin: 50px;
+    --section-margin-mobile: 30px;
+    --container-side-padding: 5%;
+    --separator-margin: 60px;
 
     /* --- TYPOGRAPHIE --- */
     --font-titles: 'Montserrat', sans-serif;
     --font-body: 'Inter', system-ui, sans-serif;
-    
-    /* --- RÉFÉRENCES TYPO --- */
-    --lh-titles: 1.2;             /* Plus serré pour les titres */
-    --lh-body: 1.6;               /* Plus aéré pour la lecture */
+    --lh-titles: 1.2;
+    --lh-body: 1.6;
 
-    /* --- TAILLES & ESPACEMENT --- */
-    --nav-height: 70px;           /* Hauteur de ton header */
-    --content-gap: 40px;          /* Espace de sécurité sous le header */
+    /* --- TAILLES --- */
+    --nav-height: 70px;
+    --content-gap: 40px;
     --mega-menu-width: 1200px;
     --transition-speed: 0.3s;
 }
 
-/* --- CORRECTION STRUCTURELLE --- */
-/* On applique le décalage directement ici ou dans layout.css */
 .content-area {
     padding-top: calc(var(--nav-height) + var(--content-gap));
-    min-height: 100vh;
+    padding-left: var(--container-side-padding);
+    padding-right: var(--container-side-padding);
+    max-width: var(--mega-menu-width);
+    margin: 0 auto;
 }
 
-/* Assure que le défilement vers les ancres ne cache pas le titre */
 html {
     scroll-padding-top: var(--nav-height);
 }
@@ -47,7 +57,7 @@ html {
 /* --- APPLICATION GLOBALE --- */
 body {
     font-family: var(--font-body);
-    line-height: var(--lh-body);
+    line-height: var(--lh-body); /* Normalisation du texte courant */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -55,25 +65,34 @@ body {
 /* --- TITRES & LOGO --- */
 h1, h2, h3, h4, .logo {
     font-family: var(--font-titles);
-    line-height: var(--lh-titles);
+    line-height: var(--lh-titles); /* Normalisation des titres (plus serrés) */
     font-weight: 700;
 }
-/*h2{margin-bottom:50px;}*/
+
 /* --- NAVIGATION --- */
 .direct-link, 
 .submenu-trigger {
     font-family: var(--font-titles);
-    line-height: 1; 
+    /* On utilise la même variable pour la cohérence visuelle du menu */
+    line-height: var(--lh-titles); 
 }
 
 /* --- PETITS ÉLÉMENTS --- */
-.badge {
+.badge, .category-badge {
     font-family: var(--font-titles);
     font-weight: 600;
     text-transform: uppercase;
+    line-height: 1; /* Le badge est souvent sur une seule ligne */
 }
 
-.paragraphe{margin-bottom: 20px;}
+/* --- CLASSES UTILITAIRES --- */
+.paragraphe {
+    margin-bottom: 20px;
+}
+
+.i {
+    font-style: italic;
+}
 
 /* --- Source: base.css --- */
 /* ==========================================================================
@@ -138,43 +157,13 @@ body.no-scroll {
 }
 
 /* --- Source: layout.css --- */
-/* --- HERO SECTION --- */
-.hero {
-    height: 100vh;
-    background: var(--menu-text); 
-    color: var(--menu-bg);       
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    text-align: center;
-}
-
-.hero-chevron {
-    position: absolute;
-    bottom: 30px;
-    font-size: 2.5rem;
-    color: var(--menu-bg);
-    text-decoration: none;
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
+/* ==========================================================================
+   LAYOUT.CSS - Structure Globale (Version Nettoyée pour Antigravity)
+   ========================================================================== */
 
 /* --- STRUCTURE GLOBALE --- */
 .content-area {
-    /* On utilise une valeur fixe généreuse pour TOUS les formats */
-    /* Cela empêche physiquement le contenu de remonter trop haut */
-    padding-top: 120px; 
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-bottom: 50px;
-    max-width: var(--mega-menu-width); 
-    margin: 0 auto;
+    /* Le décalage est piloté par variables.css, on ne définit ici que le comportement */
     min-height: 100vh;
     box-sizing: border-box;
     display: block;
@@ -182,15 +171,15 @@ body.no-scroll {
 
 /* --- TITRES DE SECTION --- */
 .section-titles {
-    margin-bottom: 50px; 
+    margin-bottom: var(--section-margin);
     width: 100%;
     display: block;
     position: relative;
 }
 
-.section-titles h1, 
+.section-titles h1,
 .section-titles h2 {
-    margin: 0 0 15px 0; 
+    margin: 0 0 15px 0;
 }
 
 .category-badge {
@@ -198,55 +187,44 @@ body.no-scroll {
     margin-bottom: 10px;
 }
 
-.section-titles.align-left {
-    text-align: left;
-}
-
 /* --- ÉLÉMENTS SPÉCIFIQUES --- */
 .separator {
-    margin: 60px 0;
+    margin: var(--separator-margin) 0;
     border: 0;
     border-top: 2px solid var(--menu-border);
 }
 
 /* ==========================================================================
-   RESPONSIVE LAYOUT GÉNÉRAL (STABILISÉ)
+   RESPONSIVE LAYOUT GÉNÉRAL
    ========================================================================== */
 @media (max-width: 1024px) {
     .content-area {
-        /* On force le maintien du padding sur les formats intermédiaires */
-        padding-top: 120px !important; 
+        /* On laisse la cascade naturelle des variables agir */
     }
 }
 
 @media (max-width: 768px) {
     .content-area {
-        /* Valeur fixe pour mobile, sans calcul, pour éviter le saut */
-        padding-top: 120px !important; 
         padding-left: 15px;
         padding-right: 15px;
         padding-bottom: 30px;
     }
 
     .section-titles {
-        margin-bottom: 30px;
-        margin-top: 0;
+        /* Utilisation de la variable mobile définie dans variables.css */
+        margin-bottom: var(--section-margin-mobile, 30px);
     }
 
-    .category-badge {
-        margin-bottom: 15px;
-        display: inline-block;
-    }
-    
-    #portraits, 
+    /* Correction de l'ancrage pour Google SEO */
+    #portraits,
     .content-area section {
-        scroll-margin-top: 120px;
+        scroll-margin-top: var(--nav-height);
     }
 }
 
 /* --- Source: grid.css --- */
 /* ==========================================================================
-   GRID.CSS - Version Unifiée (Strict Bord à Bord)
+   GRID.CSS - Version Centralisée (One-Shot Ready)
    ========================================================================== */
 
 .grid-system {
@@ -256,8 +234,8 @@ body.no-scroll {
 /* Configuration des rangées */
 .row-1, .row-2, .row-3, .row-4 {
     display: grid;
-    gap: 20px;
-    margin-bottom: 20px;
+    gap: var(--grid-gap);
+    margin-bottom: var(--grid-gap);
 }
 
 /* Logique de colonnes */
@@ -270,14 +248,14 @@ body.no-scroll {
 .box {
     background: var(--menu-bg);
     border: 1px solid var(--menu-border);
-    padding: 0 !important; /* Force le zéro padding partout */
+    padding: 0 !important; 
     margin: 0;
     border-radius: 0;
-    text-align: center;
     transition: border-color var(--transition-speed);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
 .box:hover {
@@ -294,33 +272,41 @@ body.no-scroll {
 
 .grid-vignette picture,
 .grid-vignette img {
-    width: 100% !important; /* Force l'image à toucher les bords */
+    width: 100% !important;
     display: block;
     height: auto;
     border: none;
     margin: 0;
 }
 
-/* Espacements de texte internes à la box */
+/* Espacements de texte internes via variables */
 .box h3, 
-.box p, 
-.box a {
-    padding-left: 15px;
-    padding-right: 15px;
+.box p {
+    padding-left: var(--card-padding-inner);
+    padding-right: var(--card-padding-inner);
 }
 
 .box h3 {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    text-align: center;
+    margin-top: var(--card-padding-inner);
+    margin-bottom: 12px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .box p {
-    margin-bottom: 15px;
+    text-align: left;
+    margin-bottom: var(--card-padding-inner);
+    line-height: var(--lh-body);
 }
 
-.box a {
-    display: inline-block;
-    margin-bottom: 20px;
+/* Conteneur de bouton dans la card */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: var(--card-padding-inner);
+    margin-top: auto; 
 }
 
 /* Responsive Grille */
@@ -329,14 +315,15 @@ body.no-scroll {
 }
 
 @media (max-width: 768px) {
-    /* On réaffirme le zéro padding ici pour écraser toute autre règle mobile */
     .box {
         padding: 0 !important;
     }
 
     .row-2, .row-3, .row-4 {
         grid-template-columns: 1fr !important;
-        gap: 15px;
+        /* Utilisation d'une réduction proportionnelle si nécessaire, 
+           ou maintien de la variable pour la cohérence */
+        gap: var(--grid-gap); 
     }
 }
 
@@ -727,6 +714,7 @@ body.no-scroll {
 @import "header.css";
 @import "hero.css";
 @import "layout.css";
+@import "buttons.css";
 @import "grid.css";   /* <-- Intégration de ta nouvelle structure de grille */
 
 /* 3. Navigation et Menu (Le cœur du projet) */

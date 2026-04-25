@@ -1,40 +1,10 @@
-/* --- HERO SECTION --- */
-.hero {
-    height: 100vh;
-    background: var(--menu-text); 
-    color: var(--menu-bg);       
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    text-align: center;
-}
-
-.hero-chevron {
-    position: absolute;
-    bottom: 30px;
-    font-size: 2.5rem;
-    color: var(--menu-bg);
-    text-decoration: none;
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
+/* ==========================================================================
+   LAYOUT.CSS - Structure Globale (Version Nettoyée pour Antigravity)
+   ========================================================================== */
 
 /* --- STRUCTURE GLOBALE --- */
 .content-area {
-    /* On utilise une valeur fixe généreuse pour TOUS les formats */
-    /* Cela empêche physiquement le contenu de remonter trop haut */
-    padding-top: 120px; 
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-bottom: 50px;
-    max-width: var(--mega-menu-width); 
-    margin: 0 auto;
+    /* Le décalage est piloté par variables.css, on ne définit ici que le comportement */
     min-height: 100vh;
     box-sizing: border-box;
     display: block;
@@ -42,15 +12,15 @@
 
 /* --- TITRES DE SECTION --- */
 .section-titles {
-    margin-bottom: 50px; 
+    margin-bottom: var(--section-margin);
     width: 100%;
     display: block;
     position: relative;
 }
 
-.section-titles h1, 
+.section-titles h1,
 .section-titles h2 {
-    margin: 0 0 15px 0; 
+    margin: 0 0 15px 0;
 }
 
 .category-badge {
@@ -58,48 +28,37 @@
     margin-bottom: 10px;
 }
 
-.section-titles.align-left {
-    text-align: left;
-}
-
 /* --- ÉLÉMENTS SPÉCIFIQUES --- */
 .separator {
-    margin: 60px 0;
+    margin: var(--separator-margin) 0;
     border: 0;
     border-top: 2px solid var(--menu-border);
 }
 
 /* ==========================================================================
-   RESPONSIVE LAYOUT GÉNÉRAL (STABILISÉ)
+   RESPONSIVE LAYOUT GÉNÉRAL
    ========================================================================== */
 @media (max-width: 1024px) {
     .content-area {
-        /* On force le maintien du padding sur les formats intermédiaires */
-        padding-top: 120px !important; 
+        /* On laisse la cascade naturelle des variables agir */
     }
 }
 
 @media (max-width: 768px) {
     .content-area {
-        /* Valeur fixe pour mobile, sans calcul, pour éviter le saut */
-        padding-top: 120px !important; 
         padding-left: 15px;
         padding-right: 15px;
         padding-bottom: 30px;
     }
 
     .section-titles {
-        margin-bottom: 30px;
-        margin-top: 0;
+        /* Utilisation de la variable mobile définie dans variables.css */
+        margin-bottom: var(--section-margin-mobile, 30px);
     }
 
-    .category-badge {
-        margin-bottom: 15px;
-        display: inline-block;
-    }
-    
-    #portraits, 
+    /* Correction de l'ancrage pour Google SEO */
+    #portraits,
     .content-area section {
-        scroll-margin-top: 120px;
+        scroll-margin-top: var(--nav-height);
     }
 }
