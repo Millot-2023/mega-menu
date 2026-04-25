@@ -2,13 +2,19 @@
 // 1. CONFIGURATION
 $baseUrl = "http://localhost/mega-menu/src/"; 
 $exportDir = __DIR__ . "/dist/";
+$sourceDir = __DIR__ . "/src/";
 
-$pages = [
-    "index.php" => "index.html",
-    "photographie.php" => "photographie.html",
-    "contact.php" => "contact.html",
-    "projet-type.php" => "projet-type.html"
-];
+// Récupération automatique de tous les fichiers .php à la racine de src/
+$phpFiles = glob($sourceDir . "*.php");
+$pages = [];
+
+foreach ($phpFiles as $file) {
+    $name = basename($file);
+    // On ignore les fichiers de test (commençant par ___) et le script lui-même
+    if (!str_starts_with($name, '___') && $name !== 'export.php') {
+        $pages[$name] = str_replace('.php', '.html', $name);
+    }
+}
 
 // L'ordre est CRUCIAL pour la cascade CSS et l'héritage des polices
 $cssFiles = [
@@ -25,7 +31,7 @@ $cssFiles = [
 
 if (!is_dir($exportDir)) mkdir($exportDir, 0777, true);
 
-echo "<h1>🛠️ Exportation en cours...</h1>";
+echo "<h1>🛠️ Exportation Automatique en cours...</h1>";
 
 // 2. GÉNÉRATION DES PAGES HTML
 foreach ($pages as $phpPage => $htmlPage) {
@@ -51,19 +57,17 @@ foreach ($pages as $phpPage => $htmlPage) {
     }
 }
 
-// 3. FUSION DES FICHIERS CSS (AVEC PRIORITÉ @IMPORT)
+// 3. FUSION DES FICHIERS CSS
 if (!is_dir($exportDir . 'css')) mkdir($exportDir . 'css', 0777, true);
 
-// L'instruction @import DOIT être à la première ligne du fichier final
 $combinedCss = "@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');\n";
-$combinedCss .= "/* Fichier fusionné - mega-menu-2026 - Build: " . date('Y-m-d H:i:s') . " */\n\n";
+$combinedCss .= "/* Fichier fusionné - Build: " . date('Y-m-d H:i:s') . " */\n\n";
 
 foreach ($cssFiles as $file) {
-    $path = 'src/css/' . $file;
+    $path = $sourceDir . 'css/' . $file;
     if (file_exists($path)) {
         $fileContent = file_get_contents($path);
-        
-        // On retire les @import individuels pour éviter les doublons mal placés
+        // Retire les @import individuels pour éviter les doublons
         $fileContent = preg_replace('/@import url\(.*?\);/', '', $fileContent);
         
         $combinedCss .= "/* --- Source: $file --- */\n";
@@ -73,7 +77,7 @@ foreach ($cssFiles as $file) {
     }
 }
 file_put_contents($exportDir . 'css/style.css', $combinedCss);
-echo "<h3>✅ CSS : " . count($cssFiles) . " fichiers fusionnés (Fonts incluses).</h3>";
+echo "<h3>✅ CSS : " . count($cssFiles) . " fichiers fusionnés.</h3>";
 
 // 4. COPIE DES RESSOURCES (JS & IMAGES)
 function sync($src, $dst) {
@@ -90,7 +94,7 @@ function sync($src, $dst) {
     }
 }
 
-sync('src/js', $exportDir . 'js');
-sync('src/images', $exportDir . 'images');
+sync($sourceDir . 'js', $exportDir . 'js');
+sync($sourceDir . 'images', $exportDir . 'images');
 
 echo "<h2>✨ Export terminé ! Tu peux maintenant lancer 'firebase deploy'</h2>";
