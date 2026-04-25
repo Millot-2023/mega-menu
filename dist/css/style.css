@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');
-/* Fichier fusionné - Build: 2026-04-25 20:56:34 */
+/* Fichier fusionné - Build: 2026-04-25 21:10:51 */
 
 /* --- Source: variables.css --- */
 :root {
@@ -714,15 +714,15 @@ body.no-scroll {
 @import "header.css";
 @import "hero.css";
 @import "layout.css";
-@import "buttons.css";
-@import "grid.css";   /* <-- Intégration de ta nouvelle structure de grille */
+@import "grid.css";   /* La grille prépare le terrain... */
+@import "buttons.css"; /* ...et le bouton impose son style par-dessus ! */
 
-/* 3. Navigation et Menu (Le cœur du projet) */
+/* 3. Navigation et Menu */
 @import "menu.css";
 
 /* 4. Finition et Bas de page */
 @import "footer.css";
 
-/* 5. Correctifs finaux (Doit toujours être en dernier) */
+/* 5. Correctifs finaux */
 @import "responsive.css";
 
