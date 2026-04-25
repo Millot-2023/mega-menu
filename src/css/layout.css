@@ -4,7 +4,7 @@
 
 /* --- STRUCTURE GLOBALE --- */
 .content-area {
-    /* Le décalage est piloté par variables.css, on ne définit ici que le comportement */
+    padding-top: 130px; /* Padding fixe stabilisé */
     min-height: 100vh;
     box-sizing: border-box;
     display: block;

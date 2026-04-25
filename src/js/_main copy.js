@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.add('no-scroll');
     });
 
-    // 2. Gestion des clics
+    // 2. Gestion des clics (Délégation d'événement pour plus de fiabilité)
     document.addEventListener('click', (e) => {
 
         // Bouton Fermer
@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Déclencheur sous-menu
         const trigger = e.target.closest('.submenu-trigger');
         if (trigger) {
+            console.log("Clic sous-menu détecté");
             const targetId = trigger.getAttribute('data-target');
             const targetPanel = document.getElementById(targetId);
 
@@ -73,25 +74,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Liens directs
+        // Liens directs (fermeture auto)
         if (e.target.closest('.direct-link') || (e.target.closest('.mega-grid a'))) {
             if (!e.target.closest('.submenu-trigger')) {
                 closeAllMenu();
             }
         }
 
-        // 3. Gestion du Chevron Hero (Dévoilement)
+        // 3. Gestion du Chevron Hero (Disparition)
         const chevron = e.target.closest('.hero-chevron');
         if (chevron) {
             e.preventDefault();
             const heroSection = document.querySelector('.hero');
             if (heroSection) {
-                // Le Hero remonte et laisse voir le contenu dessous
+                // Lance l'animation CSS vers le haut
                 heroSection.classList.add('hero-up');
 
-                // On attend la fin de l'animation pour nettoyer le DOM
+                // Après l'animation (0.8s), on le cache et on s'assure d'être en haut
                 setTimeout(() => {
                     heroSection.classList.add('hidden');
+                    window.scrollTo(0, 0);
                 }, 800);
             }
         }

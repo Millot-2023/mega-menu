@@ -25,6 +25,7 @@ $cssFiles = [
     'grid.css',      
     'header.css',
     'menu.css',
+    'hero.css',
     'footer.css',
     'style.css'
 ];
