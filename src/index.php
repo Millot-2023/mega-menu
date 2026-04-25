@@ -21,25 +21,25 @@
         
         <div class="row-2">
             <div class="box">
-<div class="grid-vignette">
-<img src="images/photo-320x240.png" 
-     srcset="images/photo-320x240.png 320w, 
-             images/photo-640x480.png 640w" 
-     sizes="(max-width: 768px) 100vw, 320px"
-     alt="Shooting Photo">
-</div>
+                <div class="grid-vignette">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
+                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
+                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
+                    </picture>
+                </div>
                 <h3>Shooting Photo</h3>
                 <p>Portraits et reportages de haute précision.</p>
                 <a href="photographie.php">Voir la galerie</a>
             </div>
             <div class="box">
-<div class="grid-vignette">
-<img src="images/photo-320x240.png" 
-     srcset="images/photo-320x240.png 320w, 
-             images/photo-640x480.png 640w" 
-     sizes="(max-width: 768px) 100vw, 320px"
-     alt="Shooting Photo">
-</div>
+                <div class="grid-vignette">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
+                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
+                        <img src="images/photo-320x240.png" alt="Création Digitale" style="width: 100%; display: block;">
+                    </picture>
+                </div>
                 <h3>Création Digitale</h3>
                 <p>Du Pixel Art aux illustrations vectorielles.</p>
                 <a href="photographie.php">Voir la galerie</a>
@@ -48,58 +48,60 @@
 
         <div class="row-4">
             <div class="box">
-<div class="grid-vignette">
-<img src="images/photo-320x240.png" 
-     srcset="images/photo-320x240.png 320w, 
-             images/photo-640x480.png 640w" 
-     sizes="(max-width: 768px) 100vw, 320px"
-     alt="Shooting Photo">
-</div>
+                <div class="grid-vignette">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
+                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
+                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
+                    </picture>
+                </div>
                 <h3>Shooting Photo</h3>
                 <p>Portraits et reportages.</p>
                 <a href="photographie.php">Voir plus</a>
             </div>
+
             <div class="box">
-<div class="grid-vignette">
-<img src="images/photo-320x240.png" 
-     srcset="images/photo-320x240.png 320w, 
-             images/photo-640x480.png 640w" 
-     sizes="(max-width: 768px) 100vw, 320px"
-     alt="Shooting Photo">
-</div>
+                <div class="grid-vignette">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
+                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
+                        <img src="images/photo-320x240.png" alt="Création Digitale" style="width: 100%; display: block;">
+                    </picture>
+                </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
                 <a href="photographie.php">Voir la galerie</a>
             </div>
+
             <div class="box">
-<div class="grid-vignette">
-<img src="images/photo-320x240.png" 
-     srcset="images/photo-320x240.png 320w, 
-             images/photo-640x480.png 640w" 
-     sizes="(max-width: 768px) 100vw, 320px"
-     alt="Shooting Photo">
-</div>
+                <div class="grid-vignette">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
+                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
+                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
+                    </picture>
+                </div>
                 <h3>Shooting Photo</h3>
                 <p>Reportages.</p>
                 <a href="photographie.php">Voir la galerie</a>
             </div>
+
             <div class="box">
-<div class="grid-vignette">
-<picture>
-    <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
-    
-    <img src="images/photo-320x240.png" alt="Shooting Photo">
-</picture>
-</div>
+                <div class="grid-vignette">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
+                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
+                        <img src="images/photo-320x240.png" alt="Création Digitale" style="width: 100%; display: block;">
+                    </picture>
+                </div>
                 <h3>Création Digitale</h3>
                 <p>Vecteurs.</p>
                 <a href="photographie.php">Voir la galerie</a>
             </div>
         </div>
 
-        </div>
-    
-    </main>
+    </div>
+</main>
 
 <?php include 'includes/footer.html'; ?>
 <script src="js/main.js"></script>

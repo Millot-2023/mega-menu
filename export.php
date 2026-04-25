@@ -10,11 +10,13 @@ $pages = [
     "projet-type.php" => "projet-type.html"
 ];
 
-// L'ordre est important pour la cascade CSS
+// L'ordre est CRUCIAL pour la cascade CSS et l'héritage des polices
 $cssFiles = [
+    'variables.css', 
+    'fonts.css',     
     'base.css',
-    'fonts.css',
     'layout.css',
+    'grid.css',      
     'header.css',
     'menu.css',
     'footer.css',
@@ -23,7 +25,7 @@ $cssFiles = [
 
 if (!is_dir($exportDir)) mkdir($exportDir, 0777, true);
 
-echo "<h1>🛠️ Exportation Optimisée pour Google...</h1>";
+echo "<h1>🛠️ Exportation en cours...</h1>";
 
 // 2. GÉNÉRATION DES PAGES HTML
 foreach ($pages as $phpPage => $htmlPage) {
@@ -34,35 +36,44 @@ foreach ($pages as $phpPage => $htmlPage) {
         // A. Correction des liens PHP -> HTML
         $content = str_replace('.php', '.html', $content);
 
-        // B. Nettoyage des multiples balises <link> pour n'en laisser qu'une seule
-        // On supprime les appels CSS individuels
+        // B. Nettoyage des appels CSS multiples
         $pattern = '/<link rel="stylesheet" href="css\/.*\.css">/i';
         $content = preg_replace($pattern, '', $content);
         
-        // On injecte l'appel au fichier unique fusionné juste avant </head>
+        // C. Injection de l'appel UNIQUE au fichier fusionné
         $singleLink = '    <link rel="stylesheet" href="css/style.css">';
         $content = str_replace('</head>', $singleLink . "\n</head>", $content);
 
         file_put_contents($exportDir . $htmlPage, $content);
-        echo "<span style='color:green'>✅ Page $htmlPage générée (CSS Fusionné).</span><br>";
+        echo "<span style='color:green'>✅ Page $htmlPage générée.</span><br>";
     } else {
         echo "<span style='color:red'>❌ ERREUR : Impossible de lire $url</span><br>";
     }
 }
 
-// 3. FUSION DES FICHIERS CSS
+// 3. FUSION DES FICHIERS CSS (AVEC PRIORITÉ @IMPORT)
 if (!is_dir($exportDir . 'css')) mkdir($exportDir . 'css', 0777, true);
-$combinedCss = "/* Fichier fusionné pour la performance - Projet mega-menu-2026 */\n\n";
+
+// L'instruction @import DOIT être à la première ligne du fichier final
+$combinedCss = "@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');\n";
+$combinedCss .= "/* Fichier fusionné - mega-menu-2026 - Build: " . date('Y-m-d H:i:s') . " */\n\n";
 
 foreach ($cssFiles as $file) {
     $path = 'src/css/' . $file;
     if (file_exists($path)) {
+        $fileContent = file_get_contents($path);
+        
+        // On retire les @import individuels pour éviter les doublons mal placés
+        $fileContent = preg_replace('/@import url\(.*?\);/', '', $fileContent);
+        
         $combinedCss .= "/* --- Source: $file --- */\n";
-        $combinedCss .= file_get_contents($path) . "\n\n";
+        $combinedCss .= $fileContent . "\n\n";
+    } else {
+        echo "<span style='color:orange'>⚠️ Attention : $file non trouvé dans src/css/</span><br>";
     }
 }
 file_put_contents($exportDir . 'css/style.css', $combinedCss);
-echo "<h3>✅ CSS : 7 fichiers fusionnés dans dist/css/style.css</h3>";
+echo "<h3>✅ CSS : " . count($cssFiles) . " fichiers fusionnés (Fonts incluses).</h3>";
 
 // 4. COPIE DES RESSOURCES (JS & IMAGES)
 function sync($src, $dst) {
@@ -70,9 +81,11 @@ function sync($src, $dst) {
     if (!is_dir($dst)) mkdir($dst, 0777, true);
     foreach (scandir($src) as $file) {
         if ($file != '.' && $file != '..') {
-            if (is_dir($src.'/'.$file)) sync($src.'/'.$file, $dst.'/'.$file);
-            // On ne copie pas les CSS individuels dans dist, on a déjà le fusionné
-            else if (strpos($file, '.css') === false) copy($src.'/'.$file, $dst.'/'.$file);
+            if (is_dir($src.'/'.$file)) {
+                sync($src.'/'.$file, $dst.'/'.$file);
+            } else {
+                copy($src.'/'.$file, $dst.'/'.$file);
+            }
         }
     }
 }
@@ -80,4 +93,4 @@ function sync($src, $dst) {
 sync('src/js', $exportDir . 'js');
 sync('src/images', $exportDir . 'images');
 
-echo "<h2>✨ Terminé ! Tu peux lancer 'firebase deploy'</h2>";
+echo "<h2>✨ Export terminé ! Tu peux maintenant lancer 'firebase deploy'</h2>";

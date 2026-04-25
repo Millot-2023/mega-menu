@@ -3,7 +3,7 @@
 <main class="content-area" id="content">
     <section class="section-titles">
         <span class="category-badge">Catégorie Projet</span>
-        <h1>Nom du Projet Sélectionné</h1>
+        <h1>Nature & Maccro</h1>
         <p class="desc-text">Structure de contenu en grille responsive 4-2-1.</p>
     </section>
 

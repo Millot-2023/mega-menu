@@ -62,42 +62,42 @@
                         <div class="mega-col">
                             <h3>Photographie</h3>
                             <ul>
-                                <li><a href="projet-type.php">Portraits Studio</a></li>
-                                <li><a href="projet-type.php">Architecture Urbaine</a></li>
-                                <li><a href="projet-type.php">Reportages Mariage</a></li>
-                                <li><a href="projet-type.php">Nature & Macro</a></li>
-                                <li><a href="projet-type.php">Mode & Lookbook</a></li>
-                                <li><a href="projet-type.php">Noir & Blanc</a></li>
+                                <li><a href="portrait-studio.php">Portraits Studio</a></li>
+                                <li><a href="architecture-urbaine.php">Architecture Urbaine</a></li>
+                                <li><a href="reportage-mariage.php">Reportages Mariage</a></li>
+                                <li><a href="nature-maccro.php">Nature & Macro</a></li>
+                                <li><a href="mode-lookbook.php">Mode & Lookbook</a></li>
+                                <li><a href="noir-et-blanc.php">Noir & Blanc</a></li>
                             </ul>
                         </div>
                         <div class="mega-col">
                             <h3>Digital Art</h3>
                             <ul>
-                                <li><a href="projet-type.php">Pixel Art 8-bit</a></li>
-                                <li><a href="projet-type.php">Illustrations 2D</a></li>
-                                <li><a href="projet-type.php">Concept Art Jeux Vidéo</a></li>
-                                <li><a href="projet-type.php">Peinture Numérique</a></li>
-                                <li><a href="projet-type.php">NFT Collections</a></li>
+                                <li><a href="pixels-art.php">Pixel Art 8-bit</a></li>
+                                <li><a href="illustrations.php">Illustrations 2D</a></li>
+                                <li><a href="jeux-video.php">Jeux Vidéo</a></li>
+                                <li><a href="peinture-numerique.php">Peinture Numérique</a></li>
+                                <li><a href="nft-collection.php">NFT Collections</a></li>
                             </ul>
                         </div>
                         <div class="mega-col">
                             <h3>Vidéo & Motion</h3>
                             <ul>
-                                <li><a href="projet-type.php">Clips Musicaux</a></li>
-                                <li><a href="projet-type.php">Publicités TV</a></li>
-                                <li><a href="projet-type.php">Motion Design 2D</a></li>
-                                <li><a href="projet-type.php">Interviews & Documentaires</a></li>
-                                <li><a href="projet-type.php">Captation Drone 4K</a></li>
+                                <li><a href="clips-musicaux.php">Clips Musicaux</a></li>
+                                <li><a href="publicite-tv.php">Publicités TV</a></li>
+                                <li><a href="motion-design.php">Motion Design 2D</a></li>
+                                <li><a href="interwiew.php">Interviews</a></li>
+                                <li><a href="captation.php">Captation Drone 4K</a></li>
                             </ul>
                         </div>
                         <div class="mega-col">
                             <h3>Web & Code</h3>
                             <ul>
-                                <li><a href="projet-type.php">Sites Vitrines</a></li>
-                                <li><a href="projet-type.php">E-commerce Complexes</a></li>
-                                <li><a href="projet-type.php">Applications Métier</a></li>
-                                <li><a href="projet-type.php">Optimisation SEO</a></li>
-                                <li><a href="projet-type.php">Audit Sécurité</a></li>
+                                <li><a href="site-vitrine.php">Sites Vitrines</a></li>
+                                <li><a href="ecommerce.php">E-commerce Complexes</a></li>
+                                <li><a href="application-metiers.php">Applications Métier</a></li>
+                                <li><a href="optimisation-seo.php">Optimisation SEO</a></li>
+                                <li><a href="audit-securite.php">Audit Sécurité</a></li>
                             </ul>
                         </div>
                     </div>
