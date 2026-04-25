@@ -4,49 +4,95 @@
     <section class="section-titles">
         <span class="category-badge">Catégorie Projet</span>
         <h1>Nom du Projet Sélectionné</h1>
-        <p class="desc-text">Ceci est une page template. Elle permet de visualiser la structure de contenu pour n'importe quel lien du menu.</p>
+        <p class="desc-text">Structure de contenu en grille responsive 4-2-1.</p>
     </section>
 
     <section class="grid-system">
+        
         <div class="row-1">
-            <div class="box placeholder-img hero-box">
-                [ GRANDE IMAGE DE PRÉSENTATION ]
+            <div class="box">
+                <div class="grid-vignette">
+                    <img src="images/photo-640x480.png" alt="Shooting Photo" style="width: 100%; display: block;">
+                </div>
+                <h3>Création Digitale2222</h3>
+                <p>Art et Pixels.</p>
+                <a href="photographie.php">Voir la galerie</a>
             </div>
         </div>
 
         <div class="row-2">
-            <div class="box text-left">
-                <h4>Le Brief</h4>
-                <p class="desc-text">
-                    Description détaillée du besoin client. Ce bloc permet de tester le rendu du texte sur deux colonnes responsives.
-                </p>
+            <div class="box">
+                <div class="grid-vignette">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
+                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
+                    </picture>
+                </div>
+                <h3>Création Digitale</h3>
+                <p>Art et Pixels.</p>
+                <a href="photographie.php">Voir la galerie</a>
             </div>
-            <div class="box text-left">
-                <h4>La Solution</h4>
-                <p class="desc-text">
-                    Explication technique et créative de la réponse apportée par Christophe MILLOT.
-                </p>
+            <div class="box">
+                <div class="grid-vignette">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
+                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
+                    </picture>
+                </div>
+                <h3>Création Digitale</h3>
+                <p>Art et Pixels.</p>
+                <a href="photographie.php">Voir la galerie</a>
             </div>
         </div>
 
-        <div class="row-3">
+        <div class="row-4">
             <div class="box">
-                <div class="featured-image thumb-box"></div>
-                <p class="caption">Détail A</p>
+                <div class="grid-vignette">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
+                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
+                    </picture>
+                </div>
+                <h3>Création Digitale</h3>
+                <p>Art et Pixels.</p>
+                <a href="photographie.php">Voir la galerie</a>
             </div>
             <div class="box">
-                <div class="featured-image thumb-box"></div>
-                <p class="caption">Détail B</p>
+                <div class="grid-vignette">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
+                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
+                    </picture>
+                </div>
+                <h3>Création Digitale</h3>
+                <p>Art et Pixels.</p>
+                <a href="photographie.php">Voir la galerie</a>
             </div>
             <div class="box">
-                <div class="featured-image thumb-box"></div>
-                <p class="caption">Détail C</p>
+                <div class="grid-vignette">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
+                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
+                    </picture>
+                </div>
+                <h3>Création Digitale</h3>
+                <p>Art et Pixels.</p>
+                <a href="photographie.php">Voir la galerie</a>
+            </div>
+            <div class="box">
+                <div class="grid-vignette">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
+                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
+                    </picture>
+                </div>
+                <h3>Création Digitale</h3>
+                <p>Art et Pixels.</p>
+                <a href="photographie.php">Voir la galerie</a>
             </div>
         </div>
+
     </section>
 </main>
 
 <?php include 'includes/footer.html'; ?>
-<script src="js/main.js"></script>
-</body>
-</html>
