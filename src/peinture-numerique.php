@@ -16,7 +16,7 @@
                 </div>
                 <h3>Création Digitale Vedette</h3>
                 <p>Art et Pixels.</p>
-                <a href="photographie.php">Voir la galerie</a>
+                <a href="peinture-numerique.php">Voir la galerie</a>
             </div>
         </div>
 
@@ -31,7 +31,7 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="photographie.php">Voir la galerie</a>
+                <a href="peinture-numerique.php">Voir la galerie</a>
             </div>
             <div class="box">
                 <div class="grid-vignette">
@@ -43,7 +43,7 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="photographie.php">Voir la galerie</a>
+                <a href="peinture-numerique.php">Voir la galerie</a>
             </div>
         </div>
 
@@ -58,7 +58,7 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="photographie.php">Voir la galerie</a>
+                <a href="peinture-numerique.php">Voir la galerie</a>
             </div>
             <div class="box">
                 <div class="grid-vignette">
@@ -70,7 +70,7 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="photographie.php">Voir la galerie</a>
+                <a href="peinture-numerique.php">Voir la galerie</a>
             </div>
             <div class="box">
                 <div class="grid-vignette">
@@ -82,7 +82,7 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="photographie.php">Voir la galerie</a>
+                <a href="peinture-numerique.php">Voir la galerie</a>
             </div>
             <div class="box">
                 <div class="grid-vignette">
@@ -94,7 +94,7 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="photographie.php">Voir la galerie</a>
+                <a href="peinture-numerique.php">Voir la galerie</a>
             </div>
         </div>
     </section>

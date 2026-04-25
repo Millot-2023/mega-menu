@@ -25,27 +25,41 @@
     50% { transform: translateY(-10px); }
 }
 
+/* --- STRUCTURE GLOBALE --- */
+.content-area {
+    /* On utilise une valeur fixe généreuse pour TOUS les formats */
+    /* Cela empêche physiquement le contenu de remonter trop haut */
+    padding-top: 120px; 
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 50px;
+    max-width: var(--mega-menu-width); 
+    margin: 0 auto;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: block;
+}
+
 /* --- TITRES DE SECTION --- */
 .section-titles {
     margin-bottom: 50px; 
     width: 100%;
     display: block;
+    position: relative;
 }
 
 .section-titles h1, 
 .section-titles h2 {
-    margin-bottom: 15px; 
+    margin: 0 0 15px 0; 
+}
+
+.category-badge {
+    display: inline-block;
+    margin-bottom: 10px;
 }
 
 .section-titles.align-left {
     text-align: left;
-}
-
-/* --- STRUCTURE GLOBALE --- */
-.content-area {
-    padding: 120px 5% 50px; 
-    max-width: var(--mega-menu-width); 
-    margin: 0 auto;
 }
 
 /* --- ÉLÉMENTS SPÉCIFIQUES --- */
@@ -56,16 +70,36 @@
 }
 
 /* ==========================================================================
-   RESPONSIVE LAYOUT GÉNÉRAL
+   RESPONSIVE LAYOUT GÉNÉRAL (STABILISÉ)
    ========================================================================== */
+@media (max-width: 1024px) {
+    .content-area {
+        /* On force le maintien du padding sur les formats intermédiaires */
+        padding-top: 120px !important; 
+    }
+}
+
 @media (max-width: 768px) {
     .content-area {
-        padding: 40px 5% 30px; 
+        /* Valeur fixe pour mobile, sans calcul, pour éviter le saut */
+        padding-top: 120px !important; 
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 30px;
     }
+
     .section-titles {
-        margin-bottom: 30px; 
+        margin-bottom: 30px;
+        margin-top: 0;
     }
-    #portraits {
-        scroll-margin-top: 120px !important;
+
+    .category-badge {
+        margin-bottom: 15px;
+        display: inline-block;
+    }
+    
+    #portraits, 
+    .content-area section {
+        scroll-margin-top: 120px;
     }
 }

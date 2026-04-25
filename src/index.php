@@ -30,7 +30,7 @@
                 </div>
                 <h3>Shooting Photo</h3>
                 <p>Portraits et reportages de haute précision.</p>
-                <a href="photographie.php">Voir la galerie</a>
+                <a href="index.php">Voir la galerie</a>
             </div>
             <div class="box">
                 <div class="grid-vignette">
@@ -42,7 +42,7 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Du Pixel Art aux illustrations vectorielles.</p>
-                <a href="photographie.php">Voir la galerie</a>
+                <a href="index.php">Voir la galerie</a>
             </div>
         </div>
 
@@ -57,7 +57,7 @@
                 </div>
                 <h3>Shooting Photo</h3>
                 <p>Portraits et reportages.</p>
-                <a href="photographie.php">Voir plus</a>
+                <a href="index.php">Voir plus</a>
             </div>
 
             <div class="box">
@@ -70,7 +70,7 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Art et Pixels.</p>
-                <a href="photographie.php">Voir la galerie</a>
+                <a href="index.php">Voir la galerie</a>
             </div>
 
             <div class="box">
@@ -83,7 +83,7 @@
                 </div>
                 <h3>Shooting Photo</h3>
                 <p>Reportages.</p>
-                <a href="photographie.php">Voir la galerie</a>
+                <a href="index.php">Voir la galerie</a>
             </div>
 
             <div class="box">
@@ -96,7 +96,7 @@
                 </div>
                 <h3>Création Digitale</h3>
                 <p>Vecteurs.</p>
-                <a href="photographie.php">Voir la galerie</a>
+                <a href="index.php">Voir la galerie</a>
             </div>
         </div>
 
@@ -104,6 +104,3 @@
 </main>
 
 <?php include 'includes/footer.html'; ?>
-<script src="js/main.js"></script>
-</body>
-</html>

@@ -1,6 +1,6 @@
 <?php include 'includes/header.php'; ?>
 
-<main class="content-area" style="margin-top:100px;">
+<main class="content-area" id="content">
     <section class="section-titles">
         <h1>Contactez-nous</h1>
         <p>Discutons de votre prochain projet.</p>
@@ -15,6 +15,3 @@
 </main>
 
 <?php include 'includes/footer.html'; ?>
-<script src="js/main.js"></script>
-</body>
-</html>

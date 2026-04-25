@@ -20,13 +20,13 @@
             <div class="vignette-test"></div>
             <h3>Shooting Photo</h3>
             <p>Portraits et reportages de haute précision.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
         <div class="box">
             <div class="vignette-test"></div>
             <h3>Création Digitale</h3>
             <p>Du Pixel Art aux illustrations vectorielles.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
     </div>
 
@@ -35,25 +35,25 @@
             <div class="vignette-test"></div>
             <h3>Page 01</h3>
             <p>Lien vers la page 01<br>demonstration.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
         <div class="box">
             <div class="vignette-test"></div>
             <h3>Page 02</h3>
             <p>Lien vers la page 02<br>demonstration.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
             <div class="box">
             <div class="vignette-test"></div>
             <h3>Page-03</h3>
             <p>Lien vers la page 03<br>demonstration.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
         <div class="box">
             <div class="vignette-test"></div>
             <h3>Page-04</h3>
             <p>Lien vers la page 04<br>demonstration.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
     </div>
 
@@ -62,25 +62,25 @@
             <div class="vignette-test"></div>
             <h3>Page-05</h3>
             <p>Lien vers la page 05<br>demonstration.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
         <div class="box">
             <div class="vignette-test"></div>
             <h3>Page-06</h3>
             <p>Lien vers la page 06<br>demonstration.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
             <div class="box">
             <div class="vignette-test"></div>
             <h3>Page-07</h3>
             <p>Lien vers la page 07<br>demonstration.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
         <div class="box">
             <div class="vignette-test"></div>
             <h3>Page-08</h3>
             <p>Lien vers la page 08<br>demonstration.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
     </div>
 
@@ -89,25 +89,25 @@
             <div class="vignette-test"></div>
             <h3>Page-09</h3>
             <p>Lien vers la page 09<br>demonstration.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
         <div class="box">
             <div class="vignette-test"></div>
             <h3>Page-10</h3>
             <p>Lien vers la page 10<br>demonstration.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
        <div class="box">
             <div class="vignette-test"></div>
             <h3>Page-11</h3>
             <p>Lien vers la page 11<br>demonstration.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
         <div class="box">
             <div class="vignette-test"></div>
             <h3>CPage-12</h3>
             <p>Lien vers la page 12<br>demonstration.</p>
-            <a href="photographie.php">Voir plus ...</a>
+            <a href="_______clignancourt.php">Voir plus ...</a>
         </div>
     </div>
 
@@ -115,6 +115,3 @@
 </main>
 
 <?php include 'includes/footer.html'; ?>
-<script src="js/main.js"></script>
-</body>
-</html>

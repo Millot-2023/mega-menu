@@ -7,7 +7,7 @@
     --overlay-bg: rgba(0,0,0,0.5); /* Le voile derrière le menu */
     
     /* --- SCROLLBAR --- */
-    --scrollbar-color: #888888;   /* Gris moyen (modifiable facilement) */
+    --scrollbar-color: #888888;   /* Gris moyen */
 
     /* --- TYPOGRAPHIE --- */
     --font-titles: 'Montserrat', sans-serif;
@@ -18,7 +18,20 @@
     --lh-body: 1.6;               /* Plus aéré pour la lecture */
 
     /* --- TAILLES & ESPACEMENT --- */
-    --nav-height: 70px;
+    --nav-height: 70px;           /* Hauteur de ton header */
+    --content-gap: 40px;          /* Espace de sécurité sous le header */
     --mega-menu-width: 1200px;
     --transition-speed: 0.3s;
+}
+
+/* --- CORRECTION STRUCTURELLE --- */
+/* On applique le décalage directement ici ou dans layout.css */
+.content-area {
+    padding-top: calc(var(--nav-height) + var(--content-gap));
+    min-height: 100vh;
+}
+
+/* Assure que le défilement vers les ancres ne cache pas le titre */
+html {
+    scroll-padding-top: var(--nav-height);
 }
