@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SLIDER.CSS - Carrousel Horizontal (En dessous du Hero)
+   SLIDER.CSS - Centrage Absolu Image + Texte
    ========================================================================== */
 
 /* Verrouillage du scroll global pour le diaporama */
@@ -20,7 +20,7 @@ body.is-slider {
     width: 100vw;
     height: 100vh;
     background-color: #000;
-    z-index: 10; /* Sous le Hero (2000) */
+    z-index: 10;
 }
 
 .slider-wrapper {
@@ -45,26 +45,39 @@ body.is-slider {
     scroll-snap-align: start;
     position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; 
+    justify-content: center; /* Axe vertical */
+    align-items: center;     /* Axe horizontal */
     overflow: hidden;
+    padding: 0;             /* On retire les paddings parasites */
+    box-sizing: border-box;
 }
 
-/* Spécificité pour la slide de titre */
 .titles-slide {
     background-color: var(--menu-text);
     color: #fff;
-    flex-direction: column;
     text-align: center;
 }
 
-/* Respect de la taille d'origine des images (640x480) */
+/* --- LE BLOC DE CONTENU --- */
+/* On force le centrage du bloc image + texte */
 .slide img {
-    max-width: 100%;
-    max-height: 100%;
+    display: block;
+    max-width: 90%;
+    max-height: 60vh;
     width: auto;
     height: auto;
-    display: block;
+    margin: 0 auto 20px auto; /* Centrage H et marge B */
+}
+
+.slide p {
+    color: #fff;
+    max-width: 640px; 
+    width: 90%;          /* Sécurité mobile */
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 auto;      /* Centrage H et reset marges V */
 }
 
 /* Boutons de navigation */
