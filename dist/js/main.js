@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.add('no-scroll');
     });
 
-    // 2. Gestion des clics (Délégation d'événement pour plus de fiabilité)
+    // 2. Gestion des clics
     document.addEventListener('click', (e) => {
-        
+
         // Bouton Fermer
         if (e.target.closest('.close-btn')) {
             closeAllMenu();
@@ -48,10 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Déclencheur sous-menu
         const trigger = e.target.closest('.submenu-trigger');
         if (trigger) {
-            console.log("Clic sous-menu détecté");
             const targetId = trigger.getAttribute('data-target');
             const targetPanel = document.getElementById(targetId);
-            
+
             if (targetPanel) {
                 trigger.setAttribute('aria-expanded', 'true');
                 mainPanel.classList.add('is-out');
@@ -74,10 +73,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Liens directs (fermeture auto)
+        // Liens directs
         if (e.target.closest('.direct-link') || (e.target.closest('.mega-grid a'))) {
             if (!e.target.closest('.submenu-trigger')) {
                 closeAllMenu();
+            }
+        }
+
+        // 3. Gestion du Chevron Hero (Dévoilement)
+        const chevron = e.target.closest('.hero-chevron');
+        if (chevron) {
+            e.preventDefault();
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                // Le Hero remonte et laisse voir le contenu dessous
+                heroSection.classList.add('hero-up');
+
+                // On attend la fin de l'animation pour nettoyer le DOM
+                setTimeout(() => {
+                    heroSection.classList.add('hidden');
+                }, 800);
             }
         }
     });

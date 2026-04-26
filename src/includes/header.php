@@ -62,6 +62,7 @@
                         <div class="mega-col">
                             <h3>Photographie</h3>
                             <ul>
+                                <li><b><a href="diaporama.php">Diaporama</a></b></li>
                                 <li><a href="portrait-studio.php">Portraits Studio</a></li>
                                 <li><a href="architecture-urbaine.php">Architecture Urbaine</a></li>
                                 <li><a href="reportage-mariage.php">Reportages Mariage</a></li>

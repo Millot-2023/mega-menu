@@ -1,117 +1,41 @@
 <?php include 'includes/header.php'; ?>
 
-<main class="content-area" id="content">
-    <section class="section-titles">
-        <span class="category-badge">Catégorie Projet</span>
-        <h1>Application Métiers</h1>
-        <p class="desc-text">Structure de contenu en grille responsive 4-2-1.</p>
-    </section>
+<div class="slider-container">
+    <div class="slider-wrapper" id="slider">
 
-    <section class="grid-system">
-        
-        <div class="row-1">
-            <div class="box">
-                <div class="grid-vignette">
-                    <img src="images/photo-640x480.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                </div>
-                <h3>Création Digitale Vedette</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
-                </div>
+        <section class="slide hero">
+            <div class="hero-inner">
+                <h1>L'Art du Pixel & du Regard</h1>
+                <p>Photographie professionnelle et création digitale sur mesure.</p>
             </div>
-        </div>
+            <a href="#slide-titles" class="hero-chevron">︾</a>
+        </section>
 
-        <div class="row-2">
-            <div class="box">
-                <div class="grid-vignette">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
-                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
-                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                    </picture>
-                </div>
-                <h3>Création Digitale</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
-                </div>
-            </div>
-            <div class="box">
-                <div class="grid-vignette">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
-                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
-                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                    </picture>
-                </div>
-                <h3>Création Digitale</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
-                </div>
-            </div>
-        </div>
+        <section class="slide titles-slide" id="slide-titles">
+            <section class="section-titles">
+                <span class="category-badge">Template Master</span>
+                <h1 class="desc-text">Bibliothèque de Blocs</h1>
+                <p class="desc-text">Centralisation de tous les modèles de mise en page prédéfinis.</p>
+            </section>
+        </section>
 
-        <div class="row-4">
-            <div class="box">
-                <div class="grid-vignette">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
-                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
-                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                    </picture>
-                </div>
-                <h3>Création Digitale</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
-                </div>
-            </div>
-            <div class="box">
-                <div class="grid-vignette">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
-                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
-                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                    </picture>
-                </div>
-                <h3>Création Digitale</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
-                </div>
-            </div>
-            <div class="box">
-                <div class="grid-vignette">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
-                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
-                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                    </picture>
-                </div>
-                <h3>Création Digitale</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
-                </div>
-            </div>
-            <div class="box">
-                <div class="grid-vignette">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
-                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
-                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                    </picture>
-                </div>
-                <h3>Création Digitale</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="application-metiers.php" class="btn-main">Voir la galerie</a>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
+        <section class="slide">
+            <img src="images/slide01-640x480.png" alt="Slide 01">
+        </section>
 
+        <section class="slide">
+            <img src="images/slide02-640x480.png" alt="Slide 02">
+        </section>
+
+        <section class="slide">
+            <img src="images/slide02-640x480-1.png" alt="Slide 03">
+        </section>
+
+    </div>
+
+    <button class="slider-btn prev" id="prevBtn">❮</button>
+    <button class="slider-btn next" id="nextBtn">❯</button>
+</div>
+
+<script src="js/slider.js"></script>
 <?php include 'includes/footer.html'; ?>

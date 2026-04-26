@@ -1,0 +1,87 @@
+/* ==========================================================================
+   SLIDER.CSS - Full Screen & Fix Titres
+   ========================================================================== */
+
+/* Force le plein écran sans marges parasites */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slider-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--menu-text); /* Fond cohérent avec le hero */
+}
+
+.slider-wrapper {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.slider-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.slide {
+    flex: 0 0 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Centrage spécifique du Hero et de la bibliothèque */
+.hero.slide, .titles-slide {
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Style des images pour qu'elles remplissent l'écran sans déformer */
+.slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Remplit tout l'espace slide */
+}
+
+.hero-chevron {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+/* NAVIGATION */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 2rem;
+    z-index: 100;
+}
+
+.slider-btn:hover { background: rgba(255, 255, 255, 0.4); }
+.slider-btn.prev { left: 20px; }
+.slider-btn.next { right: 20px; }
