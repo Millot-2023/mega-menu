@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');
-/* Fichier fusionné - Build: 2026-04-26 01:27:16 */
+/* Fichier fusionné - Build: 2026-04-26 13:39:17 */
 
 /* --- Source: variables.css --- */
 :root {
@@ -92,6 +92,10 @@ h1, h2, h3, h4, .logo {
 
 .i {
     font-style: italic;
+}
+
+.desc-text{
+    color:white;
 }
 
 /* --- Source: base.css --- */
@@ -644,34 +648,39 @@ body.no-scroll {
 
 /* --- Source: hero.css --- */
 /* ==========================================================================
-   HERO.CSS - Gestion centralisée du Hero et de l'Ancrage
+   HERO.CSS - Gestion du rideau vertical (Indépendant du slider)
    ========================================================================== */
 
-/* --- CONFIGURATION DU HERO --- */
 .hero {
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: var(--menu-text);
     color: var(--menu-bg);
     display: flex;
-    /* Transition fluide pour la remontée */
-    transition: transform 0.8s ease-in-out;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* Le Hero est fixé par-dessus le contenu */
+    text-align: center;
+    /* Fixé pour couvrir tout l'écran au démarrage */
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1001; /* Doit être au-dessus du contenu et du header */
-    text-align: center;
+    z-index: 2000; 
+    /* Animation de remontée fluide */
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-/* Élimine la marge parasite du H1 */
+/* Classe activée par le clic sur le chevron */
+.hero-up {
+    transform: translateY(-100%);
+}
+
 .hero h1 {
     margin-top: 0;
+    font-size: 3rem;
+    font-weight: 800;
 }
 
 .hero-inner {
@@ -681,45 +690,129 @@ body.no-scroll {
 .hero-chevron {
     position: absolute;
     bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 2.5rem;
     color: var(--menu-bg);
     text-decoration: none;
     animation: bounce 2s infinite;
     cursor: pointer;
+    z-index: 2001;
 }
 
 @keyframes bounce {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -10px); }
 }
 
-/* --- RÉGLAGE UNIVERSEL DE L'ANCRAGE --- */
-#content {
-    /* Marge de 30px sous le header (70px) */
-    padding-top: 100px;
-}
-
-/* --- ANIMATION DE DISPARITION --- */
-.hero-up {
-    transform: translateY(-100%);
-}
-
-.hero.hidden {
-    display: none !important;
-}
-
-/* --- AJUSTEMENTS RESPONSIVE --- */
+/* Ajustements Responsive */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 1.8rem;
-        padding: 0 10px;
     }
 }
+
+/* Ancrage pour les autres pages du site */
+#content {
+    padding-top: 100px;
+}
+
+/* --- Source: slider.css --- */
+/* ==========================================================================
+   SLIDER.CSS - Carrousel Horizontal (En dessous du Hero)
+   ========================================================================== */
+
+/* Verrouillage du scroll global pour le diaporama */
+body.is-slider {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden !important;
+}
+
+.is-slider html {
+    overflow: hidden;
+}
+
+.slider-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 10; /* Sous le Hero (2000) */
+}
+
+.slider-wrapper {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.slider-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.slide {
+    flex: 0 0 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Spécificité pour la slide de titre */
+.titles-slide {
+    background-color: var(--menu-text);
+    color: #fff;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Respect de la taille d'origine des images (640x480) */
+.slide img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+/* Boutons de navigation */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.slider-btn.prev { left: 30px; }
+.slider-btn.next { right: 30px; }
 
 /* --- Source: footer.css --- */
 /* --- FOOTER --- */
@@ -800,16 +893,65 @@ body.no-scroll {
     }
 }
 
+/* --- Source: responsive.css --- */
+/* ==========================================================================
+   RESPONSIVE.CSS - Adaptations de Grilles uniquement
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .content-area {
+        padding: 80px 5% 40px;
+    }
+
+    .row-2, .row-3, .row-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .content-area {
+        padding: 40px 5% 30px;
+    }
+
+    .row-1 {
+        display: block;
+    }
+
+    .row-2, .row-3, .row-4 {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+
+    .box {
+        padding: 30px 15px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-area {
+        padding-top: 40px;
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .box {
+        padding: 20px 10px;
+    }
+}
+
 /* --- Source: style.css --- */
+/* Dans src/css/style.css */
 @import "variables.css";
 @import "fonts.css";
 @import "base.css";
 @import "header.css";
 @import "hero.css";
 @import "layout.css";
-@import "grid.css";
+@import "grid.css"; /* La grille est ici */
 @import "buttons.css";
 @import "menu.css";
+@import "slider.css"; /* Le slider doit être ICI pour gagner sur la grille */
 @import "footer.css";
 @import "responsive.css";
 

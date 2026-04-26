@@ -1,12 +1,13 @@
+/* Dans src/css/style.css */
 @import "variables.css";
 @import "fonts.css";
 @import "base.css";
 @import "header.css";
 @import "hero.css";
 @import "layout.css";
-@import "grid.css";
+@import "grid.css"; /* La grille est ici */
 @import "buttons.css";
 @import "menu.css";
+@import "slider.css"; /* Le slider doit être ICI pour gagner sur la grille */
 @import "footer.css";
-@import "slider.css";
 @import "responsive.css";

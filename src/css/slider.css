@@ -1,13 +1,17 @@
 /* ==========================================================================
-   SLIDER.CSS - Full Screen & Fix Titres
+   SLIDER.CSS - Carrousel Horizontal (En dessous du Hero)
    ========================================================================== */
 
-/* Force le plein écran sans marges parasites */
-html, body {
-    margin: 0;
-    padding: 0;
+/* Verrouillage du scroll global pour le diaporama */
+body.is-slider {
+    margin: 0 !important;
+    padding: 0 !important;
     width: 100vw;
     height: 100vh;
+    overflow: hidden !important;
+}
+
+.is-slider html {
     overflow: hidden;
 }
 
@@ -15,7 +19,8 @@ html, body {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-color: var(--menu-text); /* Fond cohérent avec le hero */
+    background-color: #000;
+    z-index: 10; /* Sous le Hero (2000) */
 }
 
 .slider-wrapper {
@@ -45,43 +50,46 @@ html, body {
     overflow: hidden;
 }
 
-/* Centrage spécifique du Hero et de la bibliothèque */
-.hero.slide, .titles-slide {
+/* Spécificité pour la slide de titre */
+.titles-slide {
+    background-color: var(--menu-text);
+    color: #fff;
     flex-direction: column;
     text-align: center;
 }
 
-/* Style des images pour qu'elles remplissent l'écran sans déformer */
+/* Respect de la taille d'origine des images (640x480) */
 .slide img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: cover; /* Remplit tout l'espace slide */
+    width: auto;
+    height: auto;
+    display: block;
 }
 
-.hero-chevron {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-}
-
-/* NAVIGATION */
+/* Boutons de navigation */
 .slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     color: #fff;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     width: 60px;
     height: 60px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 1.5rem;
     z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
 }
 
-.slider-btn:hover { background: rgba(255, 255, 255, 0.4); }
-.slider-btn.prev { left: 20px; }
-.slider-btn.next { right: 20px; }
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.slider-btn.prev { left: 30px; }
+.slider-btn.next { right: 30px; }

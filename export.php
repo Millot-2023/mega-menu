@@ -26,7 +26,9 @@ $cssFiles = [
     'header.css',
     'menu.css',
     'hero.css',
+    'slider.css',     // AJOUTÉ ICI
     'footer.css',
+    'responsive.css', // AJOUTÉ ICI
     'style.css'
 ];
 
