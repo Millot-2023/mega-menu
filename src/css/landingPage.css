@@ -1,82 +1,107 @@
-/* --- FORCE LE NOIR SUR TOUTE LA STRUCTURE --- */
-html, 
-body, 
-.page-home, 
-main.content-area, 
-#content {
-    background-color: #000000 !important;
+/* --- CONDITION : NOIR UNIQUEMENT SUR LA LANDING-PAGE --- */
+
+/* On cible le conteneur principal seulement s'il possède la classe .landing-page */
+main.landing-page {
+    background-color: #000000;
+    max-width: none;
+    padding: 0;
+    width: 100%;
 }
 
-/* --- STRUCTURE LANDING PAGE --- */
-.landing-page {
-    max-width: none !important;
-    padding: 0 !important;
-    width: 100% !important;
-}
-
-.landing-band {
-    width: 100% !important;
+/* --- STRUCTURE ET BANDES --- */
+main.landing-page .landing-band {
+    width: 100%;
     padding: 140px 0;
     overflow: hidden;
     background-color: transparent;
 }
 
-.band-container {
+main.landing-page .band-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* HIÉRARCHIE DES GRIS SOMBRES */
-.bg-black { background-color: #000000 !important; }
-.bg-dark  { background-color: #0a0a0a !important; }
-.bg-gray  { background-color: #111111 !important; }
-
-/* --- TYPOGRAPHIES --- */
-.landing-page .section-titles h2 { 
-    color: #ffffff !important; 
-    margin-bottom: 20px; 
+/* HIÉRARCHIE DES GRIS SOMBRES (Relief sur fond noir) */
+main.landing-page .bg-black {
+    background-color: #000000;
 }
 
-.landing-page .category-badge { 
-    color: #666666 !important; 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
-    font-size: 0.8rem; 
+main.landing-page .bg-dark {
+    background-color: #0a0a0a;
+}
+
+main.landing-page .bg-gray {
+    background-color: #111111;
+}
+
+/* --- TYPOGRAPHIES (Forcées pour le contraste sur noir) --- */
+main.landing-page .section-titles h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+main.landing-page .category-badge {
+    color: #666666;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
     display: block;
     margin-bottom: 10px;
 }
 
-.landing-page .desc-text { 
-    color: #bbbbbb !important; 
-    max-width: 700px; 
+main.landing-page .desc-text {
+    color: #bbbbbb;
+    max-width: 700px;
     margin-bottom: 40px;
     line-height: 1.6;
 }
 
-/* --- CARTES (BOXES) --- */
-.landing-page .box {
-    background-color: #ffffff !important;
+/* --- CARTES (BOXES) : Gardent leur fond blanc --- */
+main.landing-page .box {
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     height: 100%;
-    color: #000000 !important;
+    color: #000000;
     transition: transform 0.1s ease-out;
 }
 
-.landing-page .box-content { padding: 30px; }
-.landing-page .box h3 { color: #000000 !important; font-size: 1.25rem; margin-bottom: 10px; }
-.landing-page .box p { color: #333333 !important; font-size: 0.95rem; line-height: 1.6; }
+main.landing-page .box-content {
+    padding: 30px;
+}
 
-.grid-vignette { height: 300px; overflow: hidden; background: #222; }
-.grid-vignette img { width: 100%; height: 100%; object-fit: cover; display: block; }
+main.landing-page .box h3 {
+    color: #000000;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+main.landing-page .box p {
+    color: #333333;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+main.landing-page .grid-vignette {
+    height: 300px;
+    overflow: hidden;
+    background: #222;
+}
+
+main.landing-page .grid-vignette img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
 /* BOUTONS DANS LES BOXES */
-.btn-main {
+main.landing-page .btn-main {
     display: inline-block;
     padding: 12px 24px;
     background: #000;
-    color: #fff !important;
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
@@ -85,18 +110,18 @@ main.content-area,
 }
 
 /* --- SYSTÈME DE REVEAL (POST-AUDIT) --- */
-.reveal {
-    opacity: 1; 
+main.landing-page .reveal {
+    opacity: 1;
     transform: translateY(0);
     transition: opacity 0.4s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     will-change: opacity, transform;
 }
 
-.js-enabled .reveal {
+.js-enabled main.landing-page .reveal {
     opacity: 0;
     transform: translateY(60px);
 }
 
-.js-enabled .reveal.active {
+.js-enabled main.landing-page .reveal.active {
     transform: translateY(0);
 }

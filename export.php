@@ -16,7 +16,7 @@ foreach ($phpFiles as $file) {
     }
 }
 
-// L'ordre est CRUCIAL pour la cascade CSS et l'héritage des polices
+// L'ordre est CRUCIAL : landingPage.css doit être à la fin pour écraser layout.css
 $cssFiles = [
     'variables.css', 
     'fonts.css',     
@@ -26,9 +26,10 @@ $cssFiles = [
     'header.css',
     'menu.css',
     'hero.css',
-    'slider.css',     // AJOUTÉ ICI
+    'slider.css',
     'footer.css',
-    'responsive.css', // AJOUTÉ ICI
+    'responsive.css',
+    'landingPage.css', // AJOUTÉ ICI : Pour que le fond noir soit pris en compte
     'style.css'
 ];
 

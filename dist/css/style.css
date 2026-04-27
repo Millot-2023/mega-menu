@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');
-/* Fichier fusionné - Build: 2026-04-26 14:15:56 */
+/* Fichier fusionné - Build: 2026-04-27 12:44:44 */
 
 /* --- Source: variables.css --- */
 :root {
@@ -953,6 +953,135 @@ body.is-slider {
     }
 }
 
+/* --- Source: landingPage.css --- */
+/* --- CONDITION : NOIR UNIQUEMENT SUR LA LANDING-PAGE --- */
+
+/* On cible le conteneur principal seulement s'il possède la classe .landing-page */
+main.landing-page {
+    background-color: #000000;
+    max-width: none;
+    padding: 0;
+    width: 100%;
+}
+
+/* --- STRUCTURE ET BANDES --- */
+main.landing-page .landing-band {
+    width: 100%;
+    padding: 140px 0;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+main.landing-page .band-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* HIÉRARCHIE DES GRIS SOMBRES (Relief sur fond noir) */
+main.landing-page .bg-black {
+    background-color: #000000;
+}
+
+main.landing-page .bg-dark {
+    background-color: #0a0a0a;
+}
+
+main.landing-page .bg-gray {
+    background-color: #111111;
+}
+
+/* --- TYPOGRAPHIES (Forcées pour le contraste sur noir) --- */
+main.landing-page .section-titles h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+main.landing-page .category-badge {
+    color: #666666;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+main.landing-page .desc-text {
+    color: #bbbbbb;
+    max-width: 700px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* --- CARTES (BOXES) : Gardent leur fond blanc --- */
+main.landing-page .box {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: #000000;
+    transition: transform 0.1s ease-out;
+}
+
+main.landing-page .box-content {
+    padding: 30px;
+}
+
+main.landing-page .box h3 {
+    color: #000000;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+main.landing-page .box p {
+    color: #333333;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+main.landing-page .grid-vignette {
+    height: 300px;
+    overflow: hidden;
+    background: #222;
+}
+
+main.landing-page .grid-vignette img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* BOUTONS DANS LES BOXES */
+main.landing-page .btn-main {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-top: 15px;
+}
+
+/* --- SYSTÈME DE REVEAL (POST-AUDIT) --- */
+main.landing-page .reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+.js-enabled main.landing-page .reveal {
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+.js-enabled main.landing-page .reveal.active {
+    transform: translateY(0);
+}
+
 /* --- Source: style.css --- */
 /* Dans src/css/style.css */
 @import "variables.css";
@@ -961,10 +1090,13 @@ body.is-slider {
 @import "header.css";
 @import "hero.css";
 @import "layout.css";
-@import "grid.css"; /* La grille est ici */
+@import "grid.css";
 @import "buttons.css";
 @import "menu.css";
-@import "slider.css"; /* Le slider doit être ICI pour gagner sur la grille */
+@import "slider.css";
 @import "footer.css";
 @import "responsive.css";
+
+/* AJOUTE CETTE LIGNE ICI POUR GAGNER LE COMBAT DU NOIR */
+@import "landingPage.css";
 
