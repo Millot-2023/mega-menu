@@ -5,9 +5,12 @@
 @import "header.css";
 @import "hero.css";
 @import "layout.css";
-@import "grid.css"; /* La grille est ici */
+@import "grid.css";
 @import "buttons.css";
 @import "menu.css";
-@import "slider.css"; /* Le slider doit être ICI pour gagner sur la grille */
+@import "slider.css";
 @import "footer.css";
 @import "responsive.css";
+
+/* AJOUTE CETTE LIGNE ICI POUR GAGNER LE COMBAT DU NOIR */
+@import "landingPage.css";

@@ -1,0 +1,102 @@
+/* --- FORCE LE NOIR SUR TOUTE LA STRUCTURE --- */
+html, 
+body, 
+.page-home, 
+main.content-area, 
+#content {
+    background-color: #000000 !important;
+}
+
+/* --- STRUCTURE LANDING PAGE --- */
+.landing-page {
+    max-width: none !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+.landing-band {
+    width: 100% !important;
+    padding: 140px 0;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.band-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* HIÉRARCHIE DES GRIS SOMBRES */
+.bg-black { background-color: #000000 !important; }
+.bg-dark  { background-color: #0a0a0a !important; }
+.bg-gray  { background-color: #111111 !important; }
+
+/* --- TYPOGRAPHIES --- */
+.landing-page .section-titles h2 { 
+    color: #ffffff !important; 
+    margin-bottom: 20px; 
+}
+
+.landing-page .category-badge { 
+    color: #666666 !important; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-size: 0.8rem; 
+    display: block;
+    margin-bottom: 10px;
+}
+
+.landing-page .desc-text { 
+    color: #bbbbbb !important; 
+    max-width: 700px; 
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* --- CARTES (BOXES) --- */
+.landing-page .box {
+    background-color: #ffffff !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: #000000 !important;
+    transition: transform 0.1s ease-out;
+}
+
+.landing-page .box-content { padding: 30px; }
+.landing-page .box h3 { color: #000000 !important; font-size: 1.25rem; margin-bottom: 10px; }
+.landing-page .box p { color: #333333 !important; font-size: 0.95rem; line-height: 1.6; }
+
+.grid-vignette { height: 300px; overflow: hidden; background: #222; }
+.grid-vignette img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* BOUTONS DANS LES BOXES */
+.btn-main {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #000;
+    color: #fff !important;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-top: 15px;
+}
+
+/* --- SYSTÈME DE REVEAL (POST-AUDIT) --- */
+.reveal {
+    opacity: 1; 
+    transform: translateY(0);
+    transition: opacity 0.4s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+.js-enabled .reveal {
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+.js-enabled .reveal.active {
+    transform: translateY(0);
+}

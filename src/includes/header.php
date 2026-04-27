@@ -94,7 +94,7 @@
                         <div class="mega-col">
                             <h3>Web & Code</h3>
                             <ul>
-                                <li><a href="site-vitrine.php">Sites Vitrines</a></li>
+                                <li><a href="landingPage.php">Landing Page</a></li>
                                 <li><a href="ecommerce.php">E-commerce Complexes</a></li>
                                 <li><a href="application-metiers.php">Applications Métier</a></li>
                                 <li><a href="optimisation-seo.php">Optimisation SEO</a></li>
