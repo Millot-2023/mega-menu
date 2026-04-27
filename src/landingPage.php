@@ -87,6 +87,7 @@
                         <div class="box-content"><h3>Matière</h3><p>Le relief de la perle.</p></div>
                     </div>
                     <div class="box reveal">
+                        <div class="grid-vignette"><img src="images/photo-320x240.png" alt="Détail 1"></div>
                         <div class="box-content"><h3>Concepts</h3><p>Recherches graphiques.</p></div>
                     </div>
                     <div class="box reveal">
