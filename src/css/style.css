@@ -12,5 +12,8 @@
 @import "footer.css";
 @import "responsive.css";
 
-/* AJOUTE CETTE LIGNE ICI POUR GAGNER LE COMBAT DU NOIR */
+/* --- GAGNER LE COMBAT DU NOIR & GESTION DES TIMELINES --- */
 @import "landingPage.css";
+@import "timelineLow.css";
+@import "timelineMed.css";
+@import "timelineHigh.css";

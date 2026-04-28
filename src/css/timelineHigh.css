@@ -1,0 +1,163 @@
+/* --- CONDITION : NOIR --- */
+main.landing-page {
+    background-color: #000000;
+    max-width: none;
+    padding: 0;
+    width: 100%;
+}
+
+main.landing-page .landing-band {
+    width: 100%;
+    padding: 140px 0;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+main.landing-page .band-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- STRUCTURE TIMELINE --- */
+.timeline-container {
+    position: relative;
+    padding-left: 60px;
+    margin-top: 40px;
+}
+
+.timeline-rail {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #333333;
+}
+
+.timeline-block {
+    position: relative;
+    margin-bottom: 120px;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -44px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.timeline-card {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    background-color: #111111;
+    border: 1px solid #1a1a1a;
+    overflow: hidden;
+}
+
+.card-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.6s ease;
+}
+
+.timeline-block.active .card-visual img {
+    filter: grayscale(0%);
+}
+
+.card-info {
+    padding: 40px;
+}
+
+.card-info h3 {
+    color: #ffffff !important;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.card-info p {
+    color: #bbbbbb !important;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.card-time-header {
+    border-bottom: 1px solid #222;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.step-tag {
+    color: #ffffff !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- SYSTÈME DE MICRO-STEPS (QUARTS D'HEURE) --- */
+.micro-steps {
+    border-top: 1px solid #1a1a1a;
+    padding-top: 20px;
+}
+
+.micro-steps .step {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 8px 0;
+    border-bottom: 1px solid #0f0f0f;
+}
+
+.micro-steps .time {
+    font-size: 0.75rem;
+    color: #ffffff;
+    font-weight: bold;
+    min-width: 45px;
+}
+
+.micro-steps .task {
+    font-size: 0.85rem;
+    color: #666666;
+}
+
+/* --- REVEAL --- */
+.js-enabled main.landing-page .reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.4s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.js-enabled main.landing-page .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    main.landing-page .landing-band {
+        padding: 60px 0;
+    }
+
+    .timeline-container {
+        padding-left: 40px;
+    }
+
+    .timeline-rail {
+        left: 15px;
+    }
+
+    .timeline-marker {
+        left: -29px;
+    }
+
+    .timeline-card {
+        grid-template-columns: 1fr;
+    }
+}

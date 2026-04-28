@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');
-/* Fichier fusionné - Build: 2026-04-27 17:37:33 */
+/* Fichier fusionné - Build: 2026-04-27 18:09:25 */
 
 /* --- Source: variables.css --- */
 :root {
@@ -956,7 +956,6 @@ body.is-slider {
 /* --- Source: landingPage.css --- */
 /* --- CONDITION : NOIR UNIQUEMENT SUR LA LANDING-PAGE --- */
 
-/* On cible le conteneur principal seulement s'il possède la classe .landing-page */
 main.landing-page {
     background-color: #000000;
     max-width: none;
@@ -978,7 +977,7 @@ main.landing-page .band-container {
     padding: 0 20px;
 }
 
-/* HIÉRARCHIE DES GRIS SOMBRES (Relief sur fond noir) */
+/* HIÉRARCHIE DES GRIS SOMBRES */
 main.landing-page .bg-black {
     background-color: #000000;
 }
@@ -991,7 +990,7 @@ main.landing-page .bg-gray {
     background-color: #111111;
 }
 
-/* --- TYPOGRAPHIES (Forcées pour le contraste sur noir) --- */
+/* --- TYPOGRAPHIES --- */
 main.landing-page .section-titles h2 {
     color: #ffffff;
     margin-bottom: 20px;
@@ -1013,14 +1012,10 @@ main.landing-page .desc-text {
     line-height: 1.6;
 }
 
-/* --- CARTES (BOXES) : Gardent leur fond blanc --- */
+/* --- CARTES (BOXES) --- */
 main.landing-page .box {
     background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
     color: #000000;
-    transition: transform 0.1s ease-out;
 }
 
 main.landing-page .box-content {
@@ -1036,7 +1031,6 @@ main.landing-page .box h3 {
 main.landing-page .box p {
     color: #333333;
     font-size: 0.95rem;
-    line-height: 1.6;
 }
 
 main.landing-page .grid-vignette {
@@ -1052,20 +1046,7 @@ main.landing-page .grid-vignette img {
     display: block;
 }
 
-/* BOUTONS DANS LES BOXES */
-main.landing-page .btn-main {
-    display: inline-block;
-    padding: 12px 24px;
-    background: #000;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    margin-top: 15px;
-}
-
-/* --- SYSTÈME DE REVEAL (POST-AUDIT) --- */
+/* --- SYSTÈME DE REVEAL --- */
 main.landing-page .reveal {
     opacity: 1;
     transform: translateY(0);
@@ -1079,7 +1060,26 @@ main.landing-page .reveal {
 }
 
 .js-enabled main.landing-page .reveal.active {
+    opacity: 1;
     transform: translateY(0);
+}
+
+/* --- RESPONSIVE : EMPILEMENT MOBILE --- */
+@media (max-width: 768px) {
+    main.landing-page .landing-band {
+        padding: 60px 0;
+    }
+    
+    main.landing-page .row-2,
+    main.landing-page .row-4 {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    
+    main.landing-page .grid-vignette {
+        height: 200px;
+    }
 }
 
 /* --- Source: style.css --- */
