@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.add('js-enabled');
     const reveals = document.querySelectorAll('.reveal');
 

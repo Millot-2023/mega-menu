@@ -1,0 +1,20 @@
+# ----------------------------------------------------------------------
+# CONFIGURATION LOCALE - MEGA-MENU
+# ----------------------------------------------------------------------
+
+# Empêche le listage des fichiers pour forcer le chargement des index
+Options -Indexes
+
+# Définit l'encodage pour éviter les caractères bizarres dans le JS
+AddDefaultCharset UTF-8
+
+# Active le moteur de réécriture
+RewriteEngine On
+RewriteBase /mega-menu/
+
+# Force le navigateur à ne pas mettre en cache le JS et CSS pendant les tests
+<FilesMatch "\.(js|css)$">
+    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+</FilesMatch>

@@ -1,0 +1,19 @@
+/* pageBase.scss - RESET RADICAL POUR ANTIGRAVITY */
+
+.base-template-page {
+    /* Uniquement la structure des colonnes, le reste doit venir des CSS originaux */
+    .col-container {
+        display: flex;
+        gap: 40px;
+        &.col-2 > * { flex: 1; }
+        &.col-3 > * { flex: 1; }
+        &.col-4 > * { flex: 1; }
+    }
+
+    @media (max-width: 768px) {
+        .col-container {
+            flex-direction: column;
+            & > * { width: 100%; }
+        }
+    }
+}

@@ -58,9 +58,9 @@
     box-sizing: border-box;
 }
 
-/* --- TITRE DE PANNEAU (Correction du collage au bord) --- */
+/* --- TITRE DE PANNEAU --- */
 .panel-title {
-    padding: 30px 8% 10px; /* Aligné sur le 8% de la grille */
+    padding: 30px 8% 10px;
     margin: 0;
     font-size: 2rem;
     font-weight: 800;
@@ -176,7 +176,7 @@
 }
 
 .mega-grid {
-    padding: 20px 8% 40px; /* Padding haut réduit car géré par .panel-title */
+    padding: 20px 8% 40px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 40px;
@@ -224,7 +224,8 @@
 
 .featured-image-bg {
     padding: 60px 8%;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('../images/featured-bg.jpg') center/cover;
+    /* Image supprimée ici pour corriger l'erreur 404 */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9));
     display: flex;
     align-items: flex-end;
 }
@@ -266,9 +267,3 @@
 .btn-link:hover {
     color: var(--accent-color);
 }
-
-
-/*
-.encour{
-    color:red;
-}*/

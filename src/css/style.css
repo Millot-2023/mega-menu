@@ -1,18 +1,23 @@
-/* Dans src/css/style.css */
+/* src/css/style.css - NOUVEL ORDRE */
+
 @import "variables.css";
 @import "fonts.css";
 @import "base.css";
 @import "header.css";
-@import "hero.css";
+
+/* --- On importe le template de base ICI pour qu'il soit écrasé par les spécifiques --- */
+@import "pageBase.css"; 
+
 @import "layout.css";
 @import "grid.css";
 @import "buttons.css";
 @import "menu.css";
+@import "hero.css";   /* <--- Le Hero reprend la priorité car il est après pageBase */
 @import "slider.css";
 @import "footer.css";
 @import "responsive.css";
 
-/* --- GAGNER LE COMBAT DU NOIR & GESTION DES TIMELINES --- */
+/* --- Modules optionnels --- */
 @import "landingPage.css";
 @import "timelineLow.css";
 @import "timelineMed.css";

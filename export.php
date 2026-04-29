@@ -4,23 +4,22 @@ $baseUrl = "http://localhost/mega-menu/src/";
 $exportDir = __DIR__ . "/dist/";
 $sourceDir = __DIR__ . "/src/";
 
-// Récupération automatique de tous les fichiers .php à la racine de src/
 $phpFiles = glob($sourceDir . "*.php");
 $pages = [];
 
 foreach ($phpFiles as $file) {
     $name = basename($file);
-    // On ignore les fichiers de test (commençant par ___) et le script lui-même
     if (!str_starts_with($name, '___') && $name !== 'export.php') {
         $pages[$name] = str_replace('.php', '.html', $name);
     }
 }
 
-// L'ordre est CRUCIAL : landingPage.css doit être à la fin pour écraser layout.css
+// AJOUT DE PAGEBASE.CSS DANS LA LISTE
 $cssFiles = [
     'variables.css', 
     'fonts.css',     
     'base.css',
+    'pageBase.css', // <--- IL ÉTAIT MANQUANT ICI
     'layout.css',
     'grid.css',      
     'header.css',
@@ -29,7 +28,7 @@ $cssFiles = [
     'slider.css',
     'footer.css',
     'responsive.css',
-    'landingPage.css', // AJOUTÉ ICI : Pour que le fond noir soit pris en compte
+    'landingPage.css',
     'style.css'
 ];
 
@@ -43,14 +42,10 @@ foreach ($pages as $phpPage => $htmlPage) {
     $content = @file_get_contents($url);
     
     if ($content !== false) {
-        // A. Correction des liens PHP -> HTML
         $content = str_replace('.php', '.html', $content);
-
-        // B. Nettoyage des appels CSS multiples
         $pattern = '/<link rel="stylesheet" href="css\/.*\.css">/i';
         $content = preg_replace($pattern, '', $content);
         
-        // C. Injection de l'appel UNIQUE au fichier fusionné
         $singleLink = '    <link rel="stylesheet" href="css/style.css">';
         $content = str_replace('</head>', $singleLink . "\n</head>", $content);
 
@@ -71,9 +66,7 @@ foreach ($cssFiles as $file) {
     $path = $sourceDir . 'css/' . $file;
     if (file_exists($path)) {
         $fileContent = file_get_contents($path);
-        // Retire les @import individuels pour éviter les doublons
         $fileContent = preg_replace('/@import url\(.*?\);/', '', $fileContent);
-        
         $combinedCss .= "/* --- Source: $file --- */\n";
         $combinedCss .= $fileContent . "\n\n";
     } else {
@@ -98,7 +91,8 @@ function sync($src, $dst) {
     }
 }
 
+// On force la synchronisation du dossier JS
 sync($sourceDir . 'js', $exportDir . 'js');
 sync($sourceDir . 'images', $exportDir . 'images');
 
-echo "<h2>✨ Export terminé ! Tu peux maintenant lancer 'firebase deploy'</h2>";
+echo "<h2>✨ Export terminé ! Ton dossier JS est maintenant synchronisé.</h2>";

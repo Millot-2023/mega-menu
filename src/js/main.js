@@ -26,49 +26,47 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.add('no-scroll');
     });
 
-    // --- GESTION DES REVEALS (OBSERVER UNIQUE) ---
+    // --- GESTION DES REVEALS (Scroll Animations) ---
     const reveals = document.querySelectorAll('.reveal');
-    const observerOptions = { threshold: 0.15 };
-
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.05 });
 
     reveals.forEach(el => revealObserver.observe(el));
 
-    // --- GESTION DES CLICS ---
+    // --- GESTION DES CLICS GLOBALE ---
     document.addEventListener('click', (e) => {
+        
+        // 1. LE CHEVRON (HERO)
         const chevron = e.target.closest('.hero-chevron');
-
         if (chevron) {
             e.preventDefault();
+            console.log("DEBUG: 1. Clic sur le chevron détecté");
             const hero = document.querySelector('.hero');
-            const content = document.querySelector('#content');
-
             if (hero) {
-                // On pré-active les reveals du haut pour éviter le bug visuel
-                const topReveals = document.querySelectorAll('.timeline-header-block .reveal');
-                topReveals.forEach(r => r.classList.add('active'));
-
                 hero.classList.add('hero-up');
-
+                body.classList.remove('no-scroll');
+                // On active les reveals pour que le contenu soit déjà là
+                document.querySelectorAll('.reveal').forEach(r => r.classList.add('active'));
+                
                 setTimeout(() => {
                     hero.style.display = 'none';
-                    if (content) {
-                        content.style.marginTop = '0';
-                        window.scrollTo(0, 0);
-                    }
+                    window.scrollTo(0, 0);
                 }, 800);
             }
-            return;
+            return; // On arrête ici pour ce clic
         }
 
-        if (e.target.closest('.close-btn')) closeAllMenu();
+        // 2. FERMETURE MENU
+        if (e.target.closest('.close-btn')) {
+            closeAllMenu();
+        }
 
+        // 3. OUVERTURE SOUS-PANNEAU
         const trigger = e.target.closest('.submenu-trigger');
         if (trigger) {
             const targetPanel = document.getElementById(trigger.getAttribute('data-target'));
@@ -80,16 +78,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // 4. BOUTON RETOUR
         const backBtn = e.target.closest('.back-btn');
         if (backBtn) {
             const currentPanel = backBtn.closest('.menu-panel');
-            currentPanel.classList.remove('active');
+            if (currentPanel) currentPanel.classList.remove('active');
             mainPanel.classList.remove('is-out');
             mainPanel.classList.add('active');
         }
 
+        // 5. LIENS DIRECTS (Fermer le menu après clic)
         if (e.target.closest('.direct-link') || e.target.closest('.mega-grid a')) {
-            if (!e.target.closest('.submenu-trigger')) closeAllMenu();
+            if (!e.target.closest('.submenu-trigger')) {
+                closeAllMenu();
+            }
         }
     });
 });

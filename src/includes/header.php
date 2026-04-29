@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/style.css">
-    <!--<style>#enCour{color:red;}</style>-->
 </head>
 <body class="page-home">
 
@@ -63,7 +62,6 @@
                         <div class="mega-col">
                             <h3>Photographie</h3>
                             <ul>
-                                <li><b><a href="diaporama.php" style="color: red !important;">Diaporama</a></b></li>
                                 <li><a href="portrait-studio.php">Portraits Studio</a></li>
                                 <li><a href="architecture-urbaine.php">Architecture Urbaine</a></li>
                                 <li><a href="reportage-mariage.php">Reportages Mariage</a></li>
@@ -95,15 +93,9 @@
                         <div class="mega-col">
                             <h3>Web & Code</h3>
                             <ul>
-                                <li><a href="landingPage.php">Landing Page</a></li>
+                                <li><a href="site-vitrine.php">Sites Vitrines</a></li>
                                 <li><a href="ecommerce.php">E-commerce Complexes</a></li>
-
-
-
-                                <li><a href="timelineLow.php" class="encour" id="#encour" style="color: red !important;">Timeline Low</a></li>
-                                <li><a href="timelineMed.php" class="encour" id="#encour" style="color: red !important;">Timeline Med</a></li>
-                                <li><a href="timelineHigh.php" class="encour" id="#encour" style="color: red !important;">Timeline High</a></li>
-
+                                <li><a href="application-metiers.php">Applications Métier</a></li>
                                 <li><a href="optimisation-seo.php">Optimisation SEO</a></li>
                                 <li><a href="audit-securite.php">Audit Sécurité</a></li>
                             </ul>

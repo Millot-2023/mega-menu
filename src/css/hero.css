@@ -1,37 +1,72 @@
-/* hero.css */
+/* ==========================================================================
+   HERO.CSS - Gestion centralisée du Hero et de l'Ancrage
+   ========================================================================== */
+
+/* --- CONFIGURATION DU HERO --- */
 .hero {
-    position: fixed;
-    top: 0;
-    left: 0;
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 100vh;
-    background-color: var(--menu-text);
-    color: var(--menu-bg);
+    background-color: #000000; /* Fond noir rétabli */
+    color: #ffffff; /* Texte blanc forcé pour le contraste */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
-    transition: transform 1.2s cubic-bezier(0.45, 0, 0.55, 1);
+    
+    /* Le Hero est fixé par-dessus le contenu */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001; 
+    text-align: center;
+    
+    /* Transition fluide pour la remontée */
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    transform: translateY(0); /* État initial au repos */
 }
 
-.hero-up {
-    transform: translateY(-100%);
+/* --- ÉLÉMENTS INTERNES --- */
+.hero h1 {
+    margin: 0;
+    font-size: 3rem;
 }
 
-.hero-inner { text-align: center; }
+.hero-inner {
+    padding: 0 20px;
+}
 
 .hero-chevron {
     position: absolute;
     bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
     font-size: 2.5rem;
-    cursor: pointer;
+    color: #ffffff;
+    text-decoration: none;
     animation: bounce 2s infinite;
+    cursor: pointer;
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translate(-50%, 0); }
-    50% { transform: translate(-50%, -10px); }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* --- ANIMATION DE DISPARITION (Déclenchée par main.js) --- */
+/* On s'assure que la classe combinée a la priorité pour le mouvement */
+.hero.hero-up {
+    transform: translateY(-100%) !important;
+}
+
+/* --- STRUCTURE DU CONTENU DESSOUS --- */
+#content {
+    padding-top: 100px;
+}
+
+/* --- AJUSTEMENTS RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 1.8rem;
+        padding: 0 10px;
+    }
 }
