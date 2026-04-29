@@ -1,22 +1,70 @@
 /* --- CONDITION : NOIR --- */
 main.landing-page {
-    background-color: #000000;
+    background-color: var(--bg-dark-theme);
     max-width: none;
     padding: 0;
     width: 100%;
+}
+
+/* --- ISOLATION DÉFINITIVE DU HEADER TIMELINE --- */
+.timeline-header-block {
+    background-color: var(--bg-dark-theme) !important;
+    width: 100% !important;
+    margin-top: 0 !important; /* Force le collage immédiat */
+    padding: 140px 0 80px 0 !important;
+    display: flow-root !important;
+}
+
+/* Contrôle des textes internes via variables */
+.timeline-header-block h2 {
+    color: var(--text-on-dark) !important;
+    margin-top: 0 !important;
+}
+
+.timeline-header-block .desc-text {
+    color: var(--text-on-dark) !important;
+    opacity: 0.8;
+}
+
+.timeline-header-block .category-badge {
+    color: var(--text-on-dark) !important;
+    opacity: 0.5;
+}
+
+/* --- RESTE DE LA PAGE (ZONES SOMBRES) --- */
+main.landing-page,
+.landing-band.bg-dark,
+.landing-band.bg-black {
+    background-color: var(--bg-dark-theme) !important;
 }
 
 main.landing-page .landing-band {
     width: 100%;
     padding: 140px 0;
     overflow: hidden;
-    background-color: transparent;
 }
 
 main.landing-page .band-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+/* --- TYPOGRAPHIES SECTION TITLES --- */
+
+main.landing-page .section-titles h2 {
+    color: var(--text-on-dark) !important;
+    margin-bottom: 20px;
+}
+
+main.landing-page .category-badge {
+    color: var(--text-on-dark);
+    opacity: 0.5;
+}
+
+main.landing-page .section-titles .desc-text {
+    color: var(--text-on-dark) !important;
+    line-height: 1.6;
 }
 
 /* --- STRUCTURE TIMELINE --- */
@@ -77,13 +125,13 @@ main.landing-page .band-container {
 }
 
 .card-info h3 {
-    color: #ffffff !important;
+    color: var(--text-on-dark) !important;
     font-size: 1.6rem;
     margin-bottom: 10px;
 }
 
 .card-info p {
-    color: #bbbbbb !important;
+    color: var(--text-on-dark) !important;
     line-height: 1.6;
     margin-bottom: 30px;
 }
@@ -101,7 +149,7 @@ main.landing-page .band-container {
     letter-spacing: 2px;
 }
 
-/* --- SYSTÈME DE MICRO-STEPS (QUARTS D'HEURE) --- */
+/* --- SYSTÈME DE MICRO-STEPS --- */
 .micro-steps {
     border-top: 1px solid #1a1a1a;
     padding-top: 20px;

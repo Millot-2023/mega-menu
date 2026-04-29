@@ -1,24 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Menu JS chargé et prêt.");
+    document.body.classList.add('js-enabled');
 
     const burgerOpen = document.getElementById('burgerOpen');
     const megaMenu = document.getElementById('megaMenu');
     const mainPanel = document.getElementById('main-panel');
     const body = document.body;
 
-    if (!burgerOpen || !megaMenu || !mainPanel) {
-        console.error("Erreur : Éléments du menu manquants dans le DOM.");
-        return;
-    }
+    if (!burgerOpen || !megaMenu || !mainPanel) return;
 
-    // --- FONCTIONS ---
+    // --- FONCTIONS MENU ---
     const resetPanels = () => {
-        document.querySelectorAll('.menu-panel').forEach(p => {
-            p.classList.remove('active', 'is-out');
-        });
-        document.querySelectorAll('.submenu-trigger').forEach(l => {
-            l.setAttribute('aria-expanded', 'false');
-        });
+        document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active', 'is-out'));
+        document.querySelectorAll('.submenu-trigger').forEach(l => l.setAttribute('aria-expanded', 'false'));
         mainPanel.classList.add('active');
     };
 
@@ -28,29 +21,57 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(resetPanels, 400);
     };
 
-    // --- ÉVÉNEMENTS ---
-
-    // 1. Ouverture
     burgerOpen.addEventListener('click', () => {
-        console.log("Ouverture du menu");
         megaMenu.classList.add('is-open');
         body.classList.add('no-scroll');
     });
 
-    // 2. Gestion des clics
-    document.addEventListener('click', (e) => {
+    // --- GESTION DES REVEALS (OBSERVER UNIQUE) ---
+    const reveals = document.querySelectorAll('.reveal');
+    const observerOptions = { threshold: 0.15 };
 
-        // Bouton Fermer
-        if (e.target.closest('.close-btn')) {
-            closeAllMenu();
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // --- GESTION DES CLICS ---
+    document.addEventListener('click', (e) => {
+        const chevron = e.target.closest('.hero-chevron');
+
+        if (chevron) {
+            e.preventDefault();
+            const hero = document.querySelector('.hero');
+            const content = document.querySelector('#content');
+
+            if (hero) {
+                // On pré-active les reveals du haut pour éviter le bug visuel
+                const topReveals = document.querySelectorAll('.timeline-header-block .reveal');
+                topReveals.forEach(r => r.classList.add('active'));
+
+                hero.classList.add('hero-up');
+
+                setTimeout(() => {
+                    hero.style.display = 'none';
+                    if (content) {
+                        content.style.marginTop = '0';
+                        window.scrollTo(0, 0);
+                    }
+                }, 800);
+            }
+            return;
         }
 
-        // Déclencheur sous-menu
+        if (e.target.closest('.close-btn')) closeAllMenu();
+
         const trigger = e.target.closest('.submenu-trigger');
         if (trigger) {
-            const targetId = trigger.getAttribute('data-target');
-            const targetPanel = document.getElementById(targetId);
-
+            const targetPanel = document.getElementById(trigger.getAttribute('data-target'));
             if (targetPanel) {
                 trigger.setAttribute('aria-expanded', 'true');
                 mainPanel.classList.add('is-out');
@@ -59,41 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Bouton Retour
         const backBtn = e.target.closest('.back-btn');
         if (backBtn) {
             const currentPanel = backBtn.closest('.menu-panel');
-            if (currentPanel) {
-                currentPanel.classList.remove('active');
-                mainPanel.classList.remove('is-out');
-                mainPanel.classList.add('active');
-                document.querySelectorAll('.submenu-trigger').forEach(l => {
-                    l.setAttribute('aria-expanded', 'false');
-                });
-            }
+            currentPanel.classList.remove('active');
+            mainPanel.classList.remove('is-out');
+            mainPanel.classList.add('active');
         }
 
-        // Liens directs
-        if (e.target.closest('.direct-link') || (e.target.closest('.mega-grid a'))) {
-            if (!e.target.closest('.submenu-trigger')) {
-                closeAllMenu();
-            }
-        }
-
-        // 3. Gestion du Chevron Hero (Dévoilement)
-        const chevron = e.target.closest('.hero-chevron');
-        if (chevron) {
-            e.preventDefault();
-            const heroSection = document.querySelector('.hero');
-            if (heroSection) {
-                // Le Hero remonte et laisse voir le contenu dessous
-                heroSection.classList.add('hero-up');
-
-                // On attend la fin de l'animation pour nettoyer le DOM
-                setTimeout(() => {
-                    heroSection.classList.add('hidden');
-                }, 800);
-            }
+        if (e.target.closest('.direct-link') || e.target.closest('.mega-grid a')) {
+            if (!e.target.closest('.submenu-trigger')) closeAllMenu();
         }
     });
 });

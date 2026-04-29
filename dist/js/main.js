@@ -1,99 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Menu JS chargé et prêt.");
-
-    const burgerOpen = document.getElementById('burgerOpen');
-    const megaMenu = document.getElementById('megaMenu');
-    const mainPanel = document.getElementById('main-panel');
-    const body = document.body;
-
-    if (!burgerOpen || !megaMenu || !mainPanel) {
-        console.error("Erreur : Éléments du menu manquants dans le DOM.");
-        return;
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
     }
+    window.scrollTo(0, 0);
 
-    // --- FONCTIONS ---
-    const resetPanels = () => {
-        document.querySelectorAll('.menu-panel').forEach(p => {
-            p.classList.remove('active', 'is-out');
+    console.log("Correction Perles et Pixels : Mode Stable.");
+    document.body.classList.add('js-enabled');
+
+    const body = document.body;
+    const hero = document.querySelector('.hero');
+    const content = document.querySelector('#content');
+
+    // --- REVEAL AU SCROLL ---
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
         });
-        document.querySelectorAll('.submenu-trigger').forEach(l => {
-            l.setAttribute('aria-expanded', 'false');
-        });
-        mainPanel.classList.add('active');
-    };
+    }, { threshold: 0.15 });
 
-    const closeAllMenu = () => {
-        megaMenu.classList.remove('is-open');
-        body.classList.remove('no-scroll');
-        setTimeout(resetPanels, 400);
-    };
+    reveals.forEach(el => revealObserver.observe(el));
 
-    // --- ÉVÉNEMENTS ---
-
-    // 1. Ouverture
-    burgerOpen.addEventListener('click', () => {
-        console.log("Ouverture du menu");
-        megaMenu.classList.add('is-open');
-        body.classList.add('no-scroll');
-    });
-
-    // 2. Gestion des clics
+    // --- GESTION DU CLIC ---
     document.addEventListener('click', (e) => {
-
-        // Bouton Fermer
-        if (e.target.closest('.close-btn')) {
-            closeAllMenu();
-        }
-
-        // Déclencheur sous-menu
-        const trigger = e.target.closest('.submenu-trigger');
-        if (trigger) {
-            const targetId = trigger.getAttribute('data-target');
-            const targetPanel = document.getElementById(targetId);
-
-            if (targetPanel) {
-                trigger.setAttribute('aria-expanded', 'true');
-                mainPanel.classList.add('is-out');
-                mainPanel.classList.remove('active');
-                targetPanel.classList.add('active');
-            }
-        }
-
-        // Bouton Retour
-        const backBtn = e.target.closest('.back-btn');
-        if (backBtn) {
-            const currentPanel = backBtn.closest('.menu-panel');
-            if (currentPanel) {
-                currentPanel.classList.remove('active');
-                mainPanel.classList.remove('is-out');
-                mainPanel.classList.add('active');
-                document.querySelectorAll('.submenu-trigger').forEach(l => {
-                    l.setAttribute('aria-expanded', 'false');
-                });
-            }
-        }
-
-        // Liens directs
-        if (e.target.closest('.direct-link') || (e.target.closest('.mega-grid a'))) {
-            if (!e.target.closest('.submenu-trigger')) {
-                closeAllMenu();
-            }
-        }
-
-        // 3. Gestion du Chevron Hero (Dévoilement)
         const chevron = e.target.closest('.hero-chevron');
         if (chevron) {
             e.preventDefault();
-            const heroSection = document.querySelector('.hero');
-            if (heroSection) {
-                // Le Hero remonte et laisse voir le contenu dessous
-                heroSection.classList.add('hero-up');
+            if (hero) {
+                // On déclenche la transition CSS (1.2s de douceur)
+                hero.classList.add('hero-up');
 
-                // On attend la fin de l'animation pour nettoyer le DOM
+                // On force le premier reveal du titre un peu après le début
                 setTimeout(() => {
-                    heroSection.classList.add('hidden');
-                }, 800);
+                    const firstReveal = document.querySelector('.timeline-header-block .reveal');
+                    if (firstReveal) firstReveal.classList.add('active');
+                }, 600);
+
+                // Une fois remonté, on l'enlève pour libérer le scroll
+                setTimeout(() => {
+                    hero.style.display = 'none';
+                    window.scrollTo(0, 0);
+                }, 1200);
             }
+        }
+
+        // --- MENU ---
+        if (e.target.closest('#burgerOpen')) {
+            document.getElementById('megaMenu').classList.add('is-open');
+            body.classList.add('no-scroll');
+        }
+        if (e.target.closest('.close-btn')) {
+            document.getElementById('megaMenu').classList.remove('is-open');
+            body.classList.remove('no-scroll');
         }
     });
 });

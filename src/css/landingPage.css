@@ -1,12 +1,12 @@
 /* --- CONDITION : NOIR UNIQUEMENT SUR LA LANDING-PAGE --- */
 
 /* Verrouillage global pour empêcher les fuites de blanc */
-body {
-    background-color: #000000;
+body:has(main.landing-page) {
+    background-color: var(--bg-dark-theme);
 }
 
 main.landing-page {
-    background-color: #000000;
+    background-color: var(--bg-dark-theme);
     max-width: none;
     padding: 0;
     width: 100%;
@@ -30,7 +30,7 @@ main.landing-page .band-container {
 
 /* HIÉRARCHIE DES GRIS SOMBRES */
 main.landing-page .bg-black {
-    background-color: #000000;
+    background-color: var(--bg-dark-theme);
 }
 
 main.landing-page .bg-dark {
@@ -43,12 +43,12 @@ main.landing-page .bg-gray {
 
 /* --- TYPOGRAPHIES --- */
 main.landing-page .section-titles h2 {
-    color: #ffffff;
+    color: var(--text-on-dark);
     margin-bottom: 20px;
 }
 
 main.landing-page .category-badge {
-    color: #666666;
+    color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 0.8rem;
@@ -57,7 +57,7 @@ main.landing-page .category-badge {
 }
 
 main.landing-page .desc-text {
-    color: #bbbbbb;
+    color: var(--text-on-dark);
     max-width: 700px;
     margin-bottom: 40px;
     line-height: 1.6;
@@ -80,7 +80,7 @@ main.landing-page .box h3 {
 }
 
 main.landing-page .box p {
-    color: #333333;
+    color: #000000;
     font-size: 0.95rem;
 }
 

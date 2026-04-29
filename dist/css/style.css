@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');
-/* Fichier fusionné - Build: 2026-04-27 18:09:25 */
+/* Fichier fusionné - Build: 2026-04-28 17:50:09 */
 
 /* --- Source: variables.css --- */
 :root {
@@ -97,6 +97,11 @@ h1, h2, h3, h4, .logo {
 .desc-text{
     color:white;
 }
+
+/*
+.encour{
+    color:red;
+}*/
 
 /* --- Source: base.css --- */
 /* ==========================================================================
@@ -646,6 +651,12 @@ body.no-scroll {
     color: var(--accent-color);
 }
 
+
+/*
+.encour{
+    color:red;
+}*/
+
 /* --- Source: hero.css --- */
 /* ==========================================================================
    HERO.CSS - Gestion du rideau vertical (Indépendant du slider)
@@ -956,11 +967,18 @@ body.is-slider {
 /* --- Source: landingPage.css --- */
 /* --- CONDITION : NOIR UNIQUEMENT SUR LA LANDING-PAGE --- */
 
+/* Verrouillage global pour empêcher les fuites de blanc */
+body:has(main.landing-page) {
+    background-color: #000000;
+}
+
 main.landing-page {
     background-color: #000000;
     max-width: none;
     padding: 0;
     width: 100%;
+    display: block;
+    overflow: hidden; /* Empêche la fusion des marges avec le footer */
 }
 
 /* --- STRUCTURE ET BANDES --- */
@@ -997,7 +1015,7 @@ main.landing-page .section-titles h2 {
 }
 
 main.landing-page .category-badge {
-    color: #666666;
+    color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 0.8rem;
@@ -1006,7 +1024,7 @@ main.landing-page .category-badge {
 }
 
 main.landing-page .desc-text {
-    color: #bbbbbb;
+    color: #ffffff;
     max-width: 700px;
     margin-bottom: 40px;
     line-height: 1.6;
@@ -1029,7 +1047,7 @@ main.landing-page .box h3 {
 }
 
 main.landing-page .box p {
-    color: #333333;
+    color: #000000;
     font-size: 0.95rem;
 }
 
@@ -1044,6 +1062,11 @@ main.landing-page .grid-vignette img {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+/* --- NETTOYAGE ESPACE BAS --- */
+main.landing-page section:last-of-type {
+    margin-bottom: 0 !important;
 }
 
 /* --- SYSTÈME DE REVEAL --- */
@@ -1097,6 +1120,9 @@ main.landing-page .reveal {
 @import "footer.css";
 @import "responsive.css";
 
-/* AJOUTE CETTE LIGNE ICI POUR GAGNER LE COMBAT DU NOIR */
+/* --- GAGNER LE COMBAT DU NOIR & GESTION DES TIMELINES --- */
 @import "landingPage.css";
+@import "timelineLow.css";
+@import "timelineMed.css";
+@import "timelineHigh.css";
 

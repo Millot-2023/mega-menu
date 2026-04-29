@@ -1,11 +1,7 @@
-/* ==========================================================================
-   HERO.CSS - Gestion du rideau vertical (Indépendant du slider)
-   ========================================================================== */
-
+/* hero.css */
 .hero {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
+    position: relative;
+    width: 100%;
     height: 100vh;
     background-color: var(--menu-text);
     color: var(--menu-bg);
@@ -13,29 +9,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    /* Fixé pour couvrir tout l'écran au démarrage */
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2000; 
-    /* Animation de remontée fluide */
-    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 100;
+    /* La clé de la douceur est ici */
+    transition: transform 1.2s cubic-bezier(0.45, 0, 0.55, 1);
+    will-change: transform;
 }
 
-/* Classe activée par le clic sur le chevron */
+/* La classe qui fait remonter le Hero gentiment */
 .hero-up {
     transform: translateY(-100%);
 }
 
-.hero h1 {
-    margin-top: 0;
-    font-size: 3rem;
-    font-weight: 800;
+.hero-inner {
+    text-align: center;
 }
 
-.hero-inner {
-    padding: 0 20px;
+.hero h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 800;
 }
 
 .hero-chevron {
@@ -45,25 +37,12 @@
     transform: translateX(-50%);
     font-size: 2.5rem;
     color: var(--menu-bg);
+    cursor: pointer;
     text-decoration: none;
     animation: bounce 2s infinite;
-    cursor: pointer;
-    z-index: 2001;
 }
 
 @keyframes bounce {
     0%, 100% { transform: translate(-50%, 0); }
     50% { transform: translate(-50%, -10px); }
-}
-
-/* Ajustements Responsive */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-}
-
-/* Ancrage pour les autres pages du site */
-#content {
-    padding-top: 100px;
 }

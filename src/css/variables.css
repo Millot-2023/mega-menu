@@ -1,5 +1,10 @@
 :root {
-    /* --- COULEURS --- */
+    /* --- THÈME CHROMATIQUE --- */
+    --bg-light: #fcfcfc;
+    --bg-dark-theme: #1a1a1a;
+    --text-on-dark: #eeeeee;
+
+    /* --- MENU --- */
     --menu-bg: #ffffff;
     --menu-text: #1a1a1a;
     --menu-accent: #0066cc;
@@ -34,14 +39,24 @@
     --transition-speed: 0.3s;
 }
 
+/* --- STRUCTURE GÉNÉRALE --- */
 .content-area {
-    padding-top: calc(var(--nav-height) + var(--content-gap));
-    padding-left: var(--container-side-padding);
-    padding-right: var(--container-side-padding);
-    max-width: var(--mega-menu-width);
     margin: 0 auto;
+    max-width: var(--mega-menu-width);
 }
+/* Pour les pages sans Hero ni Header de Timeline */
+.standard-page { padding-top: var(--nav-height); }
 
 html {
     scroll-padding-top: var(--nav-height);
+    background-color: var(--bg-dark-theme);
+}
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: var(--bg-dark-theme);
+    color: var(--text-on-dark);
+    font-family: var(--font-body);
+    line-height: var(--lh-body);
 }

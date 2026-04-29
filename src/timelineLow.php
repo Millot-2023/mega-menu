@@ -10,7 +10,7 @@
 
 <main class="content-area landing-page" id="content">
     
-    <section class="landing-band bg-black">
+    <section class="timeline-header-block">
         <div class="band-container">
             <div class="section-titles reveal">
                 <span class="category-badge">Chronologie du Projet</span>
@@ -199,7 +199,5 @@
     </section>
 
 </main>
-
-<script src="js/timelineLow.js" defer></script>
 
 <?php include 'includes/footer.html'; ?>
