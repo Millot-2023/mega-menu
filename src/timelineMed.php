@@ -3,7 +3,7 @@
 <section class="hero">
     <div class="hero-inner">
         <h1>Perles et Pixels</h1>
-        <p>L'union entre l'artisanat de la perle et la précision du pixel art.</p>
+        <p>Analyse intermédiaire : focus à la demi-heure.</p>
     </div>
     <a href="#content" class="hero-chevron">︾</a>
 </section>
@@ -13,9 +13,9 @@
     <section class="timeline-header-block">
         <div class="band-container">
             <div class="section-titles reveal">
-                <span class="category-badge">Expertise Détaillée</span>
-                <h2>Analyse Temporelle (Med)</h2>
-                <p class="desc-text">Un suivi précis à la demi-heure pour une transparence totale sur le processus de création.</p>
+                <span class="category-badge">Précision Rythmique</span>
+                <h2>Séquençage Médium</h2>
+                <p class="desc-text">Le détail des étapes clés de production, structuré toutes les trente minutes.</p>
             </div>
         </div>
     </section>
@@ -122,6 +122,19 @@
                             </div>
                             <h3>Pause Méridienne</h3>
                             <p>Interruption technique pour revue des objectifs de l'après-midi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-block med reveal">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-card">
+                        <div class="card-info">
+                            <div class="card-time-header">
+                                <span class="step-tag">12:30</span>
+                            </div>
+                            <h3>Veille & Backup</h3>
+                            <p>Synchronisation des données et veille sur les nouvelles méthodes d'optimisation.</p>
                         </div>
                     </div>
                 </div>
@@ -265,7 +278,7 @@
                             <div class="card-time-header">
                                 <span class="step-tag">17:30</span>
                             </div>
-                            <h3>Finalisation des Contenus</h3>
+                            <h3>Finalisation Contenus</h3>
                             <p>Dernière vérification des textes et des balises SEO.</p>
                         </div>
                     </div>
@@ -311,7 +324,7 @@
                                 <span class="step-tag">19:00</span>
                             </div>
                             <h3>Archivage & Clôture</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta error impedit necessitatibus eveniet officiis eum, nesciunt consequatur quo dolorum molestiae veniam ea excepturi nulla ipsa reprehenderit at ullam sequi rem?</p>
+                            <p>Sécurisation des données finales et extinction de la session.</p>
                         </div>
                     </div>
                 </div>
@@ -321,7 +334,5 @@
     </section>
 
 </main>
-
-<script src="js/timelineMed.js" defer></script>
 
 <?php include 'includes/footer.html'; ?>

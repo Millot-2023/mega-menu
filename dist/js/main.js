@@ -1,21 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-    if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-    }
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
-
-    console.log("Correction Perles et Pixels : Mode Stable.");
-    document.body.classList.add('js-enabled');
 
     const body = document.body;
     const hero = document.querySelector('.hero');
-    const content = document.querySelector('#content');
-
-    // --- REVEAL AU SCROLL ---
     const reveals = document.querySelectorAll('.reveal');
+
+    console.log("Interface Perles et Pixels : Séquençage Actif.");
+    body.classList.add('js-enabled');
+
+    // --- 1. OBSERVER (REVEAL AU SCROLL) ---
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+            // On n'active le reveal que si on n'est pas en train de lever le rideau
+            if (entry.isIntersecting && !body.classList.contains('is-revealing')) {
                 entry.target.classList.add('active');
             }
         });
@@ -23,30 +21,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     reveals.forEach(el => revealObserver.observe(el));
 
-    // --- GESTION DU CLIC ---
+    // --- 2. GESTION DU DÉVOILEMENT (CLIC CHEVRON) ---
     document.addEventListener('click', (e) => {
         const chevron = e.target.closest('.hero-chevron');
         if (chevron) {
             e.preventDefault();
             if (hero) {
-                // On déclenche la transition CSS (1.2s de douceur)
+                // Étape A : On bloque les animations de reveal du haut
+                body.classList.add('is-revealing');
+                
+                // Étape B : Le rideau monte
                 hero.classList.add('hero-up');
 
-                // On force le premier reveal du titre un peu après le début
-                setTimeout(() => {
-                    const firstReveal = document.querySelector('.timeline-header-block .reveal');
-                    if (firstReveal) firstReveal.classList.add('active');
-                }, 600);
-
-                // Une fois remonté, on l'enlève pour libérer le scroll
+                // Étape C : Fin de transition (1.2s)
                 setTimeout(() => {
                     hero.style.display = 'none';
+                    // On libère le body pour que le scroll puisse animer les blocs suivants
+                    body.classList.remove('is-revealing');
                     window.scrollTo(0, 0);
                 }, 1200);
             }
         }
 
-        // --- MENU ---
+        // --- GESTION MENU ---
         if (e.target.closest('#burgerOpen')) {
             document.getElementById('megaMenu').classList.add('is-open');
             body.classList.add('no-scroll');

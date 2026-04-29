@@ -185,7 +185,7 @@
                             <div class="micro-steps">
                                 <div class="step"><span class="time">16:15</span><span class="task">Test mobile (Chrome DevTools).</span></div>
                                 <div class="step"><span class="time">16:30</span><span class="task">Validation W3C.</span></div>
-                                <div class="step"><span class="time">16:45</span><span class="task">Optimisation performance (Lighthouse).</span></div>
+                                <div class="step"><span class="time">16:45</span><span class="task">Optimisation performance.</span></div>
                             </div>
                         </div>
                     </div>
@@ -259,7 +259,5 @@
     </section>
 
 </main>
-
-<script src="js/timelineHigh.js" defer></script>
 
 <?php include 'includes/footer.html'; ?>
