@@ -9,7 +9,7 @@
     <meta name="author" content="Christophe Millot">
     <meta name="robots" content="index, follow">
 
-    <link rel="stylesheet" href="css/variables.css">
+    <!-- APPEL UNIQUE : Centralise toute la cascade CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="page-home">
@@ -51,6 +51,7 @@
                 </ul>
             </div>
 
+            <!-- Panel Projets -->
             <div class="menu-panel" id="submenu-projets">
                 <div class="menu-header">
                     <button class="back-btn" aria-label="Retour au menu principal">‹ Retour au menu</button>
@@ -98,23 +99,20 @@
                                 <li><a href="application-metiers.php">Applications Métier</a></li>
                                 <li><a href="optimisation-seo.php">Optimisation SEO</a></li>
                                 <li><a href="audit-securite.php">Audit Sécurité</a></li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div class="featured-full">
-                        <div class="featured-image-bg">
-                            <div class="featured-content">
-                                <span class="badge">PROJET DU MOIS</span>
-                                <h4>Refonte visuelle "Neo-Paris"</h4>
-                                <p>Une immersion totale dans la capitale en 2080.</p>
-                                <a href="projet-type.php" class="btn-link">Découvrir l'étude de cas →</a>
-                            </div>
+                                <li><a href="pageBaseTimelineMed.php">pageBaseTimelineMed</a></li>
+
+
+
+
+                                
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Panel Expertises -->
             <div class="menu-panel" id="submenu-expertises">
                 <div class="menu-header">
                     <button class="back-btn" aria-label="Retour au menu principal">‹ Retour au menu</button>

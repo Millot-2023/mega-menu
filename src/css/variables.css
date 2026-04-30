@@ -37,26 +37,22 @@
     --content-gap: 30px;
     --mega-menu-width: 1200px;
     --transition-speed: 0.3s;
+    
+    /* --- SCROLLBAR --- */
+    --scrollbar-color: rgba(0,0,0,0.2);
+
+--container-side-padding: 5%; /* Marge de sécurité adaptative */
+
+
 }
 
-/* --- STRUCTURE GÉNÉRALE --- */
 .content-area {
     margin: 0 auto;
     max-width: var(--mega-menu-width);
 }
-/* Pour les pages sans Hero ni Header de Timeline */
+
 .standard-page { padding-top: var(--nav-height); }
 
 html {
     scroll-padding-top: var(--nav-height);
-    background-color: var(--bg-dark-theme);
-}
-
-body {
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: var(--bg-dark-theme);
-    color: var(--text-on-dark);
-    font-family: var(--font-body);
-    line-height: var(--lh-body);
 }

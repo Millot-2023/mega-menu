@@ -1,51 +1,21 @@
-/* --- IMPORTATION --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');
 
-/* --- APPLICATION GLOBALE --- */
 body {
     font-family: var(--font-body);
-    line-height: var(--lh-body); /* Normalisation du texte courant */
+    line-height: var(--lh-body);
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- TITRES & LOGO --- */
 h1, h2, h3, h4, .logo {
     font-family: var(--font-titles);
-    line-height: var(--lh-titles); /* Normalisation des titres (plus serrés) */
+    line-height: var(--lh-titles);
     font-weight: 700;
+    color: inherit; /* Prend le sombre du body */
 }
 
-/* --- NAVIGATION --- */
-.direct-link, 
-.submenu-trigger {
-    font-family: var(--font-titles);
-    /* On utilise la même variable pour la cohérence visuelle du menu */
-    line-height: var(--lh-titles); 
+/* Cas particulier : Texte sur le Hero ou zones sombres */
+.hero h1, .hero p, .desc-text {
+    color: white !important;
 }
 
-/* --- PETITS ÉLÉMENTS --- */
-.badge, .category-badge {
-    font-family: var(--font-titles);
-    font-weight: 600;
-    text-transform: uppercase;
-    line-height: 1; /* Le badge est souvent sur une seule ligne */
-}
-
-/* --- CLASSES UTILITAIRES --- */
-.paragraphe {
-    margin-bottom: 20px;
-}
-
-.i {
-    font-style: italic;
-}
-
-.desc-text{
-    color:white;
-}
-
-/*
-.encour{
-    color:red;
-}*/
+.paragraphe { margin-bottom: 20px; }

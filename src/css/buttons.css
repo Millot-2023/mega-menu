@@ -1,3 +1,6 @@
+/* ==========================================================================
+   BOUTONS DU SYSTÈME DE GRILLE (btn-main)
+   ========================================================================== */
 .grid-system .btn-container .btn-main {
     display: inline-block;
     padding: 12px 28px;
@@ -14,4 +17,32 @@
 .grid-system .btn-container .btn-main:hover {
     background-color: var(--btn-hover-bg);
     color: var(--btn-hover-color);
+}
+
+/* ==========================================================================
+   BOUTON SIMPLE (Audit & Test)
+   ========================================================================== */
+.simpleButton {
+    background-color: grey;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+    
+    /* 
+       L'ancrage bas fonctionne ici si le bouton est un enfant DIRECT 
+       de .text-col-content.
+    */
+    margin-top: auto; 
+    align-self: center; 
+    display: inline-block;
+}
+
+.simpleButton:hover {
+    background-color: black;
+}
+
+.simpleButton:active {
+    background-color: green;
 }
