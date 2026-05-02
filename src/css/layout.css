@@ -10,6 +10,14 @@
     display: block;
 }
 
+.band-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 /* --- TITRES DE SECTION --- */
 .section-titles {
     margin-bottom: var(--section-margin);
@@ -49,6 +57,11 @@
         padding-left: 15px;
         padding-right: 15px;
         padding-bottom: 30px;
+    }
+
+    .band-container {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .section-titles {

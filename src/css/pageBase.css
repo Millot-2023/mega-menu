@@ -1,88 +1,10 @@
 /* ==========================================================================
    RESET & STRUCTURES DE BASE - ANTIGRAVITY
    ========================================================================== */
-.base-template-page .col-container {
-    display: grid;
-    gap: 40px;
-    width: 100%;
-    box-sizing: border-box;
-}
+/* Les règles de grille (col-container, etc.) ont été centralisées dans grid.css */
+/* Les règles d'images globales (homothétie) sont dans style.css */
 
-/* 4 colonnes strictes sur Desktop (> 1024px) */
-.base-template-page .col-container.col-2 {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.base-template-page .col-container.col-3 {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.base-template-page .col-container.col-4 {
-    grid-template-columns: repeat(4, 1fr);
-}
-
-.base-template-page .text-col-content {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* --- COMPORTEMENT HOMOTHÉTIQUE DES IMAGES --- */
+/* --- COMPORTEMENT SPÉCIFIQUE DES IMAGES DANS LE GABARIT --- */
 .base-template-page .responsive-picture {
-    display: block;
-    width: 100%;
     margin-bottom: 15px;
 }
-
-.base-template-page .responsive-picture img,
-.base-template-page .img-standard {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-}
-
-/* ==========================================================================
-   BREAKPOINTS HARMONISÉS (Logique stricte 4 -> 2 -> 1)
-   ========================================================================== */
-
-/* 1. TABLETTE - max-width: 1024px */
-@media (max-width: 1024px) {
-    .base-template-page .col-container {
-        gap: 30px;
-    }
-
-    /* Le 3 colonnes passe en 2 colonnes, la 3ème prend 100% (2 lignes) */
-    .base-template-page .col-container.col-3 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .base-template-page .col-container.col-3 > :nth-child(3) {
-        grid-column: span 2;
-    }
-
-    /* Le 4 colonnes passe STRICTEMENT en 2x2 */
-    .base-template-page .col-container.col-4 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* 2. MOBILE - max-width: 768px */
-@media (max-width: 768px) {
-    .base-template-page .col-container {
-        gap: 20px;
-    }
-    
-    /* Tout passe à 1 seule colonne */
-    .base-template-page .col-container.col-2,
-    .base-template-page .col-container.col-3,
-    .base-template-page .col-container.col-4 {
-        grid-template-columns: 1fr;
-    }
-
-    .base-template-page .col-container.col-3 > :nth-child(3) {
-        grid-column: span 1;
-    }
-}
-/*# sourceMappingURL=pageBase.css.map */

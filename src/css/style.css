@@ -4,6 +4,8 @@
 @import "variables.css";
 @import "fonts.css";
 @import "base.css";
+@import "layout.css";   /* <--- AJOUTÉ : Pour la structure globale */
+@import "grid.css";     /* <--- AJOUTÉ : Pour les colonnes et grilles */
 @import "buttons.css";
 @import "header.css";
 @import "menu.css";
@@ -12,35 +14,8 @@
 @import "responsive.css";
 
 /* ==========================================================================
-   2. SYSTÈME DE GRILLE (Composants de structure uniquement)
+   2. UTILITAIRES DE STRUCTURE (Grilles dans grid.css, Layout dans layout.css)
    ========================================================================== */
-.band-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.col-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--grid-gap, 30px);
-    margin-top: 30px;
-    align-items: stretch;
-}
-
-.text-col-content {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    /* Suppression du min-width qui provoquait le décrochage sauvage */
-}
-
-/* Distribution exacte sans débordement possible */
-.col-2 .text-col-content { flex: 1 1 calc(50% - (var(--grid-gap, 30px) / 2)); }
-.col-3 .text-col-content { flex: 1 1 calc(33.333% - (var(--grid-gap, 30px) * 2 / 3)); }
-.col-4 .text-col-content { flex: 1 1 calc(25% - (var(--grid-gap, 30px) * 3 / 4)); }
 
 /* Utilitaire d'ancrage bas pour la bibliothèque */
 .btn-bottom-wrapper {
@@ -84,6 +59,9 @@ p {
 /* ==========================================================================
    4. UTILITAIRES DE FLUX (Gestion des images et floats)
    ========================================================================== */
+/* ==========================================================================
+   4. UTILITAIRES DE FLUX (Gestion des images et floats)
+   ========================================================================== */
 .float-box {
     display: block;
     overflow: hidden;
@@ -95,24 +73,31 @@ p {
     width: 100%;
 }
 
-.img-float-left {
-    display: block;
-    float: left;
-    width: 250px;
-    max-width: 100%;
-    height: auto;
-    margin: 0 30px 20px 0;
-    border-radius: 4px;
-}
-
+/* Par défaut (Mobile & Tablette) : Pas de float, l'image prend toute la largeur */
+.img-float-left,
 .img-float-right {
     display: block;
-    float: right;
-    margin: 0 0 20px 30px;
-    width: 250px;
+    width: 100%;
     max-width: 100%;
     height: auto;
+    margin: 0 auto 20px auto;
     border-radius: 4px;
+    float: none; /* Désactivation du float */
+}
+
+/* Desktop uniquement (> 1024px) : Activation des floats */
+@media (min-width: 1025px) {
+    .img-float-left {
+        float: left;
+        width: 250px;
+        margin: 0 30px 20px 0;
+    }
+
+    .img-float-right {
+        float: right;
+        width: 250px;
+        margin: 0 0 20px 30px;
+    }
 }
 
 .img-standard, 
@@ -151,25 +136,10 @@ hr.section-sep {
    ========================================================================== */
 
 /* 1. TABLETTE : Entre 769px et 1024px */
-@media (max-width: 1024px) {
-    .col-container {
-        gap: 30px;
-    }
-
-    /* Passage en 2 colonnes strictes sur tablette */
-    .col-4 .text-col-content {
-        flex: 1 1 calc(50% - 15px);
-        max-width: calc(50% - 15px);
-    }
-}
+/* (Les règles tablettes pour grilles sont dans grid.css et layout.css) */
 
 /* 2. MOBILE : Sous 768px */
 @media (max-width: 768px) {
-    .band-container {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
     .light-theme, .content-block:not(.light-theme) {
         padding: 40px 20px;
     }
@@ -179,19 +149,5 @@ hr.section-sep {
         float: none;
         margin: 0 auto 25px auto;
         width: 100%;
-    }
-
-    /* Passage en 1 colonne stricte sur mobile */
-    .col-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .col-2 .text-col-content,
-    .col-3 .text-col-content,
-    .col-4 .text-col-content {
-        flex: 1 1 100%;
-        width: 100%;
-        max-width: 100%;
     }
 }

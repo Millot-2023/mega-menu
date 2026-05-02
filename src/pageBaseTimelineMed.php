@@ -81,7 +81,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="content-block reveal">
+
+
+
+<div class="content-block reveal">
                     <div class="card-info">
                         <h3>02B. Structure Duo (2 Colonnes + float-left)</h3>
 
@@ -89,9 +92,9 @@
                             <div class="text-col-content">
                                 <h4>Float left</h4>
                                 <div class="float-box">
-                                    <picture class="responsive-picture">
+                                    <picture class="responsive-picture img-float-left">
                                         <source srcset="images/photo-640x480.png" media="(max-width: 768px)">
-                                        <img src="images/photo-320x240.png" class="img-float-left" alt="Illustration" loading="lazy">
+                                        <img src="images/photo-320x240.png" alt="Illustration" loading="lazy">
                                     </picture>
                                     <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente. Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
                                 </div>
@@ -104,9 +107,9 @@
                             <div class="text-col-content">
                                 <h4>Foalt rightl</h4>
                                 <div class="float-box">
-                                    <picture class="responsive-picture">
+                                    <picture class="responsive-picture img-float-right">
                                         <source srcset="images/photo-640x480.png" media="(max-width: 768px)">
-                                        <img src="images/photo-320x240.png" class="img-float-right" alt="Illustration" loading="lazy">
+                                        <img src="images/photo-320x240.png" alt="Illustration" loading="lazy">
                                     </picture>
                                     <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente. Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
                                 </div>
@@ -120,6 +123,13 @@
 
                     </div>
                 </div>
+
+
+
+
+
+
+
                 <hr class="section-sep">
                 <div class="content-block reveal">
                     <div class="card-info">
@@ -277,7 +287,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     </section>
 </main>

@@ -6,7 +6,9 @@
     width: 100%;
 }
 
-/* Configuration des rangées */
+/* ==========================================================================
+   SYSTÈME 1 : RANGÉES (Natif CSS Grid) - row-1, row-2, row-3, row-4
+   ========================================================================== */
 .row-1, .row-2, .row-3, .row-4 {
     display: grid;
     gap: var(--grid-gap);
@@ -19,7 +21,43 @@
 .row-3 { grid-template-columns: repeat(3, 1fr); }
 .row-4 { grid-template-columns: repeat(4, 1fr); }
 
-/* Cartes (Box) - ZÉRO PADDING POUR BORD À BORD */
+/* ==========================================================================
+   SYSTÈME 2 : COLONNES (Flexbox & Grid hérités) - col-2, col-3, col-4
+   ========================================================================== */
+.col-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--grid-gap, 30px);
+    margin-top: 30px;
+    align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.text-col-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Flex par défaut (Hérité de style.css) */
+.col-2 .text-col-content { flex: 1 1 calc(50% - (var(--grid-gap, 30px) / 2)); }
+.col-3 .text-col-content { flex: 1 1 calc(33.333% - (var(--grid-gap, 30px) * 2 / 3)); }
+.col-4 .text-col-content { flex: 1 1 calc(25% - (var(--grid-gap, 30px) * 3 / 4)); }
+
+/* Override spécifique aux gabarits de test (Hérité de pageBase.css) */
+.base-template-page .col-container {
+    display: grid;
+    gap: 40px;
+}
+.base-template-page .col-container.col-2 { grid-template-columns: repeat(2, 1fr); }
+.base-template-page .col-container.col-3 { grid-template-columns: repeat(3, 1fr); }
+.base-template-page .col-container.col-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* ==========================================================================
+   CARTES (Box) ET VIGNETTES
+   ========================================================================== */
 body .box {
     background: var(--menu-bg);
     border: 1px solid var(--menu-border);
@@ -37,7 +75,6 @@ body .box {
     border-color: var(--menu-border);
 }
 
-/* Conteneur Vignette */
 .grid-vignette {
     width: 100%;
     margin: 0;
@@ -54,7 +91,6 @@ body .grid-vignette img {
     margin: 0;
 }
 
-/* Espacements de texte internes via variables */
 .box h3, 
 .box p {
     padding-left: var(--card-padding-inner);
@@ -75,7 +111,6 @@ body .grid-vignette img {
     line-height: var(--lh-body);
 }
 
-/* Conteneur de bouton dans la card */
 .btn-container {
     display: flex;
     justify-content: center;
@@ -84,7 +119,6 @@ body .grid-vignette img {
     margin-top: auto; 
 }
 
-/* FORCE STYLE BOUTONS (Intégré pour Firebase) */
 body .btn-main {
     display: inline-block;
     background-color: #1a1a1a;
@@ -104,28 +138,91 @@ body .btn-main:hover {
 }
 
 /* ==========================================================================
-   HARMONISATION DES BREAKPOINTS (Alignés sur responsive.css et pageBase.css)
+   HARMONISATION DES BREAKPOINTS (Logique stricte 4 -> 2 -> 1)
    ========================================================================== */
 
 /* 1. TABLETTE - max-width: 1024px */
 @media (max-width: 1024px) {
-    .row-3 {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    /* Système 1 : row-x (Grid) */
+    .row-3 { grid-template-columns: repeat(2, 1fr); }
+    .row-3 > *:nth-child(3) { grid-column: span 2; }
     
-    .row-4 {
-        grid-template-columns: repeat(2, 1fr);
+    .row-4 { grid-template-columns: repeat(2, 1fr); }
+
+    /* Système 2 : col-x (Flexbox) */
+    .col-container { gap: 30px; }
+    
+    .col-3 .text-col-content {
+        flex: 1 1 calc(50% - 15px);
+        max-width: calc(50% - 15px);
+    }
+    .col-3 .text-col-content:nth-child(3) {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .col-4 .text-col-content {
+        flex: 1 1 calc(50% - 15px);
+        max-width: calc(50% - 15px);
+    }
+
+    /* Override Gabarits (Grid) - Annulation stricte du bridage Flexbox */
+    .base-template-page .col-container { gap: 30px; }
+    
+    .base-template-page .col-container.col-3 { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .base-template-page .col-container.col-3 > * {
+        max-width: none;
+        flex: none;
+    }
+    .base-template-page .col-container.col-3 > :nth-child(3) { grid-column: span 2; }
+
+    .base-template-page .col-container.col-4 { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .base-template-page .col-container.col-4 > * {
+        max-width: none;
+        flex: none;
     }
 }
 
 /* 2. MOBILE - max-width: 768px */
 @media (max-width: 768px) {
-    body .box {
-        padding: 0;
-    }
+    body .box { padding: 0; }
 
+    /* Système 1 : row-x (Grid) */
     body .row-2, body .row-3, body .row-4 {
         grid-template-columns: 1fr;
-        gap: var(--grid-gap); 
+        gap: var(--grid-gap, 20px); 
     }
+    body .row-3 > *:nth-child(3) { grid-column: span 1; }
+
+    /* Système 2 : col-x (Flexbox) */
+    .col-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .col-2 .text-col-content,
+    .col-3 .text-col-content,
+    .col-4 .text-col-content {
+        flex: 1 1 100%;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Override Gabarits (Grid) */
+    .base-template-page .col-container { gap: 20px; }
+    .base-template-page .col-container.col-2,
+    .base-template-page .col-container.col-3,
+    .base-template-page .col-container.col-4 {
+        grid-template-columns: 1fr;
+    }
+    .base-template-page .col-container.col-2 > *,
+    .base-template-page .col-container.col-3 > *,
+    .base-template-page .col-container.col-4 > * {
+        max-width: none;
+        flex: none;
+    }
+    .base-template-page .col-container.col-3 > :nth-child(3) { grid-column: span 1; }
 }
