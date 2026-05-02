@@ -98,8 +98,8 @@ main.landing-page .grid-vignette img {
 }
 
 /* --- NETTOYAGE ESPACE BAS --- */
-main.landing-page section:last-of-type {
-    margin-bottom: 0 !important;
+body main.landing-page section:last-of-type {
+    margin-bottom: 0;
 }
 
 /* --- SYSTÈME DE REVEAL --- */
@@ -126,10 +126,10 @@ main.landing-page .reveal {
         padding: 60px 0;
     }
     
-    main.landing-page .row-2,
-    main.landing-page .row-4 {
+    body main.landing-page .row-2,
+    body main.landing-page .row-4 {
         display: grid;
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr;
         gap: 20px;
     }
     

@@ -54,8 +54,8 @@
 
 /* --- ANIMATION DE DISPARITION (Déclenchée par main.js) --- */
 /* On s'assure que la classe combinée a la priorité pour le mouvement */
-.hero.hero-up {
-    transform: translateY(-100%) !important;
+body .hero.hero-up {
+    transform: translateY(-100%);
 }
 
 /* --- STRUCTURE DU CONTENU DESSOUS --- */

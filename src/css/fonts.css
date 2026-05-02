@@ -14,8 +14,8 @@ h1, h2, h3, h4, .logo {
 }
 
 /* Cas particulier : Texte sur le Hero ou zones sombres */
-.hero h1, .hero p, .desc-text {
-    color: white !important;
+body .hero h1, body .hero p, body .desc-text {
+    color: white;
 }
 
 .paragraphe { margin-bottom: 20px; }

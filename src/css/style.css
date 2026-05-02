@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. IMPORTS (Ordre critique)
+   1. IMPORTS
    ========================================================================== */
 @import "variables.css";
 @import "fonts.css";
@@ -9,10 +9,10 @@
 @import "menu.css";
 @import "hero.css"; 
 @import "footer.css";
-@import "responsive.css"; /* Doit rester en bas */
+@import "responsive.css";
 
 /* ==========================================================================
-   2. SYSTÈME DE GRILLE (Mise à jour pour ancrage robuste)
+   2. SYSTÈME DE GRILLE (Composants de structure uniquement)
    ========================================================================== */
 .band-container {
     width: 100%;
@@ -27,150 +27,118 @@
     flex-wrap: wrap;
     gap: var(--grid-gap, 30px);
     margin-top: 30px;
-    /* Force les colonnes d'une même ligne à avoir la même hauteur */
-    align-items: stretch; 
+    align-items: stretch;
 }
-
-/* Calcul précis pour éviter les débordements */
-.col-2 .text-col-content { flex: 1 1 calc(50% - var(--grid-gap)); }
-.col-3 .text-col-content { flex: 1 1 calc(33.333% - var(--grid-gap)); }
-.col-4 .text-col-content { flex: 1 1 calc(25% - var(--grid-gap)); }
 
 .text-col-content {
-    min-width: 250px;
     display: flex;
     flex-direction: column;
-    /* On retire height: 100% qui peut bugger sur certains navigateurs 
-       et on laisse le flex-grow du parent gérer la hauteur */
-    flex-grow: 1; 
+    box-sizing: border-box;
+    /* Suppression du min-width qui provoquait le décrochage sauvage */
 }
 
-/* Cible la div de centrage du bouton pour l'ancrage */
-.text-col-content > div[style*="text-align: center"] {
-    margin-top: auto !important;
+/* Distribution exacte sans débordement possible */
+.col-2 .text-col-content { flex: 1 1 calc(50% - (var(--grid-gap, 30px) / 2)); }
+.col-3 .text-col-content { flex: 1 1 calc(33.333% - (var(--grid-gap, 30px) * 2 / 3)); }
+.col-4 .text-col-content { flex: 1 1 calc(25% - (var(--grid-gap, 30px) * 3 / 4)); }
+
+/* Utilitaire d'ancrage bas pour la bibliothèque */
+.btn-bottom-wrapper {
+    margin-top: auto;
     padding-top: 25px;
+    text-align: center;
 }
 
 /* ==========================================================================
-   3. GESTION DES TEXTES ET THÈMES
+   3. TYPOGRAPHIES ET THÈMES
    ========================================================================== */
 h1, h2, h3, h4 {
-    color: var(--menu-text, #1a1a1a) !important;
+    color: var(--menu-text, #1a1a1a);
     margin-bottom: 25px;
 }
 
 h2 { margin-bottom: 40px; } 
 
-p, .text-col-content p {
-    color: var(--menu-text, #1a1a1a) !important;
+p {
+    color: var(--menu-text, #1a1a1a);
     line-height: 1.7; 
     margin-bottom: 25px; 
 }
 
-.hero p, .hero h1, .main-footer p, .main-footer h4, .bg-black h2, .bg-black p {
-    color: #ffffff !important;
-}
-
-.header-block {
-    background-color: #2c2c2c !important; 
-    padding: 80px 0; 
-    border-bottom: 1px solid #444444;
-}
-
-.header-block h2, 
-.header-block .desc-text, 
-.header-block .category-badge {
-    color: #ffffff !important;
-}
-
-.landing-band {
-    /* padding: 100px 0; */
-}
-
-/* --- STYLES TEMPORAIRES D'AUDIT (À SUPPRIMER APRÈS VALIDATION) --- */
-
 .light-theme {
-    background-color: #f4f4f4 !important; 
+    background-color: #f4f4f4; 
     padding: 60px 40px; 
     border-radius: 8px;
     border: 1px solid #e0e0e0; 
     margin: 60px 0; 
 }
 
-.content-block:not(.light-theme):not(.bg-black) {
-    background-color: #fff5f5 !important; 
+.content-block:not(.light-theme) {
+    background-color: #fff5f5; 
     padding: 60px 40px;
     border-radius: 8px;
     border: 1px solid #ffebeb;
     margin: 60px 0;
 }
 
-/* ----------------------------------------------------------------- */
-
 /* ==========================================================================
-   4. GESTION DES FLOATS ET RESPONSIVE IMAGES
+   4. UTILITAIRES DE FLUX (Gestion des images et floats)
    ========================================================================== */
 .float-box {
-    display: block; 
-    overflow: hidden; 
+    display: block;
+    overflow: hidden;
+    width: 100%;
+}
+
+.responsive-picture {
+    display: block;
+    width: 100%;
 }
 
 .img-float-left {
+    display: block;
     float: left;
-    margin: 0 30px 20px 0; 
-    max-width: 250px;
+    width: 250px;
+    max-width: 100%;
     height: auto;
+    margin: 0 30px 20px 0;
+    border-radius: 4px;
 }
 
 .img-float-right {
+    display: block;
     float: right;
     margin: 0 0 20px 30px;
-    max-width: 250px;
+    width: 250px;
+    max-width: 100%;
     height: auto;
+    border-radius: 4px;
 }
 
-@media (max-width: 768px) {
-    .light-theme { padding: 40px 20px; }
-    
-    .band-container {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    .img-float-left, .img-float-right {
-        float: none;
-        display: block;
-        margin: 0 auto 25px auto;
-        max-width: 100%; 
-        width: 100%;
-        height: auto;
-    }
+.img-standard, 
+.responsive-picture img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
 /* ==========================================================================
-   5. ÉLÉMENTS DE SÉPARATION (HR)
+   5. SÉPARATEURS ET ANIMATIONS
    ========================================================================== */
 hr.section-sep {
     border: 0;
-    height: 3px;
-    background: #e0e0e0; 
-    width: 60%; 
+    height: 30px;
+    background: linear-gradient(90deg, #fff 0%, #000 15%, #000 85%, #fff 100%);
+    width: 100%; 
     margin: 80px auto;  
-    opacity: 0.6;
 }
 
-.bg-black hr.section-sep {
-    background: #444444;
-}
-
-/* ==========================================================================
-   6. PRÉPARATION AUX ANIMATIONS (REVEAL)
-   ========================================================================== */
 .reveal {
     opacity: 0;
     transform: translateY(30px); 
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    will-change: opacity, transform; 
 }
 
 .reveal.active {
@@ -178,10 +146,52 @@ hr.section-sep {
     transform: translateY(0);
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
+/* ==========================================================================
+   6. RESPONSIVE (MEDIA QUERIES UNIFIÉES)
+   ========================================================================== */
+
+/* 1. TABLETTE : Entre 769px et 1024px */
+@media (max-width: 1024px) {
+    .col-container {
+        gap: 30px;
+    }
+
+    /* Passage en 2 colonnes strictes sur tablette */
+    .col-4 .text-col-content {
+        flex: 1 1 calc(50% - 15px);
+        max-width: calc(50% - 15px);
+    }
+}
+
+/* 2. MOBILE : Sous 768px */
+@media (max-width: 768px) {
+    .band-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .light-theme, .content-block:not(.light-theme) {
+        padding: 40px 20px;
+    }
+
+    /* Désactivation des floats sur mobile */
+    .img-float-left, .img-float-right {
+        float: none;
+        margin: 0 auto 25px auto;
+        width: 100%;
+    }
+
+    /* Passage en 1 colonne stricte sur mobile */
+    .col-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .col-2 .text-col-content,
+    .col-3 .text-col-content,
+    .col-4 .text-col-content {
+        flex: 1 1 100%;
+        width: 100%;
+        max-width: 100%;
     }
 }
