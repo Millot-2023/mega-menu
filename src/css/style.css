@@ -116,9 +116,29 @@ hr.section-sep {
     border: 0;
     height: 30px;
     background: linear-gradient(90deg, #fff 0%, #000 15%, #000 85%, #fff 100%);
+
     width: 100%; 
     margin: 80px auto;  
 }
+
+hr.section-sep-thin {
+    border: 0;
+    height: 10px;
+    background: linear-gradient(90deg, #fff 0%, #4f4f4f 15%, #4f4f4f 85%, #fff 100%);
+    width: 100%; 
+    margin: 80px auto;  
+}
+
+hr.section-sep-thin-inner {
+    border: 0;
+    height: 10px;
+    background: linear-gradient(90deg, transparent 0%, #ffffff 15%, #ffffff 85%, transparent 100%);
+    width: 100%; 
+    margin: 80px auto;  
+}
+
+
+
 
 .reveal {
     opacity: 0;

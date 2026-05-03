@@ -20,15 +20,19 @@
 
 /* --- TITRES DE SECTION --- */
 .section-titles {
+
+    background-color:black;
     margin-bottom: var(--section-margin);
     width: 100%;
     display: block;
     position: relative;
+    padding:50px;
 }
 
 .section-titles h1,
 .section-titles h2 {
     margin: 0 0 15px 0;
+    color:white;
 }
 
 .category-badge {

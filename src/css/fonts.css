@@ -1,7 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');
 
+/* ==========================================================================
+   VARIABLES DE TAILLES DE POLICES (Desktop par défaut)
+   ========================================================================== */
+:root {
+    --fs-h1: 3rem;       /* 48px */
+    --fs-h2: 2.25rem;    /* 36px */
+    --fs-h3: 1.5rem;     /* 24px */
+    --fs-h4: 1.125rem;   /* 18px */
+    --fs-body: 1rem;     /* 16px */
+    --fs-desc: 1.125rem; /* 18px */
+    --fs-badge: 0.75rem; /* 12px */
+    
+    --font-titles: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --lh-titles: 1.2;
+    --lh-body: 1.7;
+}
+
+/* ==========================================================================
+   ADAPTATION MOBILE (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    :root {
+        --fs-h1: 2.25rem;    /* 36px */
+        --fs-h2: 1.75rem;    /* 28px */
+        --fs-h3: 1.25rem;    /* 20px */
+        --fs-h4: 1.05rem;    /* 17px */
+        --fs-body: 0.95rem;  /* 15.2px */
+        --fs-desc: 1rem;     /* 16px */
+    }
+}
+
+/* ==========================================================================
+   APPLICATION DES STYLES DE BASE
+   ========================================================================== */
 body {
     font-family: var(--font-body);
+    font-size: var(--fs-body);
     line-height: var(--lh-body);
     -webkit-font-smoothing: antialiased;
 }
@@ -9,13 +45,80 @@ body {
 h1, h2, h3, h4, .logo {
     font-family: var(--font-titles);
     line-height: var(--lh-titles);
+}
+
+/* Échelle typographique stricte */
+h1 { font-size: var(--fs-h1); font-weight: 800; }
+h2 { font-size: var(--fs-h2); font-weight: 700; }
+h3 { font-size: var(--fs-h3); font-weight: 700; }
+h4 { font-size: var(--fs-h4); font-weight: 600; }
+
+h4 {
+    display: block; /* Ou flex */
+    width: 100%;
+    border-bottom: 2px solid #7e7e7e; /* Épaisseur, style et couleur de la ligne */
+    padding-bottom: 8px; /* Espace entre le texte et la ligne */
+    margin-bottom: 15px; /* Espace sous la ligne */
+}
+
+
+
+
+.logo { 
+    font-size: 1.25rem; 
+    font-weight: 700; 
+}
+
+.category-badge {
+    font-family: var(--font-titles);
+    font-size: var(--fs-badge);
     font-weight: 700;
-    color: inherit; /* Prend le sombre du body */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color:white;
+}
+
+/* Paragraphes et descriptions */
+p {
+    font-size: var(--fs-body);
+    margin-bottom: 25px;
+}
+
+.paragraphe { 
+    margin-bottom: 20px; 
+}
+
+.desc-text {
+    font-size: var(--fs-desc);
+    line-height: 1.6;
 }
 
 /* Cas particulier : Texte sur le Hero ou zones sombres */
-body .hero h1, body .hero p, body .desc-text {
-    color: white;
+body .hero h1, 
+body .hero p, 
+body .desc-text {
+    color: #ffffff;
 }
 
-.paragraphe { margin-bottom: 20px; }
+/* ==========================================================================
+   COULEURS DE REPÉRAGE TEMPORAIRES (Haute Priorité)
+   ========================================================================== */
+/*body h1, body .hero h1 { 
+    color: #ff00ff !important;
+}
+
+body h2, body .section-titles h2 { 
+    color: #00ff00 !important;
+}
+
+body h3, body .box h3, body .card-info h3 { 
+    color: #ffff00 !important;
+    background-color: #000000;
+    padding: 5px;
+}
+
+body h4, body .text-col-content h4 { 
+    color: #00ffff !important;
+    background-color: #000000;
+    padding: 3px;
+}*/

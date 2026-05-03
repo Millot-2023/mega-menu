@@ -14,14 +14,15 @@ foreach ($phpFiles as $file) {
     }
 }
 
-// AJOUT DE PAGEBASE.CSS DANS LA LISTE
+// AJOUT DE BUTTONS.CSS DANS LA LISTE
 $cssFiles = [
     'variables.css', 
     'fonts.css',     
     'base.css',
-    'pageBase.css', // <--- IL ÉTAIT MANQUANT ICI
+    'pageBase.css',
     'layout.css',
     'grid.css',      
+    'buttons.css', // <--- AJOUTÉ : Pour récupérer les styles des boutons
     'header.css',
     'menu.css',
     'hero.css',
@@ -91,7 +92,6 @@ function sync($src, $dst) {
     }
 }
 
-// On force la synchronisation du dossier JS
 sync($sourceDir . 'js', $exportDir . 'js');
 sync($sourceDir . 'images', $exportDir . 'images');
 

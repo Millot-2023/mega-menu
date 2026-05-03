@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');
-/* Fichier fusionné - Build: 2026-05-02 12:59:51 */
+/* Fichier fusionné - Build: 2026-05-02 16:15:47 */
 
 /* --- Source: variables.css --- */
 :root {
@@ -122,42 +122,16 @@ body.no-scroll {
 }
 
 /* --- Source: pageBase.css --- */
-/* pageBase.scss - RESET RADICAL POUR ANTIGRAVITY */
-.base-template-page {
-  /* Uniquement la structure des colonnes, le reste doit venir des CSS originaux */
+/* ==========================================================================
+   RESET & STRUCTURES DE BASE - ANTIGRAVITY
+   ========================================================================== */
+/* Les règles de grille (col-container, etc.) ont été centralisées dans grid.css */
+/* Les règles d'images globales (homothétie) sont dans style.css */
+
+/* --- COMPORTEMENT SPÉCIFIQUE DES IMAGES DANS LE GABARIT --- */
+.base-template-page .responsive-picture {
+    margin-bottom: 15px;
 }
-.base-template-page .col-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 40px;
-}
-.base-template-page .col-container.col-2 > * {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-.base-template-page .col-container.col-3 > * {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-.base-template-page .col-container.col-4 > * {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-@media (max-width: 768px) {
-  .base-template-page .col-container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .base-template-page .col-container > * {
-    width: 100%;
-  }
-}/*# sourceMappingURL=pageBase.css.map */
 
 /* --- Source: layout.css --- */
 /* ==========================================================================
@@ -170,6 +144,14 @@ body.no-scroll {
     min-height: 100vh;
     box-sizing: border-box;
     display: block;
+}
+
+.band-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /* --- TITRES DE SECTION --- */
@@ -213,6 +195,11 @@ body.no-scroll {
         padding-bottom: 30px;
     }
 
+    .band-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
     .section-titles {
         /* Utilisation de la variable mobile définie dans variables.css */
         margin-bottom: var(--section-margin-mobile, 30px);
@@ -234,20 +221,58 @@ body.no-scroll {
     width: 100%;
 }
 
-/* Configuration des rangées */
+/* ==========================================================================
+   SYSTÈME 1 : RANGÉES (Natif CSS Grid) - row-1, row-2, row-3, row-4
+   ========================================================================== */
 .row-1, .row-2, .row-3, .row-4 {
     display: grid;
     gap: var(--grid-gap);
     margin-bottom: var(--grid-gap);
 }
 
-/* Logique de colonnes */
+/* Logique de colonnes initiale Desktop (> 1024px) */
 .row-1 { grid-template-columns: 1fr; }
 .row-2 { grid-template-columns: repeat(2, 1fr); }
 .row-3 { grid-template-columns: repeat(3, 1fr); }
 .row-4 { grid-template-columns: repeat(4, 1fr); }
 
-/* Cartes (Box) - ZÉRO PADDING POUR BORD À BORD */
+/* ==========================================================================
+   SYSTÈME 2 : COLONNES (Flexbox & Grid hérités) - col-2, col-3, col-4
+   ========================================================================== */
+.col-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--grid-gap, 30px);
+    margin-top: 30px;
+    align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.text-col-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Flex par défaut (Hérité de style.css) */
+.col-2 .text-col-content { flex: 1 1 calc(50% - (var(--grid-gap, 30px) / 2)); }
+.col-3 .text-col-content { flex: 1 1 calc(33.333% - (var(--grid-gap, 30px) * 2 / 3)); }
+.col-4 .text-col-content { flex: 1 1 calc(25% - (var(--grid-gap, 30px) * 3 / 4)); }
+
+/* Override spécifique aux gabarits de test (Hérité de pageBase.css) */
+.base-template-page .col-container {
+    display: grid;
+    gap: 40px;
+}
+.base-template-page .col-container.col-2 { grid-template-columns: repeat(2, 1fr); }
+.base-template-page .col-container.col-3 { grid-template-columns: repeat(3, 1fr); }
+.base-template-page .col-container.col-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* ==========================================================================
+   CARTES (Box) ET VIGNETTES
+   ========================================================================== */
 body .box {
     background: var(--menu-bg);
     border: 1px solid var(--menu-border);
@@ -265,7 +290,6 @@ body .box {
     border-color: var(--menu-border);
 }
 
-/* Conteneur Vignette */
 .grid-vignette {
     width: 100%;
     margin: 0;
@@ -282,7 +306,6 @@ body .grid-vignette img {
     margin: 0;
 }
 
-/* Espacements de texte internes via variables */
 .box h3, 
 .box p {
     padding-left: var(--card-padding-inner);
@@ -303,7 +326,6 @@ body .grid-vignette img {
     line-height: var(--lh-body);
 }
 
-/* Conteneur de bouton dans la card */
 .btn-container {
     display: flex;
     justify-content: center;
@@ -312,7 +334,6 @@ body .grid-vignette img {
     margin-top: auto; 
 }
 
-/* FORCE STYLE BOUTONS (Intégré pour Firebase) */
 body .btn-main {
     display: inline-block;
     background-color: #1a1a1a;
@@ -331,20 +352,144 @@ body .btn-main:hover {
     color: #1a1a1a;
 }
 
-/* Responsive Grille */
+/* ==========================================================================
+   HARMONISATION DES BREAKPOINTS (Logique stricte 4 -> 2 -> 1)
+   ========================================================================== */
+
+/* 1. TABLETTE - max-width: 1024px */
 @media (max-width: 1024px) {
+    /* Système 1 : row-x (Grid) */
+    .row-3 { grid-template-columns: repeat(2, 1fr); }
+    .row-3 > *:nth-child(3) { grid-column: span 2; }
+    
     .row-4 { grid-template-columns: repeat(2, 1fr); }
+
+    /* Système 2 : col-x (Flexbox) */
+    .col-container { gap: 30px; }
+    
+    .col-3 .text-col-content {
+        flex: 1 1 calc(50% - 15px);
+        max-width: calc(50% - 15px);
+    }
+    .col-3 .text-col-content:nth-child(3) {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .col-4 .text-col-content {
+        flex: 1 1 calc(50% - 15px);
+        max-width: calc(50% - 15px);
+    }
+
+    /* Override Gabarits (Grid) - Annulation stricte du bridage Flexbox */
+    .base-template-page .col-container { gap: 30px; }
+    
+    .base-template-page .col-container.col-3 { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .base-template-page .col-container.col-3 > * {
+        max-width: none;
+        flex: none;
+    }
+    .base-template-page .col-container.col-3 > :nth-child(3) { grid-column: span 2; }
+
+    .base-template-page .col-container.col-4 { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .base-template-page .col-container.col-4 > * {
+        max-width: none;
+        flex: none;
+    }
 }
 
+/* 2. MOBILE - max-width: 768px */
 @media (max-width: 768px) {
-    body .box {
-        padding: 0;
-    }
+    body .box { padding: 0; }
 
+    /* Système 1 : row-x (Grid) */
     body .row-2, body .row-3, body .row-4 {
         grid-template-columns: 1fr;
-        gap: var(--grid-gap); 
+        gap: var(--grid-gap, 20px); 
     }
+    body .row-3 > *:nth-child(3) { grid-column: span 1; }
+
+    /* Système 2 : col-x (Flexbox) */
+    .col-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .col-2 .text-col-content,
+    .col-3 .text-col-content,
+    .col-4 .text-col-content {
+        flex: 1 1 100%;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Override Gabarits (Grid) */
+    .base-template-page .col-container { gap: 20px; }
+    .base-template-page .col-container.col-2,
+    .base-template-page .col-container.col-3,
+    .base-template-page .col-container.col-4 {
+        grid-template-columns: 1fr;
+    }
+    .base-template-page .col-container.col-2 > *,
+    .base-template-page .col-container.col-3 > *,
+    .base-template-page .col-container.col-4 > * {
+        max-width: none;
+        flex: none;
+    }
+    .base-template-page .col-container.col-3 > :nth-child(3) { grid-column: span 1; }
+}
+
+/* --- Source: buttons.css --- */
+/* ==========================================================================
+   BOUTONS DU SYSTÈME DE GRILLE (btn-main)
+   ========================================================================== */
+.grid-system .btn-container .btn-main {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid var(--btn-border);
+    text-transform: uppercase;
+    transition: all var(--transition-speed) ease;
+}
+
+.grid-system .btn-container .btn-main:hover {
+    background-color: var(--btn-hover-bg);
+    color: var(--btn-hover-color);
+}
+
+/* ==========================================================================
+   BOUTON SIMPLE (Audit & Test)
+   ========================================================================== */
+.simpleButton {
+    background-color: grey;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+    
+    /* 
+       L'ancrage bas fonctionne ici si le bouton est un enfant DIRECT 
+       de .text-col-content.
+    */
+    margin-top: auto; 
+    align-self: center; 
+    display: inline-block;
+}
+
+.simpleButton:hover {
+    background-color: black;
+}
+
+.simpleButton:active {
+    background-color: green;
 }
 
 /* --- Source: header.css --- */
@@ -1104,6 +1249,8 @@ main.landing-page .reveal {
 @import "variables.css";
 @import "fonts.css";
 @import "base.css";
+@import "layout.css";   /* <--- AJOUTÉ : Pour la structure globale */
+@import "grid.css";     /* <--- AJOUTÉ : Pour les colonnes et grilles */
 @import "buttons.css";
 @import "header.css";
 @import "menu.css";
@@ -1112,34 +1259,8 @@ main.landing-page .reveal {
 @import "responsive.css";
 
 /* ==========================================================================
-   2. SYSTÈME DE GRILLE (Composants de structure uniquement)
+   2. UTILITAIRES DE STRUCTURE (Grilles dans grid.css, Layout dans layout.css)
    ========================================================================== */
-.band-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.col-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--grid-gap, 30px);
-    margin-top: 30px;
-    align-items: stretch;
-}
-
-.text-col-content {
-    min-width: 250px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.col-2 .text-col-content { flex: 1 1 calc(50% - var(--grid-gap)); }
-.col-3 .text-col-content { flex: 1 1 calc(33.333% - var(--grid-gap)); }
-.col-4 .text-col-content { flex: 1 1 calc(25% - var(--grid-gap)); }
 
 /* Utilitaire d'ancrage bas pour la bibliothèque */
 .btn-bottom-wrapper {
@@ -1181,7 +1302,10 @@ p {
 }
 
 /* ==========================================================================
-   4. UTILITAIRES DE FLUX (Pas de Flexbox ici pour laisser le float agir)
+   4. UTILITAIRES DE FLUX (Gestion des images et floats)
+   ========================================================================== */
+/* ==========================================================================
+   4. UTILITAIRES DE FLUX (Gestion des images et floats)
    ========================================================================== */
 .float-box {
     display: block;
@@ -1191,26 +1315,43 @@ p {
 
 .responsive-picture {
     display: block;
+    width: 100%;
 }
 
-.img-float-left {
-    display: block;
-    float: left;
-    width: 250px;
-    max-width: 100%;
-    height: auto;
-    margin: 0 30px 20px 0;
-    border-radius: 4px;
-}
-
+/* Par défaut (Mobile & Tablette) : Pas de float, l'image prend toute la largeur */
+.img-float-left,
 .img-float-right {
     display: block;
-    float: right;
-    margin: 0 0 20px 30px;
-    width: 250px;
+    width: 100%;
     max-width: 100%;
     height: auto;
+    margin: 0 auto 20px auto;
     border-radius: 4px;
+    float: none; /* Désactivation du float */
+}
+
+/* Desktop uniquement (> 1024px) : Activation des floats */
+@media (min-width: 1025px) {
+    .img-float-left {
+        float: left;
+        width: 250px;
+        margin: 0 30px 20px 0;
+    }
+
+    .img-float-right {
+        float: right;
+        width: 250px;
+        margin: 0 0 20px 30px;
+    }
+}
+
+.img-standard, 
+.responsive-picture img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
 /* ==========================================================================
@@ -1235,49 +1376,24 @@ hr.section-sep {
     transform: translateY(0);
 }
 
-
-.img-standard, 
-.img-float-left, 
-.img-float-right, 
-.responsive-picture img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-
-
-
 /* ==========================================================================
-   6. RESPONSIVE (MEDIA QUERIES)
+   6. RESPONSIVE (MEDIA QUERIES UNIFIÉES)
    ========================================================================== */
-@media (max-width: 768px) {
-    .band-container {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
 
+/* 1. TABLETTE : Entre 769px et 1024px */
+/* (Les règles tablettes pour grilles sont dans grid.css et layout.css) */
+
+/* 2. MOBILE : Sous 768px */
+@media (max-width: 768px) {
     .light-theme, .content-block:not(.light-theme) {
         padding: 40px 20px;
     }
 
+    /* Désactivation des floats sur mobile */
     .img-float-left, .img-float-right {
         float: none;
         margin: 0 auto 25px auto;
         width: 100%;
     }
-
-    .img-float-left, .img-float-right {
-        float: none;
-        margin: 0 auto 25px auto;
-        width: 100%;
-    }
-
-.responsive-picture img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
 }
 
