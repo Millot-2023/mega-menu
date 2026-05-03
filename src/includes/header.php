@@ -100,7 +100,7 @@
                                 <li><a href="optimisation-seo.php">Optimisation SEO</a></li>
                                 <li><a href="audit-securite.php">Audit Sécurité</a></li>
 
-                                <li><a href="pageBaseTimelineMed.php">pageBaseTimelineMed</a></li>
+                               <a href="pageTemplate.php" style="color: red !important;">Page Templates</a>
 
 
 
