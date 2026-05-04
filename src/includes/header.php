@@ -64,7 +64,7 @@
                             <h3>Photographie</h3>
                             <ul>
                                 <li><a href="portrait-studio.php">Portraits Studio</a></li>
-                                <li><a href="architecture-urbaine.php">Architecture Urbaine</a></li>
+                                <li><a href="architecture-urbaine.php" style="color: red !important;">Architecture Urbaine</a></li>
                                 <li><a href="reportage-mariage.php">Reportages Mariage</a></li>
                                 <li><a href="nature-maccro.php">Nature & Macro</a></li>
                                 <li><a href="mode-lookbook.php">Mode & Lookbook</a></li>
