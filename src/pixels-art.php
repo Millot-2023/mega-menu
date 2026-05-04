@@ -182,7 +182,8 @@
 .btn-fill { background: #64748b; color: #ffffff; }
 .btn-fill:hover { background: #475569; }
 
-.btn-export { background: #475569; color: #ffffff; }
+/* Modification : Prise en charge de toute la largeur */
+.btn-export { background: #475569; color: #ffffff; grid-column: span 2; }
 .btn-export:hover { background: #334155; }
 
 .btn-save { background: #0f172a; color: #ffffff; grid-column: span 2; }
@@ -491,7 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.pixel-cell').forEach(cell => cell.style.backgroundColor = '#ffffff');
             pixelData = [];
             currentCreationId = '';
-            projectNameInput.value = ''; // Réinitialise le nom
+            projectNameInput.value = '';
         });
     }
 
@@ -504,11 +505,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sauvegarder
     if (saveBtn) {
         saveBtn.addEventListener('click', () => {
+            const mdp = prompt("Veuillez saisir le mot de passe pour enregistrer :");
+            if (!mdp) return;
+
             const cells = document.querySelectorAll('.pixel-cell');
             const currentPixels = Array.from(cells).map(cell => cell.style.backgroundColor || '#ffffff');
             const projectName = projectNameInput.value.trim() || 'Sans titre';
 
             const payload = {
+                password: mdp,
                 id: currentCreationId,
                 name: projectName,
                 size: currentSize,
@@ -529,7 +534,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     alert('Erreur lors de la sauvegarde : ' + response.message);
                 }
-            });
+            })
+            .catch(err => console.error('Erreur AJAX:', err));
         });
     }
 
@@ -561,11 +567,14 @@ document.addEventListener('DOMContentLoaded', () => {
             
             delBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
+                const mdp = prompt("Veuillez saisir le mot de passe pour supprimer :");
+                if (!mdp) return;
+
                 if (confirm('Voulez-vous vraiment supprimer cette création ?')) {
                     fetch('sauvegarder-pixel.php', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ action: 'delete', id: item.id })
+                        body: JSON.stringify({ action: 'delete', id: item.id, password: mdp })
                     })
                     .then(res => res.json())
                     .then(response => {
@@ -576,9 +585,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                             renderGallery(response.creations);
                         } else {
-                            alert('Erreur lors de la suppression.');
+                            alert('Erreur lors de la suppression : ' + response.message);
                         }
-                    });
+                    })
+                    .catch(err => console.error('Erreur AJAX:', err));
                 }
             });
 
@@ -589,6 +599,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             dupBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
+                const mdp = prompt("Veuillez saisir le mot de passe pour dupliquer :");
+                if (!mdp) return;
+
                 currentCreationId = ''; 
                 projectNameInput.value = (item.name || 'Sans titre') + ' (copie)';
 
@@ -600,7 +613,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 createGrid(item.size, item.pixels);
-                alert('Création chargée comme nouvelle copie. Cliquez sur "Enregistrer la création" pour la sauvegarder.');
+                alert('Création chargée comme copie. Cliquez sur "Enregistrer" pour la sauvegarder avec le nouveau mot de passe.');
                 window.scrollTo({ top: document.querySelector('.pixel-maker-container').offsetTop - 50, behavior: 'smooth' });
             });
 
@@ -615,7 +628,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 preview.appendChild(miniPixel);
             });
 
-            // Affichage du nom personnalisé s'il existe
             const info = document.createElement('div');
             info.className = 'gallery-info';
             info.innerHTML = `<strong>${item.name || 'Sans titre'}</strong><br><small>${item.size}x${item.size}</small>`;

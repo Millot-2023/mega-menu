@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Christophe MILLOT</title>
+    <meta name="description" content="Découvrez l'univers visuel de Christophe Millot (Christophe MILLOT) : photographie professionnelle, art digital, vidéo et développement web sur mesure.">
+    <meta name="author" content="Christophe Millot">
+    <meta name="robots" content="index, follow">
+
+    <!-- APPEL UNIQUE : Centralise toute la cascade CSS -->
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-home">
+
+    <header class="main-header">
+        <div class="logo">Christophe MILLOT</div>
+        <button class="burger-btn" id="burgerOpen" aria-label="Ouvrir le menu principal">☰</button>
+    </header>
+
+    <nav class="mega-menu" id="megaMenu" aria-label="Navigation principale">
+        <div class="menu-wrapper">
+            
+            <div class="menu-panel active" id="main-panel">
+                <div class="menu-header">
+                    <div class="search-bar">
+                        <input type="text" id="site-search" placeholder="Rechercher un projet..." aria-label="Champ de recherche de projets">
+                    </div>
+                    <button class="close-btn" id="menuClose" aria-label="Fermer le menu de navigation">✕</button>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="index.html" class="direct-link">🏠 Accueil</a></li>
+                    
+                    <li class="has-submenu-container">
+                        <button class="submenu-trigger" data-target="submenu-projets" aria-haspopup="true" aria-expanded="false">
+                            <span>Nos Projets (Détaillés)</span>
+                            <span class="chevron-right" aria-hidden="true">›</span>
+                        </button>
+                    </li>
+                    
+                    <li class="has-submenu-container">
+                        <button class="submenu-trigger" data-target="submenu-expertises" aria-haspopup="true" aria-expanded="false">
+                            <span>Nos Expertises</span>
+                            <span class="chevron-right" aria-hidden="true">›</span>
+                        </button>
+                    </li>
+                    
+                    <li><a href="photographie.html" class="direct-link">📸 Galerie Complète</a></li>
+                    <li><a href="contact.html" class="direct-link">Contact direct</a></li>
+                </ul>
+            </div>
+
+            <!-- Panel Projets -->
+            <div class="menu-panel" id="submenu-projets">
+                <div class="menu-header">
+                    <button class="back-btn" aria-label="Retour au menu principal">‹ Retour au menu</button>
+                    <button class="close-btn" aria-label="Fermer le menu de navigation">✕</button>
+                </div>
+                <div class="panel-content">
+                    <h2 class="panel-title">Détail des Projets</h2>
+                    <div class="mega-grid">
+                        <div class="mega-col">
+                            <h3>Photographie</h3>
+                            <ul>
+                                <li><a href="portrait-studio.html">Portraits Studio</a></li>
+                                <li><a href="architecture-urbaine.html" style="color: red !important;">Architecture Urbaine</a></li>
+                                <li><a href="reportage-mariage.html">Reportages Mariage</a></li>
+                                <li><a href="nature-maccro.html">Nature & Macro</a></li>
+                                <li><a href="mode-lookbook.html">Mode & Lookbook</a></li>
+                                <li><a href="noir-et-blanc.html">Noir & Blanc</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-col">
+                            <h3>Digital Art</h3>
+                            <ul>
+                                <li><a href="pixels-art.html">Pixel Art 8-bit</a></li>
+                                <li><a href="illustrations.html">Illustrations 2D</a></li>
+                                <li><a href="jeux-video.html">Jeux Vidéo</a></li>
+                                <li><a href="peinture-numerique.html">Peinture Numérique</a></li>
+                                <li><a href="nft-collection.html">NFT Collections</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-col">
+                            <h3>Vidéo & Motion</h3>
+                            <ul>
+                                <li><a href="clips-musicaux.html">Clips Musicaux</a></li>
+                                <li><a href="publicite-tv.html">Publicités TV</a></li>
+                                <li><a href="motion-design.html">Motion Design 2D</a></li>
+                                <li><a href="interwiew.html">Interviews</a></li>
+                                <li><a href="captation.html">Captation Drone 4K</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-col">
+                            <h3>Web & Code</h3>
+                            <ul>
+                                <li><a href="site-vitrine.html">Sites Vitrines</a></li>
+                                <li><a href="ecommerce.html">E-commerce Complexes</a></li>
+                                <li><a href="application-metiers.html">Applications Métier</a></li>
+                                <li><a href="optimisation-seo.html">Optimisation SEO</a></li>
+                                <li><a href="audit-securite.html">Audit Sécurité</a></li>
+
+                               <a href="pageTemplate.html" style="color: red !important;">Page Templates</a>
+
+
+
+
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel Expertises -->
+            <div class="menu-panel" id="submenu-expertises">
+                <div class="menu-header">
+                    <button class="back-btn" aria-label="Retour au menu principal">‹ Retour au menu</button>
+                    <button class="close-btn" aria-label="Fermer le menu de navigation">✕</button>
+                </div>
+                <div class="panel-content">
+                    <h2 class="panel-title">Nos Expertises</h2>
+                    <div class="mega-grid">
+                        <div class="mega-col">
+                            <h3>Conseil Stratégique</h3>
+                            <ul>
+                                <li><a href="projet-type.html">Identité de Marque</a></li>
+                                <li><a href="projet-type.html">Direction Artistique</a></li>
+                                <li><a href="projet-type.html">Stratégie Social Media</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-col">
+                            <h3>Performance</h3>
+                            <ul>
+                                <li><a href="projet-type.html">Hébergement Haute Dispo</a></li>
+                                <li><a href="projet-type.html">Maintenance Critique</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+<section class="hero">
+    <div class="hero-inner">
+        <h1>Validation des Flux Intégraux</h1>
+        <p>Audit responsive : 2, 3 et 4 colonnes avec gestion des Floats.</p>
+    </div>
+    <a href="#content" class="hero-chevron">︾</a>
+</section>
+
+<main class="content-area base-template-page" id="content">
+
+    <section class="header-block">
+        <div class="band-container">
+            <div class="section-titles reveal">
+                <span class="category-badge">Audit de Structure</span>
+                <h2>01 - Matière de test exhaustive</h2>
+                <p class="desc-text">Vérification de l'empilement et de la fluidité des colonnes sur une grille sans marges parasites.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="landing-band">
+        <div class="band-container">
+            <div class="content-wrapper">
+
+                <!--<div class="reveal">
+                    <h2>01. Tests de structures Mono et Duo</h2>
+                    <p class="desc-text">Analyse de la répartition à 1 et 2 colonnes avec ou sans gestion de float.</p>
+                </div>-->
+
+                <div class="content-block reveal">
+                    <div class="card-info">
+                        <h3>01A. Structure Simple (1 Colonne avec Images)</h3>
+
+                        <div class="col-container col-1">
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <picture class="responsive-picture">
+                                    <source srcset="images/photo-640x480.png" media="(max-width: 768px)">
+                                    <img src="images/photo-640x480.png" class="img-standard" alt="Illustration de test" loading="lazy">
+                                </picture>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <hr class="section-sep-thin-inner">
+
+                        <div class="col-container col-2">
+                            <div class="text-col-content">
+                                <h4>Titre H4</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Titre H4</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <hr class="section-sep-thin-inner">
+
+                        <div class="col-container col-3">
+                            <div class="text-col-content">
+                                <h4>Titre H4</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Titre H4</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Titre H4</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <hr class="section-sep-thin-inner">
+
+                        <div class="col-container col-4">
+                            <div class="text-col-content">
+                                <h4>Titre H4</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Titre H4</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Titre H4</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Titre H4</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+
+                <hr class="section-sep-thin">
+
+                <div class="content-block reveal">
+                    <div class="card-info">
+                        <h3>01B. Structure Duo (2 Colonnes avec Images)</h3>
+
+                        <div class="col-container col-2">
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <picture class="responsive-picture">
+                                    <source srcset="images/photo-640x480.png" media="(max-width: 768px)">
+                                    <img src="images/photo-640x480.png" class="img-standard" alt="Illustration de test" loading="lazy">
+                                </picture>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <picture class="responsive-picture">
+                                    <source srcset="images/photo-640x480.png" media="(max-width: 768px)">
+                                    <img src="images/photo-640x480.png" class="img-standard" alt="Illustration de test" loading="lazy">
+                                </picture>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-sep-thin">
+
+                <div class="content-block reveal">
+                    <div class="card-info">
+                        <h3>01C. Structure Duo (2 Colonnes)</h3>
+
+                        <div class="col-container col-2">
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-sep-thin">
+
+                <div class="content-block reveal">
+                    <div class="card-info">
+                        <h3>01D. Structure Duo (2 Colonnes + float-left)</h3>
+                        <div class="col-container col-2">
+                            <div class="text-col-content">
+                                <h4>Float left</h4>
+                                <div class="float-box">
+                                    <picture class="responsive-picture img-float-left">
+                                        <source srcset="images/photo-640x480.png" media="(max-width: 768px)">
+                                        <img src="images/photo-320x240.png" alt="Illustration" loading="lazy">
+                                    </picture>
+                                    <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente. Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                </div>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+
+                            <div class="text-col-content">
+                                <h4>Float right</h4>
+                                <div class="float-box">
+                                    <picture class="responsive-picture img-float-right">
+                                        <source srcset="images/photo-640x480.png" media="(max-width: 768px)">
+                                        <img src="images/photo-320x240.png" alt="Illustration" loading="lazy">
+                                    </picture>
+                                    <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente. Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                </div>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-sep">
+
+                <div class="section-titles reveal">
+                    <h2>02. Tests de structures complexes (3 et 4 colonnes)</h2>
+                    <p class="desc-text">Analyse de la flexibilité et de l'empilement sur des grilles denses.</p>
+                </div>
+
+                <div class="content-block reveal">
+                    <div class="card-info">
+                        <h3>02A. Structure Trio (3 Colonnes avec Images)</h3>
+                        <div class="col-container col-3">
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <picture class="responsive-picture">
+                                    <source srcset="images/photo-640x480.png" media="(max-width: 1024px)">
+                                    <img src="images/photo-320x240.png" class="img-standard" alt="Illustration de test" loading="lazy">
+                                </picture>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <picture class="responsive-picture">
+                                    <source srcset="images/photo-640x480.png" media="(max-width: 1024px)">
+                                    <img src="images/photo-320x240.png" class="img-standard" alt="Illustration de test" loading="lazy">
+                                </picture>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <picture class="responsive-picture">
+                                    <source srcset="images/photo-640x480.png" media="(max-width: 1024px)">
+                                    <img src="images/photo-320x240.png" class="img-standard" alt="Illustration de test" loading="lazy">
+                                </picture>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux...</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-sep-thin">
+
+                <div class="content-block reveal">
+                    <div class="card-info">
+                        <h3>02B. Structure Trio (3 Colonnes)</h3>
+                        <div class="col-container col-3">
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-sep-thin">
+
+                <div class="content-block reveal">
+                    <div class="card-info">
+                        <h3>03A. Grille de Précision (4 Colonnes + images)</h3>
+
+                        <div class="col-container col-4">
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <picture class="responsive-picture">
+                                    <source srcset="images/photo-640x480.png" media="(max-width: 1024px)">
+                                    <img src="images/photo-320x240.png" class="img-standard" alt="Illustration de test" loading="lazy">
+                                </picture>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <picture class="responsive-picture">
+                                    <source srcset="images/photo-640x480.png" media="(max-width: 1024px)">
+                                    <img src="images/photo-320x240.png" class="img-standard" alt="Illustration de test" loading="lazy">
+                                </picture>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <picture class="responsive-picture">
+                                    <source srcset="images/photo-640x480.png" media="(max-width: 1024px)">
+                                    <img src="images/photo-320x240.png" class="img-standard" alt="Illustration de test" loading="lazy">
+                                </picture>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <picture class="responsive-picture">
+                                    <source srcset="images/photo-640x480.png" media="(max-width: 1024px)">
+                                    <img src="images/photo-320x240.png" class="img-standard" alt="Illustration de test" loading="lazy">
+                                </picture>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-sep-thin">
+
+                <div class="content-block reveal">
+                    <div class="card-info">
+                        <h3>03B. Grille de Précision (4 Colonnes)</h3>
+                        <div class="col-container col-4">
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                            <div class="text-col-content">
+                                <h4>Axe Principal</h4>
+                                <p>Ce bloc permet d'évaluer la répartition équilibrée du texte sur deux axes verticaux. La gestion du Flexbox doit garantir que les colonnes conservent une hauteur cohérente.</p>
+                                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                                    <button class="simpleButton">Bouton simple</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-col about">
+            <div class="footer-logo">Christophe MILLOT</div>
+            <p class="copyright">Au service de vos projets.</p>
+        </div>
+        <div class="footer-col links">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="photographie.html">Projets</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p class="copyright">&copy; 2026 Christophe MILLOT. Tous droits réservés.</p>
+    </div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/slider.js?v=999"></script>
+</body>
+</html>

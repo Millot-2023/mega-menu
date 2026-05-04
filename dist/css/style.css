@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap');
-/* Fichier fusionné - Build: 2026-05-02 16:15:47 */
+/* Fichier fusionné - Build: 2026-05-04 13:42:47 */
 
 /* --- Source: variables.css --- */
 :root {
@@ -64,8 +64,44 @@ html {
 /* --- Source: fonts.css --- */
 
 
+/* ==========================================================================
+   VARIABLES DE TAILLES DE POLICES (Desktop par défaut)
+   ========================================================================== */
+:root {
+    --fs-h1: 3rem;       /* 48px */
+    --fs-h2: 2.25rem;    /* 36px */
+    --fs-h3: 1.5rem;     /* 24px */
+    --fs-h4: 1.125rem;   /* 18px */
+    --fs-body: 1rem;     /* 16px */
+    --fs-desc: 1.125rem; /* 18px */
+    --fs-badge: 0.75rem; /* 12px */
+    
+    --font-titles: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --lh-titles: 1.2;
+    --lh-body: 1.7;
+}
+
+/* ==========================================================================
+   ADAPTATION MOBILE (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    :root {
+        --fs-h1: 2.25rem;    /* 36px */
+        --fs-h2: 1.75rem;    /* 28px */
+        --fs-h3: 1.25rem;    /* 20px */
+        --fs-h4: 1.05rem;    /* 17px */
+        --fs-body: 0.95rem;  /* 15.2px */
+        --fs-desc: 1rem;     /* 16px */
+    }
+}
+
+/* ==========================================================================
+   APPLICATION DES STYLES DE BASE
+   ========================================================================== */
 body {
     font-family: var(--font-body);
+    font-size: var(--fs-body);
     line-height: var(--lh-body);
     -webkit-font-smoothing: antialiased;
 }
@@ -73,16 +109,81 @@ body {
 h1, h2, h3, h4, .logo {
     font-family: var(--font-titles);
     line-height: var(--lh-titles);
+}
+
+/* Échelle typographique stricte */
+h1 { font-size: var(--fs-h1); font-weight: 800; }
+h2 { font-size: var(--fs-h2); font-weight: 700; }
+h3 { font-size: var(--fs-h3); font-weight: 700; }
+h4 { font-size: var(--fs-h4); font-weight: 600; }
+
+h4 {
+    display: block; /* Ou flex */
+    width: 100%;
+    border-bottom: 2px solid #7e7e7e; /* Épaisseur, style et couleur de la ligne */
+    padding-bottom: 8px; /* Espace entre le texte et la ligne */
+    margin-bottom: 15px; /* Espace sous la ligne */
+}
+
+
+.logo { 
+    font-size: 1.25rem; 
+    font-weight: 700; 
+}
+
+.category-badge {
+    font-family: var(--font-titles);
+    font-size: var(--fs-badge);
     font-weight: 700;
-    color: inherit; /* Prend le sombre du body */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color:white;
+}
+
+/* Paragraphes et descriptions */
+p {
+    font-size: var(--fs-body);
+    margin-bottom: 25px;
+}
+
+.paragraphe { 
+    margin-bottom: 20px; 
+}
+
+.desc-text {
+    font-size: var(--fs-desc);
+    line-height: 1.6;
 }
 
 /* Cas particulier : Texte sur le Hero ou zones sombres */
-body .hero h1, body .hero p, body .desc-text {
-    color: white;
+body .hero h1, 
+body .hero p, 
+body .desc-text {
+    color: #ffffff;
 }
 
-.paragraphe { margin-bottom: 20px; }
+/* ==========================================================================
+   COULEURS DE REPÉRAGE TEMPORAIRES (Haute Priorité)
+   ========================================================================== */
+/*body h1, body .hero h1 { 
+    color: #ff00ff !important;
+}
+
+body h2, body .section-titles h2 { 
+    color: #00ff00 !important;
+}
+
+body h3, body .box h3, body .card-info h3 { 
+    color: #ffff00 !important;
+    background-color: #000000;
+    padding: 5px;
+}
+
+body h4, body .text-col-content h4 { 
+    color: #00ffff !important;
+    background-color: #000000;
+    padding: 3px;
+}*/
 
 /* --- Source: base.css --- */
 html {
@@ -156,15 +257,19 @@ body.no-scroll {
 
 /* --- TITRES DE SECTION --- */
 .section-titles {
+
+    background-color:black;
     margin-bottom: var(--section-margin);
     width: 100%;
     display: block;
     position: relative;
+    padding:50px;
 }
 
 .section-titles h1,
 .section-titles h2 {
     margin: 0 0 15px 0;
+    color:white;
 }
 
 .category-badge {
@@ -992,25 +1097,32 @@ html body.is-slider {
     margin: 0 auto;
 }
 
-.footer-col h4 {
+/* Isolation des titres pour écraser les couleurs fluo du fonts.css */
+body .main-footer .footer-col h4 {
+    color: #ffffff !important; /* Blanc pur pour contraste maximal */
+    background: transparent !important; /* Retire le fond noir de repérage */
+    padding: 0 0 10px 0 !important; /* Garde uniquement le padding du bas */
     margin-bottom: 20px;
     font-size: 1.1rem;
     position: relative;
-    padding-bottom: 10px;
+    border-bottom: none !important; /* Supprime le border-bottom de test */
 }
 
-.footer-col h4::after {
+/* Soulignement stylisé avec le pseudo-élément */
+body .main-footer .footer-col h4::after {
     content: '';
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 30px;
+    width: 100%;
     height: 2px;
-    background: var(--accent-color);
+    background: var(--accent-color, #e63946); /* Rouge par défaut si la variable est vide */
 }
 
 .footer-col ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .footer-col li {
@@ -1024,13 +1136,14 @@ html body.is-slider {
 }
 
 .footer-col a:hover {
-    color: var(--accent-color);
+    color: var(--accent-color, #e63946);
 }
 
 .footer-logo {
     font-weight: bold;
     font-size: 1.3rem;
     margin-bottom: 15px;
+    color: #ffffff;
 }
 
 .footer-bottom {
@@ -1042,13 +1155,21 @@ html body.is-slider {
     font-size: 0.9rem;
 }
 
+.copyright{
+    color:white;
+}
+
+
+
+
+
 /* RESPONSIVE MOBILE */
 @media (max-width: 600px) {
     .main-footer {
         text-align: center;
     }
 
-    .footer-col h4::after {
+    body .main-footer .footer-col h4::after {
         left: 50%;
         transform: translateX(-50%);
     }
@@ -1361,9 +1482,29 @@ hr.section-sep {
     border: 0;
     height: 30px;
     background: linear-gradient(90deg, #fff 0%, #000 15%, #000 85%, #fff 100%);
+
     width: 100%; 
     margin: 80px auto;  
 }
+
+hr.section-sep-thin {
+    border: 0;
+    height: 10px;
+    background: linear-gradient(90deg, #fff 0%, #4f4f4f 15%, #4f4f4f 85%, #fff 100%);
+    width: 100%; 
+    margin: 80px auto;  
+}
+
+hr.section-sep-thin-inner {
+    border: 0;
+    height: 10px;
+    background: linear-gradient(90deg, transparent 0%, #ffffff 15%, #ffffff 85%, transparent 100%);
+    width: 100%; 
+    margin: 80px auto;  
+}
+
+
+
 
 .reveal {
     opacity: 0;

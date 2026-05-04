@@ -65,7 +65,7 @@
                             <h3>Photographie</h3>
                             <ul>
                                 <li><a href="portrait-studio.html">Portraits Studio</a></li>
-                                <li><a href="architecture-urbaine.html">Architecture Urbaine</a></li>
+                                <li><a href="architecture-urbaine.html" style="color: red !important;">Architecture Urbaine</a></li>
                                 <li><a href="reportage-mariage.html">Reportages Mariage</a></li>
                                 <li><a href="nature-maccro.html">Nature & Macro</a></li>
                                 <li><a href="mode-lookbook.html">Mode & Lookbook</a></li>
@@ -101,7 +101,7 @@
                                 <li><a href="optimisation-seo.html">Optimisation SEO</a></li>
                                 <li><a href="audit-securite.html">Audit Sécurité</a></li>
 
-                                <li><a href="pageBaseTimelineMed.html">pageBaseTimelineMed</a></li>
+                               <a href="pageTemplate.html" style="color: red !important;">Page Templates</a>
 
 
 
@@ -142,125 +142,704 @@
             </div>
         </div>
     </nav>
-<main class="content-area" id="content">
-    <section class="section-titles">
-        <span class="category-badge">Catégorie Projet</span>
-        <h1>Pixel-art</h1>
-        <p class="desc-text">Structure de contenu en grille responsive 4-2-1.</p>
+<style>
+/* ==========================================================================
+   STYLES SPÉCIFIQUES : PIXEL ART & GÉNÉRATEUR
+   ========================================================================== */
+
+.pixel-maker-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: start;
+    background: #f8fafc;
+    padding: 30px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+}
+
+.pixel-grid-wrapper {
+    display: flex;
+    flex-direction: column; /* Aligne la grille et le champ de texte verticalement */
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    min-height: 440px;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 20px; /* Espace entre la grille et le champ du projet */
+}
+
+#pixelGrid {
+    display: grid;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background: #e2e8f0;
+    border: 1px solid #cbd5e1;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M0 32v-8l16-16 8 8-16 16H0zM20 4l4-4 8 8-4 4-8-8z" fill="%230f172a"/></svg>') 0 32, crosshair;
+}
+
+/* Nouveau style pour le champ de saisie du nom du projet */
+.project-name-wrapper {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.project-name-wrapper label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #475569;
+}
+
+.project-name-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    color: #0f172a;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.project-name-input:focus {
+    border-color: #0f172a;
+    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
+}
+
+.pixel-cell {
+    background: #ffffff;
+    box-sizing: border-box;
+    outline: 1px solid #e2e8f0;
+    transition: background-color 0.05s ease;
+}
+
+.pixel-maker-ui {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.color-palette {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.palette-color {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.1s ease, border-color 0.1s ease;
+}
+
+.palette-color.active {
+    border-color: #0f172a;
+    transform: scale(1.1);
+}
+
+.resolution-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.res-btn {
+    padding: 8px 4px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #475569;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.1s ease;
+}
+
+.res-btn:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+}
+
+.res-btn.active {
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+}
+
+.custom-picker-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #ffffff;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+}
+
+.custom-picker-wrapper input[type="color"] {
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    background: none;
+}
+
+.pixel-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.1s ease;
+}
+
+.btn-clear { background: #e2e8f0; color: #0f172a; }
+.btn-clear:hover { background: #cbd5e1; }
+
+.btn-fill { background: #64748b; color: #ffffff; }
+.btn-fill:hover { background: #475569; }
+
+/* Modification : Prise en charge de toute la largeur */
+.btn-export { background: #475569; color: #ffffff; grid-column: span 2; }
+.btn-export:hover { background: #334155; }
+
+.btn-save { background: #0f172a; color: #ffffff; grid-column: span 2; }
+.btn-save:hover { background: #1e293b; }
+
+/* Styles de la galerie de créations */
+.gallery-section {
+    margin-top: 50px;
+    border-top: 2px solid #e2e8f0;
+    padding-top: 40px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.gallery-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-color: #cbd5e1;
+}
+
+.gallery-preview {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: grid;
+}
+
+.gallery-info {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.btn-mini-export {
+    position: absolute;
+    top: -8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 20;
+    transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
+.btn-mini-export { right: -8px; background: #0f172a; color: #ffffff; border: 2px solid #ffffff; }
+
+.btn-mini-export:hover { background: #1e293b; transform: scale(1.15); }
+
+
+
+
+
+@media (max-width: 1024px) {
+    .pixel-maker-container { grid-template-columns: 1fr; gap: 30px; padding: 20px; }
+    .pixel-grid-wrapper { min-height: auto; padding: 10px; }
+}
+</style>
+
+<section class="hero">
+    <div class="hero-inner">
+        <h1>Pixel Art</h1>
+        <p>L'esthétique de la contrainte : de la nostalgie 8-bit aux créations numériques modernes.</p>
+    </div>
+    <a href="#content" class="hero-chevron">︾</a>
+</section>
+
+<main class="content-area base-template-page" id="content">
+
+    <section class="header-block">
+        <div class="band-container">
+            <div class="section-titles reveal">
+                <span class="category-badge">Art Digital</span>
+                <h2>01 - L'Art du Pixel & Générateur Interactif</h2>
+                <p class="desc-text">Explorez le potentiel des grilles numériques et conservez vos créations.</p>
+            </div>
+        </div>
     </section>
 
-    <section class="grid-system">
-        
-        <div class="row-1">
-            <div class="box">
-                <div class="grid-vignette">
-                    <img src="images/photo-640x480.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                </div>
-                <h3>Création Digitale Vedette</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="pixels-art.html" class="btn-main">Voir la galerie</a>
-                </div>
-            </div>
-        </div>
+    <section class="landing-band section-pixel-maker">
+        <div class="band-container">
+            <div class="content-wrapper">
+                <div class="content-block reveal">
+                    <div class="card-info">
+                        <h3>Outil Créatif : Pixel Art Maker</h3>
+                        <p style="margin-bottom: 30px;">Dessinez, changez de résolution librement sans perdre votre travail, et sauvegardez pour y revenir plus tard.</p>
 
-        <div class="row-2">
-            <div class="box">
-                <div class="grid-vignette">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
-                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
-                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                    </picture>
-                </div>
-                <h3>Création Digitale</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="pixels-art.html" class="btn-main">Voir la galerie</a>
-                </div>
-            </div>
-            <div class="box">
-                <div class="grid-vignette">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
-                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
-                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                    </picture>
-                </div>
-                <h3>Création Digitale</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="pixels-art.html" class="btn-main">Voir la galerie</a>
-                </div>
-            </div>
-        </div>
+                        <div class="pixel-maker-container">
+                            <div class="pixel-grid-wrapper">
+                                <div id="pixelGrid"></div>
+                                
+                                <div class="project-name-wrapper">
+                                    <label for="projectName">Nom du projet :</label>
+                                    <input type="text" id="projectName" class="project-name-input" placeholder="Sans titre" maxlength="30">
+                                </div>
+                            </div>
 
-        <div class="row-4">
-            <div class="box">
-                <div class="grid-vignette">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
-                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
-                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                    </picture>
-                </div>
-                <h3>Création Digitale</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="pixels-art.html" class="btn-main">Voir la galerie</a>
-                </div>
-            </div>
-            <div class="box">
-                <div class="grid-vignette">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
-                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
-                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                    </picture>
-                </div>
-                <h3>Création Digitale</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="pixels-art.html" class="btn-main">Voir la galerie</a>
-                </div>
-            </div>
-            <div class="box">
-                <div class="grid-vignette">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
-                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
-                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                    </picture>
-                </div>
-                <h3>Création Digitale</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="pixels-art.html" class="btn-main">Voir la galerie</a>
-                </div>
-            </div>
-            <div class="box">
-                <div class="grid-vignette">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="images/photo-640x480.png">
-                        <source media="(min-width: 769px)" srcset="images/photo-320x240.png">
-                        <img src="images/photo-320x240.png" alt="Shooting Photo" style="width: 100%; display: block;">
-                    </picture>
-                </div>
-                <h3>Création Digitale</h3>
-                <p>Art et Pixels.</p>
-                <div class="btn-container">
-                    <a href="pixels-art.html" class="btn-main">Voir la galerie</a>
+                            <div class="pixel-maker-ui">
+                                <div>
+                                    <h4 style="margin-top:0; margin-bottom:15px;">Palette Classique</h4>
+                                    <div class="color-palette">
+                                        <div class="palette-color active" style="background: #000000;" data-color="#000000"></div>
+                                        <div class="palette-color" style="background: #ffffff;" data-color="#ffffff"></div>
+                                        <div class="palette-color" style="background: #e63946;" data-color="#e63946"></div>
+                                        <div class="palette-color" style="background: #2a9d8f;" data-color="#2a9d8f"></div>
+                                        <div class="palette-color" style="background: #e9c46a;" data-color="#e9c46a"></div>
+                                        <div class="palette-color" style="background: #f4a261;" data-color="#f4a261"></div>
+                                        <div class="palette-color" style="background: #e76f51;" data-color="#e76f51"></div>
+                                        <div class="palette-color" style="background: #264653;" data-color="#264653"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h4 style="margin-top:0; margin-bottom:15px;">Résolution de grille</h4>
+                                    <div class="resolution-selector">
+                                        <button class="res-btn" data-size="8">8x8</button>
+                                        <button class="res-btn active" data-size="16">16x16</button>
+                                        <button class="res-btn" data-size="32">32x32</button>
+                                    </div>
+                                </div>
+
+                                <div class="custom-picker-wrapper">
+                                    <input type="color" id="customColor" value="#457b9d">
+                                    <div>
+                                        <h5 style="margin:0; font-size:1rem;">Couleur personnalisée</h5>
+                                        <small style="color:#64748b;">Sélectionnez une teinte sur mesure</small>
+                                    </div>
+                                </div>
+
+                                <div class="pixel-actions">
+                                    <button id="clearGrid" class="action-btn btn-clear">Effacer</button>
+                                    <button id="fillGrid" class="action-btn btn-fill">Remplir</button>
+                                    <button id="exportGrid" class="action-btn btn-export">Exporter PNG</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-section">
+                            
+                            <p style="color: #64748b; margin-bottom: 20px;"></p>
+                            <div class="gallery-grid" id="galleryGrid"></div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('pixelGrid');
+    const customColorInput = document.getElementById('customColor');
+    const projectNameInput = document.getElementById('projectName');
+    const clearBtn = document.getElementById('clearGrid');
+    const fillBtn = document.getElementById('fillGrid');
+    const exportBtn = document.getElementById('exportGrid');
+    const saveBtn = document.getElementById('saveGrid');
+    const colorPalette = document.querySelector('.color-palette');
+    const resolutionButtons = document.querySelectorAll('.res-btn');
+    const galleryGrid = document.getElementById('galleryGrid');
+    
+    let activeColor = '#000000';
+    let isDrawing = false;
+    let currentSize = 16; 
+    let pixelData = [];
+    let currentCreationId = '';
+
+    function createGrid(size, loadedPixels = null) {
+        if (!grid) return;
+        
+        const oldCells = document.querySelectorAll('.pixel-cell');
+        if (oldCells.length > 0 && !loadedPixels) {
+            pixelData = Array.from(oldCells).map(cell => cell.style.backgroundColor || '#ffffff');
+        }
+
+        grid.innerHTML = '';
+        const oldSize = currentSize;
+        currentSize = size;
+
+        grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+        grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+        const totalCells = size * size;
+
+        for (let i = 0; i < totalCells; i++) {
+            const cell = document.createElement('div');
+            cell.classList.add('pixel-cell');
+            cell.style.outline = '1px solid #e2e8f0';
+
+            let restoredColor = '#ffffff';
+
+            if (loadedPixels && loadedPixels[i]) {
+                restoredColor = loadedPixels[i];
+            } else if (pixelData.length > 0 && !loadedPixels) {
+                const x = i % size;
+                const y = Math.floor(i / size);
+
+                if (size > oldSize) {
+                    const ratio = size / oldSize;
+                    const oldX = Math.floor(x / ratio);
+                    const oldY = Math.floor(y / ratio);
+                    restoredColor = pixelData[oldY * oldSize + oldX];
+                } else {
+                    const ratio = oldSize / size;
+                    const oldX = Math.floor(x * ratio);
+                    const oldY = Math.floor(y * ratio);
+                    restoredColor = pixelData[oldY * oldSize + oldX];
+                }
+            }
+
+            cell.style.backgroundColor = restoredColor || '#ffffff';
+
+            cell.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                isDrawing = true;
+                cell.style.backgroundColor = activeColor;
+            });
+
+            cell.addEventListener('mouseenter', () => {
+                if (isDrawing) {
+                    cell.style.backgroundColor = activeColor;
+                }
+            });
+
+            grid.appendChild(cell);
+        }
+    }
+
+    createGrid(16);
+
+    resolutionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            resolutionButtons.forEach(b => b.classList.remove('active'));
+            button.classList.add('active');
+            const size = parseInt(button.getAttribute('data-size'));
+            createGrid(size);
+        });
+    });
+
+    window.addEventListener('mouseup', () => { isDrawing = false; });
+
+    if (colorPalette) {
+        colorPalette.addEventListener('click', (e) => {
+            if (e.target.classList.contains('palette-color')) {
+                document.querySelectorAll('.palette-color').forEach(p => p.classList.remove('active'));
+                e.target.classList.add('active');
+                activeColor = e.target.getAttribute('data-color');
+                if (customColorInput) customColorInput.value = activeColor;
+            }
+        });
+    }
+
+    if (customColorInput) {
+        customColorInput.addEventListener('input', (e) => {
+            document.querySelectorAll('.palette-color').forEach(p => p.classList.remove('active'));
+            activeColor = e.target.value;
+        });
+    }
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            document.querySelectorAll('.pixel-cell').forEach(cell => cell.style.backgroundColor = '#ffffff');
+            pixelData = [];
+            currentCreationId = '';
+            projectNameInput.value = '';
+        });
+    }
+
+    if (fillBtn) {
+        fillBtn.addEventListener('click', () => {
+            document.querySelectorAll('.pixel-cell').forEach(cell => cell.style.backgroundColor = activeColor);
+        });
+    }
+
+    // Sauvegarder
+    if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+            const mdp = prompt("Veuillez saisir le mot de passe pour enregistrer :");
+            if (!mdp) return;
+
+            const cells = document.querySelectorAll('.pixel-cell');
+            const currentPixels = Array.from(cells).map(cell => cell.style.backgroundColor || '#ffffff');
+            const projectName = projectNameInput.value.trim() || 'Sans titre';
+
+            const payload = {
+                password: mdp,
+                id: currentCreationId,
+                name: projectName,
+                size: currentSize,
+                pixels: currentPixels
+            };
+
+            fetch('sauvegarder-pixel.html', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(res => res.json())
+            .then(response => {
+                if (response.success) {
+                    alert('Création enregistrée avec succès !');
+                    if (response.id) currentCreationId = response.id;
+                    renderGallery(response.creations);
+                } else {
+                    alert('Erreur lors de la sauvegarde : ' + response.message);
+                }
+            })
+            .catch(err => console.error('Erreur AJAX:', err));
+        });
+    }
+
+    // Charger les créations
+    function loadGallery() {
+        fetch('creations.json', { cache: "no-cache" })
+        .then(res => res.json())
+        .then(creations => {
+            if (Array.isArray(creations)) {
+                renderGallery(creations);
+            }
+        })
+        .catch(() => console.log('Aucune création trouvée.'));
+    }
+
+    // Rendu de la galerie
+    function downloadPNG(size, pixels, name) {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const exportSize = 320;
+        canvas.width = exportSize;
+        canvas.height = exportSize;
+        const scale = exportSize / size;
+
+        pixels.forEach((color, index) => {
+            const x = (index % size) * scale;
+            const y = Math.floor(index / size) * scale;
+            ctx.fillStyle = color || '#ffffff';
+            ctx.fillRect(x, y, scale, scale);
+        });
+
+        const link = document.createElement('a');
+        link.download = `${name.replace(/\s+/g, '-').toLowerCase() || 'pixel-art'}-${size}x${size}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    }
+
+    function renderGallery(creations) {
+        if (!galleryGrid) return;
+        galleryGrid.innerHTML = '';
+
+        creations.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'gallery-item';
+
+            const delBtn = document.createElement('button');
+            delBtn.className = 'btn-delete-creation';
+            delBtn.innerHTML = '×';
+            delBtn.title = 'Supprimer cette création';
+            
+            delBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const mdp = prompt("Veuillez saisir le mot de passe pour supprimer :");
+                if (!mdp) return;
+
+                if (confirm('Voulez-vous vraiment supprimer cette création ?')) {
+                    fetch('sauvegarder-pixel.html', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ action: 'delete', id: item.id, password: mdp })
+                    })
+                    .then(res => res.json())
+                    .then(response => {
+                        if (response.success) {
+                            if (currentCreationId === item.id) {
+                                currentCreationId = '';
+                                projectNameInput.value = '';
+                            }
+                            renderGallery(response.creations);
+                        } else {
+                            alert('Erreur lors de la suppression : ' + response.message);
+                        }
+                    })
+                    .catch(err => console.error('Erreur AJAX:', err));
+                }
+            });
+
+            const dupBtn = document.createElement('button');
+            dupBtn.className = 'btn-duplicate-creation';
+            dupBtn.innerHTML = '⧉';
+            dupBtn.title = 'Dupliquer cette création';
+
+            dupBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const mdp = prompt("Veuillez saisir le mot de passe pour dupliquer :");
+                if (!mdp) return;
+
+                currentCreationId = ''; 
+                projectNameInput.value = (item.name || 'Sans titre') + ' (copie)';
+
+                resolutionButtons.forEach(b => {
+                    b.classList.remove('active');
+                    if (parseInt(b.getAttribute('data-size')) === item.size) {
+                        b.classList.add('active');
+                    }
+                });
+
+                createGrid(item.size, item.pixels);
+                alert('Création chargée comme copie. Cliquez sur "Enregistrer" pour la sauvegarder avec le nouveau mot de passe.');
+                window.scrollTo({ top: document.querySelector('.pixel-maker-container').offsetTop - 50, behavior: 'smooth' });
+            });
+
+            const preview = document.createElement('div');
+            preview.className = 'gallery-preview';
+            preview.style.gridTemplateColumns = `repeat(${item.size}, 1fr)`;
+            preview.style.gridTemplateRows = `repeat(${item.size}, 1fr)`;
+
+            item.pixels.forEach(color => {
+                const miniPixel = document.createElement('div');
+                miniPixel.style.backgroundColor = color;
+                preview.appendChild(miniPixel);
+            });
+
+            const info = document.createElement('div');
+            info.className = 'gallery-info';
+            info.innerHTML = `<strong>${item.name || 'Sans titre'}</strong><br><small>${item.size}x${item.size}</small>`;
+
+            card.appendChild(dlBtn);
+            
+            card.appendChild(preview);
+            card.appendChild(info);
+
+            card.addEventListener('click', () => {
+                currentCreationId = item.id;
+                projectNameInput.value = item.name || 'Sans titre';
+                
+                resolutionButtons.forEach(b => {
+                    b.classList.remove('active');
+                    if (parseInt(b.getAttribute('data-size')) === item.size) {
+                        b.classList.add('active');
+                    }
+                });
+
+                createGrid(item.size, item.pixels);
+                window.scrollTo({ top: document.querySelector('.pixel-maker-container').offsetTop - 50, behavior: 'smooth' });
+            });
+
+            galleryGrid.appendChild(card);
+        });
+    }
+
+    loadGallery();
+
+    // Export PNG
+    if (exportBtn) {
+        exportBtn.addEventListener('click', () => {
+            const cells = document.querySelectorAll('.pixel-cell');
+            if (cells.length === 0) return;
+            
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const exportSize = 320;
+            canvas.width = exportSize;
+            canvas.height = exportSize;
+
+            const scale = exportSize / currentSize;
+
+            cells.forEach((cell, index) => {
+                const x = (index % currentSize) * scale;
+                const y = Math.floor(index / currentSize) * scale;
+                ctx.fillStyle = cell.style.backgroundColor || '#ffffff';
+                ctx.fillRect(x, y, scale, scale);
+            });
+
+            const link = document.createElement('a');
+            link.download = `${projectNameInput.value.trim() || 'pixel-art'}-${currentSize}x${currentSize}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    }
+});
+</script>
 
 <footer class="main-footer">
     <div class="footer-container">
         <div class="footer-col about">
             <div class="footer-logo">Christophe MILLOT</div>
-            <p>L'excellence visuelle au service de vos projets.</p>
+            <p class="copyright">Au service de vos projets.</p>
         </div>
         <div class="footer-col links">
             <h4>Navigation</h4>
@@ -269,21 +848,12 @@
                 <li><a href="photographie.html">Projets</a></li>
             </ul>
         </div>
-        <div class="footer-col contact">
-            <h4>Contact</h4>
-            <ul>
-                <li>📍 Paris, France</li>
-                <li>📧 contact@perlesetpixels.com</li>
-            </ul>
-        </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2026 Christophe MILLOT. Tous droits réservés.</p>
+        <p class="copyright">&copy; 2026 Christophe MILLOT. Tous droits réservés.</p>
     </div>
 </footer>
-
 <script src="js/main.js"></script>
 <script src="js/slider.js?v=999"></script>
 </body>
-
 </html>

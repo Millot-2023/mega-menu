@@ -4,6 +4,11 @@ header('Content-Type: application/json');
 ini_set('display_errors', 0);
 error_reporting(E_ALL);
 
+// ==========================================================================
+// CONFIGURATION : Définir ici ton mot de passe secret
+// ==========================================================================
+$motDePasseAttendu = "art-admin-2026"; 
+
 $file = 'creations.json';
 
 // Si le fichier n'existe pas ou est vide, on l'initialise
@@ -13,6 +18,12 @@ if (!file_exists($file) || filesize($file) === 0) {
 
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
+
+// Vérification du mot de passe pour TOUTES les actions d'écriture
+if (!isset($data['password']) || $data['password'] !== $motDePasseAttendu) {
+    echo json_encode(['success' => false, 'message' => 'Mot de passe incorrect ou manquant.']);
+    exit;
+}
 
 $jsonContent = file_get_contents($file);
 $creations = json_decode($jsonContent, true);
@@ -55,7 +66,6 @@ if (!$data || !isset($data['pixels']) || !isset($data['size'])) {
     exit;
 }
 
-// Récupération et nettoyage du nom
 $name = isset($data['name']) ? trim($data['name']) : 'Sans titre';
 if ($name === '') {
     $name = 'Sans titre';
@@ -66,7 +76,7 @@ if (isset($data['id']) && $data['id'] !== '') {
     $found = false;
     foreach ($creations as &$creation) {
         if (isset($creation['id']) && trim($creation['id']) == $id) {
-            $creation['name'] = $name; // On met à jour le nom
+            $creation['name'] = $name;
             $creation['pixels'] = $data['pixels'];
             $creation['size'] = $data['size'];
             $creation['date'] = date('Y-m-d H:i:s');
@@ -84,10 +94,9 @@ if (isset($data['id']) && $data['id'] !== '') {
         ];
     }
 } else {
-    // Nouvelle création
     $newCreation = [
         'id' => uniqid('art_'),
-        'name' => $name, // On enregistre le nom
+        'name' => $name,
         'size' => $data['size'],
         'pixels' => $data['pixels'],
         'date' => date('Y-m-d H:i:s')
