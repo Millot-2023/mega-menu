@@ -63,7 +63,14 @@
                         <div class="mega-col">
                             <h3>Photographie</h3>
                             <ul>
-                                <li><a href="portrait-studio.php">Portraits Studio</a></li>
+                                <li><a href="massonery-studio.php" style="color: red !important;">Massonery-studio</a></li>
+
+                                <li><a href="portrait-studio.php" style="color: red !important;">Portraits Studio</a></li>
+
+
+
+
+
                                 <li><a href="architecture-urbaine.php" style="color: red !important;">Architecture Urbaine</a></li>
                                 <li><a href="reportage-mariage.php">Reportages Mariage</a></li>
                                 <li><a href="nature-maccro.php">Nature & Macro</a></li>
@@ -74,7 +81,7 @@
                         <div class="mega-col">
                             <h3>Digital Art</h3>
                             <ul>
-                                <li><a href="pixels-art.php">Pixel Art 8-bit</a></li>
+                                <li><a href="pixels-art.php" style="color: red !important;">Pixel Art 8-bit</a></li>
                                 <li><a href="illustrations.php">Illustrations 2D</a></li>
                                 <li><a href="jeux-video.php">Jeux Vidéo</a></li>
                                 <li><a href="peinture-numerique.php">Peinture Numérique</a></li>

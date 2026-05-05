@@ -20,7 +20,7 @@
 
 .pixel-grid-wrapper {
     display: flex;
-    flex-direction: column; /* Aligne la grille et le champ de texte verticalement */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: #ffffff;
@@ -30,7 +30,7 @@
     min-height: 440px;
     width: 100%;
     box-sizing: border-box;
-    gap: 20px; /* Espace entre la grille et le champ du projet */
+    gap: 20px;
 }
 
 #pixelGrid {
@@ -42,10 +42,13 @@
     box-sizing: border-box;
     background: #e2e8f0;
     border: 1px solid #cbd5e1;
+    position: relative;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M0 32v-8l16-16 8 8-16 16H0zM20 4l4-4 8 8-4 4-8-8z" fill="%230f172a"/></svg>') 0 32, crosshair;
 }
 
-/* Nouveau style pour le champ de saisie du nom du projet */
 .project-name-wrapper {
     width: 100%;
     max-width: 400px;
@@ -77,10 +80,74 @@
     box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
 }
 
-.pixel-cell {
-    background: #ffffff;
+/* Nouveaux styles pour le contrôle du format libre et décalquage sous la grille */
+.advanced-format-controls {
+    width: 100%;
+    max-width: 400px;
+    background: #f1f5f9;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     box-sizing: border-box;
-    outline: 1px solid #e2e8f0;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-group label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #475569;
+}
+
+.input-slider-combo {
+    display: grid;
+    grid-template-columns: 60px 1fr 40px;
+    gap: 10px;
+    align-items: center;
+}
+
+.input-slider-combo input[type="number"] {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.input-slider-combo input[type="range"] {
+    width: 100%;
+    accent-color: #0f172a;
+}
+
+.input-slider-combo span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #475569;
+    text-align: right;
+}
+
+.image-upload-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.image-upload-wrapper input[type="file"] {
+    flex: 1;
+    font-size: 0.8rem;
+}
+
+.pixel-cell {
+    box-sizing: border-box;
+    outline: 1px solid rgba(226, 232, 240, 0.6);
     transition: background-color 0.05s ease;
 }
 
@@ -113,7 +180,7 @@
 
 .resolution-selector {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
 }
 
@@ -182,7 +249,6 @@
 .btn-fill { background: #64748b; color: #ffffff; }
 .btn-fill:hover { background: #475569; }
 
-/* Modification : Prise en charge de toute la largeur */
 .btn-export { background: #475569; color: #ffffff; grid-column: span 2; }
 .btn-export:hover { background: #334155; }
 
@@ -319,6 +385,35 @@
                                     <label for="projectName">Nom du projet :</label>
                                     <input type="text" id="projectName" class="project-name-input" placeholder="Sans titre" maxlength="30">
                                 </div>
+
+                                <div class="advanced-format-controls">
+                                    <div class="control-group">
+                                        <label>Format libre (Colonnes x Lignes) :</label>
+                                        <div class="input-slider-combo">
+                                            <input type="number" id="gridWidthInput" min="4" max="64" value="16">
+                                            <input type="range" id="gridWidthSlider" min="4" max="64" value="16">
+                                            <span id="widthValue">16px</span>
+                                        </div>
+                                        <div class="input-slider-combo">
+                                            <input type="number" id="gridHeightInput" min="4" max="64" value="16">
+                                            <input type="range" id="gridHeightSlider" min="4" max="64" value="16">
+                                            <span id="heightValue">16px</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label>Image de référence (Décalquage) :</label>
+                                        <div class="image-upload-wrapper">
+                                            <input type="file" id="bgImageImport" accept="image/*" class="res-btn">
+                                            <button id="clearBgImage" class="res-btn" style="display:none; padding: 4px 8px;">×</button>
+                                        </div>
+                                        <div class="input-slider-combo">
+                                            <label style="font-size:0.75rem; font-weight:normal; color:#64748b;">Opacité :</label>
+                                            <input type="range" id="bgOpacitySlider" min="0" max="100" value="50">
+                                            <span id="opacityValue">50%</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="pixel-maker-ui">
@@ -337,11 +432,12 @@
                                 </div>
 
                                 <div>
-                                    <h4 style="margin-top:0; margin-bottom:15px;">Résolution de grille</h4>
+                                    <h4 style="margin-top:0; margin-bottom:15px;">Formats Standards</h4>
                                     <div class="resolution-selector">
-                                        <button class="res-btn" data-size="8">8x8</button>
-                                        <button class="res-btn active" data-size="16">16x16</button>
-                                        <button class="res-btn" data-size="32">32x32</button>
+                                        <button class="res-btn active" data-w="16" data-h="16">CARRÉ 16x16</button>
+                                        <button class="res-btn" data-w="32" data-h="32">CARRÉ 32x32</button>
+                                        <button class="res-btn" data-w="16" data-h="12">PAYSAGE 4:3</button>
+                                        <button class="res-btn" data-w="12" data-h="16">PORTRAIT 3:4</button>
                                     </div>
                                 </div>
 
@@ -386,59 +482,68 @@ document.addEventListener('DOMContentLoaded', () => {
     const exportBtn = document.getElementById('exportGrid');
     const saveBtn = document.getElementById('saveGrid');
     const colorPalette = document.querySelector('.color-palette');
-    const resolutionButtons = document.querySelectorAll('.res-btn');
+    const resolutionButtons = document.querySelectorAll('.res-btn[data-w]');
     const galleryGrid = document.getElementById('galleryGrid');
+
+    // Nouveaux contrôles de gauche
+    const gridWidthInput = document.getElementById('gridWidthInput');
+    const gridWidthSlider = document.getElementById('gridWidthSlider');
+    const widthValue = document.getElementById('widthValue');
+
+    const gridHeightInput = document.getElementById('gridHeightInput');
+    const gridHeightSlider = document.getElementById('gridHeightSlider');
+    const heightValue = document.getElementById('heightValue');
+
+    const bgImageImport = document.getElementById('bgImageImport');
+    const clearBgImageBtn = document.getElementById('clearBgImage');
+    const bgOpacitySlider = document.getElementById('bgOpacitySlider');
+    const opacityValue = document.getElementById('opacityValue');
     
     let activeColor = '#000000';
     let isDrawing = false;
-    let currentSize = 16; 
+    let currentWidth = 16;
+    let currentHeight = 16;
     let pixelData = [];
     let currentCreationId = '';
 
-    function createGrid(size, loadedPixels = null) {
+    function createGrid(width, height, loadedPixels = null) {
         if (!grid) return;
         
         const oldCells = document.querySelectorAll('.pixel-cell');
         if (oldCells.length > 0 && !loadedPixels) {
-            pixelData = Array.from(oldCells).map(cell => cell.style.backgroundColor || '#ffffff');
+            pixelData = Array.from(oldCells).map(cell => cell.style.backgroundColor || 'rgba(255, 255, 255, 0)');
         }
 
         grid.innerHTML = '';
-        const oldSize = currentSize;
-        currentSize = size;
+        const oldWidth = currentWidth;
+        const oldHeight = currentHeight;
 
-        grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-        grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+        currentWidth = width;
+        currentHeight = height;
 
-        const totalCells = size * size;
+        grid.style.gridTemplateColumns = `repeat(${width}, 1fr)`;
+        grid.style.gridTemplateRows = `repeat(${height}, 1fr)`;
+
+        const totalCells = width * height;
 
         for (let i = 0; i < totalCells; i++) {
             const cell = document.createElement('div');
             cell.classList.add('pixel-cell');
-            cell.style.outline = '1px solid #e2e8f0';
 
-            let restoredColor = '#ffffff';
+            let restoredColor = 'rgba(255, 255, 255, 0)';
 
             if (loadedPixels && loadedPixels[i]) {
                 restoredColor = loadedPixels[i];
             } else if (pixelData.length > 0 && !loadedPixels) {
-                const x = i % size;
-                const y = Math.floor(i / size);
+                const x = i % width;
+                const y = Math.floor(i / width);
 
-                if (size > oldSize) {
-                    const ratio = size / oldSize;
-                    const oldX = Math.floor(x / ratio);
-                    const oldY = Math.floor(y / ratio);
-                    restoredColor = pixelData[oldY * oldSize + oldX];
-                } else {
-                    const ratio = oldSize / size;
-                    const oldX = Math.floor(x * ratio);
-                    const oldY = Math.floor(y * ratio);
-                    restoredColor = pixelData[oldY * oldSize + oldX];
-                }
+                const oldX = Math.floor(x * (oldWidth / width));
+                const oldY = Math.floor(y * (oldHeight / height));
+                restoredColor = pixelData[oldY * oldWidth + oldX] || 'rgba(255, 255, 255, 0)';
             }
 
-            cell.style.backgroundColor = restoredColor || '#ffffff';
+            cell.style.backgroundColor = restoredColor;
 
             cell.addEventListener('mousedown', (e) => {
                 e.preventDefault();
@@ -456,19 +561,56 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    createGrid(16);
+    createGrid(16, 16);
 
+    // Fonction de synchronisation des entrées
+    function updateDimensions(w, h, fromPreset = false) {
+        gridWidthInput.value = w;
+        gridWidthSlider.value = w;
+        widthValue.innerText = `${w}px`;
+
+        gridHeightInput.value = h;
+        gridHeightSlider.value = h;
+        heightValue.innerText = `${h}px`;
+
+        if (!fromPreset) {
+            resolutionButtons.forEach(b => b.classList.remove('active'));
+        }
+        createGrid(w, h);
+    }
+
+    // Slider et Input de Largeur
+    gridWidthSlider.addEventListener('input', (e) => {
+        updateDimensions(parseInt(e.target.value), currentHeight);
+    });
+    gridWidthInput.addEventListener('input', (e) => {
+        let val = Math.min(64, Math.max(4, parseInt(e.target.value) || 4));
+        updateDimensions(val, currentHeight);
+    });
+
+    // Slider et Input de Hauteur
+    gridHeightSlider.addEventListener('input', (e) => {
+        updateDimensions(currentWidth, parseInt(e.target.value));
+    });
+    gridHeightInput.addEventListener('input', (e) => {
+        let val = Math.min(64, Math.max(4, parseInt(e.target.value) || 4));
+        updateDimensions(currentWidth, val);
+    });
+
+    // Boutons de Résolution Standards (Droite)
     resolutionButtons.forEach(button => {
         button.addEventListener('click', () => {
             resolutionButtons.forEach(b => b.classList.remove('active'));
             button.classList.add('active');
-            const size = parseInt(button.getAttribute('data-size'));
-            createGrid(size);
+            const w = parseInt(button.getAttribute('data-w'));
+            const h = parseInt(button.getAttribute('data-h'));
+            updateDimensions(w, h, true);
         });
     });
 
     window.addEventListener('mouseup', () => { isDrawing = false; });
 
+    // Gestion de la palette
     if (colorPalette) {
         colorPalette.addEventListener('click', (e) => {
             if (e.target.classList.contains('palette-color')) {
@@ -487,9 +629,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Actions principales
     if (clearBtn) {
         clearBtn.addEventListener('click', () => {
-            document.querySelectorAll('.pixel-cell').forEach(cell => cell.style.backgroundColor = '#ffffff');
+            document.querySelectorAll('.pixel-cell').forEach(cell => cell.style.backgroundColor = 'rgba(255, 255, 255, 0)');
             pixelData = [];
             currentCreationId = '';
             projectNameInput.value = '';
@@ -502,6 +645,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Gestion Image de Décalquage
+    if (bgImageImport) {
+        bgImageImport.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (evt) => {
+                    grid.style.backgroundImage = `url('${evt.target.result}')`;
+                    clearBgImageBtn.style.display = 'inline-block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    if (clearBgImageBtn) {
+        clearBgImageBtn.addEventListener('click', () => {
+            grid.style.backgroundImage = 'none';
+            bgImageImport.value = '';
+            clearBgImageBtn.style.display = 'none';
+        });
+    }
+
+    if (bgOpacitySlider) {
+        bgOpacitySlider.addEventListener('input', (e) => {
+            const val = e.target.value;
+            opacityValue.innerText = `${val}%`;
+            grid.style.opacity = val / 100;
+        });
+    }
+
     // Sauvegarder
     if (saveBtn) {
         saveBtn.addEventListener('click', () => {
@@ -509,14 +683,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!mdp) return;
 
             const cells = document.querySelectorAll('.pixel-cell');
-            const currentPixels = Array.from(cells).map(cell => cell.style.backgroundColor || '#ffffff');
+            const currentPixels = Array.from(cells).map(cell => cell.style.backgroundColor || 'rgba(255, 255, 255, 0)');
             const projectName = projectNameInput.value.trim() || 'Sans titre';
 
             const payload = {
                 password: mdp,
                 id: currentCreationId,
                 name: projectName,
-                size: currentSize,
+                width: currentWidth,
+                height: currentHeight,
                 pixels: currentPixels
             };
 
@@ -605,22 +780,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentCreationId = ''; 
                 projectNameInput.value = (item.name || 'Sans titre') + ' (copie)';
 
-                resolutionButtons.forEach(b => {
-                    b.classList.remove('active');
-                    if (parseInt(b.getAttribute('data-size')) === item.size) {
-                        b.classList.add('active');
-                    }
-                });
+                updateDimensions(item.width || item.size, item.height || item.size, false);
+                createGrid(item.width || item.size, item.height || item.size, item.pixels);
 
-                createGrid(item.size, item.pixels);
-                alert('Création chargée comme copie. Cliquez sur "Enregistrer" pour la sauvegarder avec le nouveau mot de passe.');
+                alert('Création chargée comme copie. Cliquez sur "Enregistrer la création" pour la sauvegarder.');
                 window.scrollTo({ top: document.querySelector('.pixel-maker-container').offsetTop - 50, behavior: 'smooth' });
             });
 
             const preview = document.createElement('div');
             preview.className = 'gallery-preview';
-            preview.style.gridTemplateColumns = `repeat(${item.size}, 1fr)`;
-            preview.style.gridTemplateRows = `repeat(${item.size}, 1fr)`;
+            preview.style.gridTemplateColumns = `repeat(${item.width || item.size}, 1fr)`;
+            preview.style.gridTemplateRows = `repeat(${item.height || item.size}, 1fr)`;
 
             item.pixels.forEach(color => {
                 const miniPixel = document.createElement('div');
@@ -630,7 +800,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const info = document.createElement('div');
             info.className = 'gallery-info';
-            info.innerHTML = `<strong>${item.name || 'Sans titre'}</strong><br><small>${item.size}x${item.size}</small>`;
+            info.innerHTML = `<strong>${item.name || 'Sans titre'}</strong><br><small>${item.width || item.size}x${item.height || item.size}</small>`;
 
             card.appendChild(delBtn);
             card.appendChild(dupBtn);
@@ -641,14 +811,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentCreationId = item.id;
                 projectNameInput.value = item.name || 'Sans titre';
                 
-                resolutionButtons.forEach(b => {
-                    b.classList.remove('active');
-                    if (parseInt(b.getAttribute('data-size')) === item.size) {
-                        b.classList.add('active');
-                    }
-                });
-
-                createGrid(item.size, item.pixels);
+                updateDimensions(item.width || item.size, item.height || item.size, false);
+                createGrid(item.width || item.size, item.height || item.size, item.pixels);
                 window.scrollTo({ top: document.querySelector('.pixel-maker-container').offsetTop - 50, behavior: 'smooth' });
             });
 
@@ -667,20 +831,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             const exportSize = 320;
-            canvas.width = exportSize;
-            canvas.height = exportSize;
 
-            const scale = exportSize / currentSize;
+            const ratio = currentWidth / currentHeight;
+            if (currentWidth >= currentHeight) {
+                canvas.width = exportSize;
+                canvas.height = Math.round(exportSize / ratio);
+            } else {
+                canvas.height = exportSize;
+                canvas.width = Math.round(exportSize * ratio);
+            }
+
+            const scaleW = canvas.width / currentWidth;
+            const scaleH = canvas.height / currentHeight;
 
             cells.forEach((cell, index) => {
-                const x = (index % currentSize) * scale;
-                const y = Math.floor(index / currentSize) * scale;
-                ctx.fillStyle = cell.style.backgroundColor || '#ffffff';
-                ctx.fillRect(x, y, scale, scale);
+                const x = (index % currentWidth) * scaleW;
+                const y = Math.floor(index / currentWidth) * scaleH;
+                ctx.fillStyle = cell.style.backgroundColor || 'rgba(255, 255, 255, 0)';
+                ctx.fillRect(x, y, scaleW, scaleH);
             });
 
             const link = document.createElement('a');
-            link.download = `${projectNameInput.value.trim() || 'pixel-art'}-${currentSize}x${currentSize}.png`;
+            link.download = `${projectNameInput.value.trim() || 'pixel-art'}-${currentWidth}x${currentHeight}.png`;
             link.href = canvas.toDataURL('image/png');
             link.click();
         });

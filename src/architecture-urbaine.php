@@ -481,17 +481,24 @@
                                     <button class="simpleButton">Voir plus</button>
                                 </div>
                             </div>
+
+
+                            
                             <div class="text-col-content">
                                 <h4>Le Lapin Agile</h4>
                                 <picture class="responsive-picture">
-                                    <source srcset="images/lapin-agile-âne-montmartre-paris-zigzag.webp" media="(max-width: 768px)">
-                                    <img src="images/lapin-agile-âne-montmartre-paris-zigzag.webp" class="img-standard" alt="Scène de rue montmartroise" loading="lazy">
+                                    <source srcset="images/lapin-agile-aane-montmartre-paris-zigzag.webp" media="(max-width: 768px)">
+                                    <img src="images/lapin-agile-ane-montmartre-paris-zigzag.webp" class="img-standard" alt="Scène de rue montmartroise" loading="lazy">
                                 </picture>
                                 <p>Ce cabaret historique à la façade rose typique est un régal pour les photographes qui aiment les contrastes de couleurs.</p>
                                 <div style="text-align: center; margin-top: auto; padding-top: 20px;">
                                     <button class="simpleButton">Voir plus</button>
                                 </div>
                             </div>
+
+
+
+
                             <div class="text-col-content">
                                 <h4>Maison Rose</h4>
                                 <picture class="responsive-picture">
