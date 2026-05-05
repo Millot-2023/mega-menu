@@ -226,7 +226,6 @@
         right: 20px;
         z-index: 1000;
         cursor: pointer;
-        pointer-events: auto;
     }
 
     .cart-badge {
@@ -249,7 +248,7 @@
     }
 
     /* ==========================================================================
-       3. STRUCTURE & GRILLE
+       3. STRUCTURE & OFFRE SPECIALE (CONFORMITÉ LÉGALE)
        ========================================================================== */
     .malette-promo {
         width: 100%;
@@ -260,6 +259,25 @@
         margin-bottom: 30px;
         image-rendering: -webkit-optimize-contrast;
     }
+
+    .bundle-offer {
+        background: #f1f5f9;
+        border: 2px solid #0f172a;
+        border-radius: 4px;
+        padding: 30px;
+        margin: 40px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .bundle-text h3 { margin: 0 0 10px 0; color: #0f172a; }
+    .bundle-text p { margin: 0; font-size: 0.9rem; color: #64748b; }
+    
+    .bundle-price { text-align: right; }
+    .retail-info { display: block; color: #94a3b8; font-size: 0.9rem; margin-bottom: 5px; }
+    .new-price { display: block; color: #e63946; font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
 
     .presentation-crayons {
         display: grid;
@@ -277,12 +295,6 @@
         align-items: center;
         justify-content: center;
         padding: 20px;
-    }
-
-    .eventail-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
     }
 
     .carousel-crayons {
@@ -322,8 +334,6 @@
     .slide-img-container img {
         max-width: 95%;
         max-height: 100%;
-        width: auto;
-        height: auto;
         object-fit: contain;
     }
 
@@ -347,9 +357,9 @@
     }
 
     @media (max-width: 850px) {
-        .presentation-crayons {
-            grid-template-columns: 1fr;
-        }
+        .presentation-crayons { grid-template-columns: 1fr; }
+        .bundle-offer { flex-direction: column; text-align: center; }
+        .bundle-price { text-align: center; }
     }
 </style>
 
@@ -367,11 +377,11 @@
         <button id="close-cart" style="background:none; border:none; color:white; cursor:pointer; font-size:1.5rem;">&times;</button>
     </div>
     <div class="cart-content" id="cart-list">
-        <p style="color: #64748b; font-style: italic; font-size: 0.8rem;">Cliquez sur un article pour tester.</p>
+        <p style="color: #64748b; font-style: italic; font-size: 0.8rem;">Panier vide.</p>
     </div>
     <div class="cart-footer">
         <div style="display:flex; justify-content:space-between; font-weight:bold; margin-bottom:15px; font-size: 0.9rem;">
-            <span>TOTAL</span>
+            <span>TOTAL ESTIMÉ</span>
             <span id="cart-total">0.00 €</span>
         </div>
         <button class="nav-btn" style="width:100%; background:#e63946;">Démonstration terminée</button>
@@ -400,8 +410,27 @@
     <section class="landing-band">
         <div class="band-container">
             <h2>La Mallette Rootstrap : L'Atelier Portatif du Concepteur</h2>
-            <p>Passer de l'esquisse à la structure durable demande des outils de précision. La mallette Rootstrap a été pensée pour les créateurs qui exigent le meilleur de l'ergonomie technique.</p>
+            <p>Passer de l'esquisse à la structure durable demande des outils de précision. La mallette Rootstrap allie la noblesse du dessin traditionnel aux nécessités du flux numérique.</p>
+            
             <img src="images/rootstrap/malette-bootstrap-ouverte.png" class="malette-promo" alt="Mallette complète Rootstrap">
+
+            <!-- OFFRE BUNDLE MALLETTE COMPLÈTE -->
+            <div class="bundle-offer reveal">
+                <div class="bundle-text">
+                    <h3>Kit Expert : La Mallette Intégrale</h3>
+                    <p>L'essentiel réuni : mallette, 12 crayons, 4 stabilos, règle, gomme, taille-crayon et clé USB 64Go.</p>
+                </div>
+                <div class="bundle-price">
+                    <span class="retail-info">Valeur au détail : 141,70 €</span>
+                    <span class="new-price">99,00 €</span>
+                    <button class="nav-btn btn-add" 
+                            data-name="Kit Mallette Complète" 
+                            data-price="99.00" 
+                            data-img="images/rootstrap/malette-bootstrap-ouverte.png">
+                        Ajouter le Kit au panier
+                    </button>
+                </div>
+            </div>
 
             <!-- CARROUSEL 01 : CRAYONS -->
             <div class="presentation-crayons reveal">
@@ -743,7 +772,6 @@
     /* --- NAVIGATION CARROUSELS --- */
     let currentPos = 0;
     const container = document.getElementById('mainCarousel');
-
     function moveSlide(direction) {
         const slides = document.querySelectorAll('#mainCarousel .carousel-slide').length;
         currentPos = (currentPos + direction + slides) % slides;
@@ -752,7 +780,6 @@
 
     let stabiloPos = 0;
     const stabContainer = document.getElementById('stabiloCarousel');
-
     function moveStabilo(direction) {
         const slides = document.querySelectorAll('#stabiloCarousel .carousel-slide').length;
         stabiloPos = (stabiloPos + direction + slides) % slides;
@@ -761,14 +788,13 @@
 
     let accessPos = 0;
     const accessContainer = document.getElementById('accessoiresCarousel');
-
     function moveAccessoires(direction) {
         const slides = document.querySelectorAll('#accessoiresCarousel .carousel-slide').length;
         accessPos = (accessPos + direction + slides) % slides;
         accessContainer.style.transform = `translateX(-${accessPos * 100}%)`;
     }
 
-    /* --- LOGIQUE PANIER ÉPHÉMÈRE --- */
+    /* --- LOGIQUE PANIER --- */
     let cartCount = 0;
     let cartTotal = 0;
     let cartItems = [];
@@ -779,26 +805,19 @@
     const list = document.getElementById('cart-list');
     const totalDisplay = document.getElementById('cart-total');
 
-    // Ouvrir/Fermer le tiroir
     document.getElementById('cart-trigger').onclick = () => drawer.classList.add('open');
     document.getElementById('close-cart').onclick = () => drawer.classList.remove('open');
 
-    // Ajouter un article
     document.querySelectorAll('.btn-add').forEach(button => {
         button.addEventListener('click', (e) => {
             e.stopPropagation();
-
             const name = button.getAttribute('data-name');
             const price = parseFloat(button.getAttribute('data-price'));
             const img = button.getAttribute('data-img');
 
             cartCount++;
             cartTotal += price;
-            cartItems.push({
-                name,
-                price,
-                img
-            });
+            cartItems.push({ name, price, img });
 
             countDisplay.innerText = cartCount;
             badge.classList.remove('bump');
@@ -820,7 +839,7 @@
     function updateDrawer() {
         totalDisplay.innerText = cartTotal.toFixed(2) + " €";
         if (cartItems.length === 0) {
-            list.innerHTML = '<p style="color: #64748b; font-style: italic; font-size: 0.8rem;">Votre panier est vide.</p>';
+            list.innerHTML = '<p style="color: #64748b; font-style: italic; font-size: 0.8rem;">Panier vide.</p>';
         } else {
             list.innerHTML = cartItems.map(item => `
                 <div class="cart-item-row">

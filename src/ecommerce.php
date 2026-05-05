@@ -223,14 +223,19 @@
 
 <!-- TIROIR DU PANIER -->
 <div class="cart-drawer" id="cart-drawer">
-    <div class="cart-header">
-        <h4 style="margin:0; font-size: 0.9rem;">VOTRE SÉLECTION</h4>
-        <button id="close-cart" style="background:none; border:none; color:white; cursor:pointer; font-size:1.5rem;">&times;</button>
+    <div class="cart-header" style="background: #0f172a; color: #ffffff !important; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
+        <h4 style="margin:0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; color: #ffffff !important; display: block !important;">
+            Votre commande
+        </h4>
+        <button id="close-cart" style="background:none; border:none; color:white; cursor:pointer; font-size:1.5rem; line-height: 1;">&times;</button>
     </div>
-    <div class="cart-content" id="cart-list">
-        <p style="color: #64748b; font-style: italic; font-size: 0.8rem;">Panier vide.</p>
+    <div class="cart-content">
+        <div id="cart-list">
+            <p style="color: #64748b; font-style: italic; font-size: 0.8rem;">Panier vide.</p>
+        </div>
     </div>
     <div class="cart-footer">
+        <button class="btn-clear" onclick="clearCart()">Vider le panier</button>
         <div style="display:flex; justify-content:space-between; font-weight:bold; margin-bottom:15px; font-size: 0.9rem;">
             <span>TOTAL ESTIMÉ</span>
             <span id="cart-total">0.00 €</span>
